@@ -1,0 +1,200 @@
+{
+  "nav": {
+    "product": "Product",
+    "useCases": "Use Cases",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "European GPU Cloud",
+    "title": "GPU Infrastructure for AI\nWithout Compromise",
+    "subtitle": "NVIDIA Blackwell compute with European sovereignty. Ultra-low latency, GDPR compliance, guaranteed availability.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "View Pricing",
+    "stats": {
+      "uptime": { "value": "99.9%", "label": "Uptime SLA" },
+      "latency": { "value": "<10ms", "label": "Latency" },
+      "compliance": { "value": "GDPR", "label": "Compliant" }
+    },
+    "trustLine": "No commitment. Start free with 100 GPU-hours."
+  },
+  "product": {
+    "badge": "Platform",
+    "title": "Infrastructure built for AI",
+    "subtitle": "Every component optimized for machine learning workloads and language model inference.",
+    "features": {
+      "gpu": {
+        "title": "NVIDIA Blackwell",
+        "description": "Direct access to the world's most advanced GPUs, with MIG (Multi-Instance GPU) for efficient sharing."
+      },
+      "network": {
+        "title": "InfiniBand Network",
+        "description": "High-speed interconnect for distributed training with sub-microsecond latency."
+      },
+      "storage": {
+        "title": "High-Performance NVMe",
+        "description": "Hierarchical storage: ephemeral local NVMe, persistent centralized NVMe, and S3 for archival."
+      },
+      "security": {
+        "title": "Multi-tenant Isolation",
+        "description": "5 isolation layers: Compute, Storage, Network, Data, and Access. GDPR compliance guaranteed."
+      },
+      "observability": {
+        "title": "Full Observability",
+        "description": "Prometheus, Grafana, and DCGM for real-time monitoring of GPU, CPU, memory, and network."
+      },
+      "support": {
+        "title": "Technical Support",
+        "description": "AI-specialized technical team available 24/7 for support and workload optimization."
+      }
+    }
+  },
+  "features": {
+    "badge": "Infrastructure",
+    "title": "Elite Hardware for Demanding Workloads",
+    "items": {
+      "compute": {
+        "title": "Compute Nodes",
+        "description": "AMD EPYC 9005 Series",
+        "specs": ["128 PCIe Gen5 lanes", "Up to 192 cores", "DDR5 ECC Memory"]
+      },
+      "gpu": {
+        "title": "NVIDIA RTX PRO6000 Blackwell",
+        "description": "Next-Gen AI Acceleration",
+        "specs": ["96GB VRAM", "FP4 Tensor Cores", "NVLink 5.0"]
+      },
+      "network": {
+        "title": "100Gbps Network",
+        "description": "Ultra-Low Latency Fabric",
+        "specs": ["Non-blocking topology", "RDMA over Converged Ethernet", "<1μs switch latency"]
+      },
+      "security": {
+        "title": "Zero-Trust Security",
+        "description": "Enterprise-Grade Protection",
+        "specs": ["FortiGate NGFW", "Isolated VLANs", "End-to-end encryption"]
+      },
+      "storage": {
+        "title": "NVMe All-Flash Storage",
+        "description": "Blazing Fast I/O",
+        "specs": ["Microsecond latency", "Parallel file systems", "Tiered caching"]
+      },
+      "sustainability": {
+        "title": "Sustainable by Design",
+        "description": "Green Computing Infrastructure",
+        "specs": ["Solar-powered facility", "PUE < 1.2", "Carbon-neutral operations"]
+      }
+    }
+  },
+  "useCases": {
+    "badge": "Use Cases",
+    "title": "For any AI workload",
+    "subtitle": "From fine-tuning to production inference, we have the right infrastructure.",
+    "cases": {
+      "training": {
+        "title": "Model Training",
+        "description": "Train LLMs and vision models with GPU clusters of up to hundreds of InfiniBand-connected nodes."
+      },
+      "inference": {
+        "title": "Production Inference",
+        "description": "Deploy models with Triton Inference Server and NVIDIA NIM for maximum throughput."
+      },
+      "finetuning": {
+        "title": "Fine-tuning",
+        "description": "Adapt foundational models to your domain with LoRA, QLoRA, and other efficient techniques."
+      },
+      "research": {
+        "title": "AI Research",
+        "description": "Flexible and reproducible environment for experimentation, with snapshots and environment versioning."
+      }
+    }
+  },
+  "pricing": {
+    "badge": "Pricing",
+    "title": "Transparent pricing, no surprises",
+    "subtitle": "Pay only for what you use. No hidden fees, no minimum commitment.",
+    "calculator": {
+      "title": "Price Calculator",
+      "gpu": "GPU",
+      "hours": "Hours / month",
+      "instances": "Instances",
+      "storage": "NVMe Storage (GB)",
+      "estimate": "Monthly estimate",
+      "disclaimer": "* Indicative prices. Contact us for volume and long-term agreements."
+    },
+    "plans": {
+      "onDemand": {
+        "name": "On-Demand",
+        "description": "Ideal for intermittent workloads and experimentation.",
+        "cta": "Get Started"
+      },
+      "reserved": {
+        "name": "Reserved",
+        "description": "For continuous workloads. Up to 40% discount vs on-demand.",
+        "cta": "Contact Us"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Dedicated clusters, custom SLAs, and priority support.",
+        "cta": "Talk to Us"
+      }
+    }
+  },
+  "about": {
+    "badge": "About",
+    "title": "GPU Cloud with European sovereignty",
+    "description": "GreenLink was born from the need for reliable, fast, and EU-regulation-compliant GPU infrastructure. We operate in EU-certified data centers, ensuring your data never leaves European territory.",
+    "values": {
+      "sovereignty": {
+        "title": "Sovereignty",
+        "description": "Data always on European soil. Native GDPR compliance."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Latest-generation NVIDIA hardware, no throttling."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "Clear pricing, documented SLAs, no surprises."
+      }
+    }
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Talk to Us",
+    "subtitle": "Have questions about our platform? Our technical team responds in less than 24 hours.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "email@company.com",
+      "company": "Company",
+      "companyPlaceholder": "Company name",
+      "useCase": "Use case",
+      "useCasePlaceholder": "Describe your use case...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Message sent! We'll get back to you soon.",
+      "error": "Error sending. Please try again or contact us by email."
+    }
+  },
+  "footer": {
+    "tagline": "European GPU Cloud for AI",
+    "sections": {
+      "platform": "Platform",
+      "company": "Company"
+    },
+    "links": {
+      "product": "Product",
+      "useCases": "Use Cases",
+      "pricing": "Pricing",
+      "about": "About",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    },
+    "copyright": "© 2025 Greenlink. All rights reserved.",
+    "euBadge": "We operate in certified data centers"
+  }
+}

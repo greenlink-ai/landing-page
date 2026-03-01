@@ -1,0 +1,79 @@
+---
+title: "Fase 1 — GreenLink - Landing Page"
+---
+graph TB
+    subgraph CLIENTS["🌍 Clients / Visitors"]
+        Browser["Browser"]
+    end
+
+    subgraph CDN["CDN / Edge Network"]
+        Vercel["Vercel Edge Network<br/><i>Cache SSG + CDN Global</i>"]
+    end
+
+    subgraph FRONTEND["Frontend — Next.js"]
+        direction TB
+        subgraph PAGES["Rotas Estáticas (SSG)"]
+            Home["/ Home"]
+            Product["/ Solutions<br/><i>Hardware Specs + MIG Profiles</i>"]
+            UseCases["/ Use Cases"]
+            Pricing["/ Pricing<br/><i>Calculator: GPU/MIG + Storage NVMe/S3</i>"]
+            About["/ About Us"]
+            Contact["/ Contact"]
+        end
+
+        subgraph SHARED_UI["Shared Components"]
+            ShadcnUI["Shadcn/UI Components"]
+            FramerMotion["Framer Motion<br/><i>Animations & Transitions</i>"]
+            TailwindCSS["Tailwind CSS"]
+        end
+
+        subgraph API_ROUTES["API Routes (Next.js)"]
+            ContactAPI["/api/contact<br/><i>React Hook Form + Zod</i>"]
+            NewsletterAPI["/api/newsletter"]
+            PricingAPI["/api/pricing-calculator<br/><i>Compute + Storage tiers</i>"]
+        end
+    end
+
+    subgraph SERVICES["External Services"]
+        Email["Resend / SendGrid<br/><i>Sending Emails</i>"]
+        Analytics["Plausible / PostHog<br/><i>Analytics GDPR-compliant</i>"]
+        CMS["MDX / Sanity<br/><i>Blog & Content</i>"]
+    end
+
+    subgraph DATABASE["Database"]
+        PG["PostgreSQL<br/><i>Leads, Newsletter, Contacts</i>"]
+    end
+
+    subgraph MONITORING_F1["Metrics"]
+        Prometheus["Prometheus"]
+        Grafana["Grafana"]
+        DCGM["NVIDIA DCGM Exporter<br/><i>Métrics 832 GPUs</i>"]
+        GFD["NVIDIA GPU Feature Discovery<br/><i>Node Labelling</i>"]
+    end
+
+    Browser --> Vercel
+    Vercel --> PAGES
+    PAGES --> SHARED_UI
+    ContactAPI --> Email
+    ContactAPI --> PG
+    NewsletterAPI --> PG
+    Home --> CMS
+    Browser -.->|"Pageviews"| Analytics
+    DCGM --> Prometheus
+    GFD -.-> Prometheus
+    Prometheus --> Grafana
+
+    classDef frontend fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    classDef service fill:#1e293b,stroke:#a78bfa,stroke-width:2px,color:#e2e8f0
+    classDef db fill:#1e293b,stroke:#34d399,stroke-width:2px,color:#e2e8f0
+    classDef monitoring fill:#1e293b,stroke:#fb923c,stroke-width:2px,color:#e2e8f0
+    classDef client fill:#0f172a,stroke:#94a3b8,stroke-width:2px,color:#e2e8f0
+
+    class Home,Product,UseCases,Pricing,About,Contact frontend
+    class ShadcnUI,FramerMotion,TailwindCSS frontend
+    class ContactAPI,NewsletterAPI,PricingAPI frontend
+    class Email,Analytics,CMS service
+    class PG db
+    class Prometheus,Grafana,DCGM,GFD monitoring
+    class Browser client
+    class Vercel service
