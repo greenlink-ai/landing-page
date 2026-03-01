@@ -6,6 +6,21 @@ import { useEffect, useRef, useState, useMemo } from "react"
 /* ─── Tree SVG file ─── */
 const TREE_SVG_URL = "/tree_edited.svg"
 
+/* ─── Seeded PRNG for deterministic "random" values (avoids hydration mismatch) ─── */
+function createSeededRandom(seed: number): () => number {
+  let s = seed
+  return () => {
+    s = (s * 16807) % 2147483647
+    return (s - 1) / 2147483646
+  }
+}
+
+/* ─── Derive a deterministic pseudo-random from numeric props ─── */
+function deterministicRandom(a: number, b: number, c: number = 0): number {
+  const s = Math.sin(a * 12.9898 + b * 78.233 + c * 45.164) * 43758.5453
+  return s - Math.floor(s)
+}
+
 /* ─── Parse a single sub-path to find its lowest Y (highest Y value = bottom) ─── */
 function getLowestY(pathD: string): number {
   const nums = pathD.match(/[\d.]+/g)
@@ -55,8 +70,10 @@ function splitPath(fullD: string): string[] {
 
 /* ─── Randomized pulsing glow node (post-draw) ─── */
 function PulsingNode({ cx, cy, r = 8, delay = 0 }: { cx: number; cy: number; r?: number; delay?: number }) {
-  const randomDuration = 2 + Math.random() * 3
-  const randomIntensity = 0.4 + Math.random() * 0.6
+  const randomDuration = 2 + deterministicRandom(cx, cy, 1) * 3
+  const randomIntensity = 0.4 + deterministicRandom(cx, cy, 2) * 0.6
+  const delayOffset1 = deterministicRandom(cx, cy, 3) * 2
+  const delayOffset2 = deterministicRandom(cx, cy, 4) * 1.5
 
   return (
     <motion.g
@@ -68,8 +85,8 @@ function PulsingNode({ cx, cy, r = 8, delay = 0 }: { cx: number; cy: number; r?:
       <motion.circle
         cx={cx}
         cy={cy}
-        r={r * 3}
         fill="#10b981"
+        initial={{ r: r * 3, opacity: 0.05 }}
         animate={{
           opacity: [0.05, 0.15 * randomIntensity, 0.05],
           r: [r * 2.5, r * 3.5, r * 2.5],
@@ -77,7 +94,7 @@ function PulsingNode({ cx, cy, r = 8, delay = 0 }: { cx: number; cy: number; r?:
         transition={{
           duration: randomDuration,
           repeat: Infinity,
-          delay: delay + Math.random() * 2,
+          delay: delay + delayOffset1,
           ease: "easeInOut",
         }}
       />
@@ -85,15 +102,15 @@ function PulsingNode({ cx, cy, r = 8, delay = 0 }: { cx: number; cy: number; r?:
       <motion.circle
         cx={cx}
         cy={cy}
-        r={r * 1.6}
         fill="#10b981"
+        initial={{ r: r * 1.6, opacity: 0.1 }}
         animate={{
           opacity: [0.1, 0.3 * randomIntensity, 0.1],
         }}
         transition={{
           duration: randomDuration * 0.8,
           repeat: Infinity,
-          delay: delay + Math.random() * 1.5,
+          delay: delay + delayOffset2,
           ease: "easeInOut",
         }}
       />
@@ -106,7 +123,7 @@ function PulsingNode({ cx, cy, r = 8, delay = 0 }: { cx: number; cy: number; r?:
 
 /* ─── Background star-like particle ─── */
 function StarParticle({ x, y, r, delay }: { x: number; y: number; r: number; delay: number }) {
-  const duration = 4 + Math.random() * 4
+  const duration = 4 + deterministicRandom(x, y, r) * 4
   return (
     <motion.circle
       cx={x}
@@ -274,13 +291,14 @@ export function CircuitTree() {
 
   /* SVG star particles scattered across the 2000x2000 viewBox */
   const starPositions = useMemo(() => {
+    const rand = createSeededRandom(42)
     const stars = []
     for (let i = 0; i < 20; i++) {
       stars.push({
-        x: Math.random() * 1800 + 100,
-        y: Math.random() * 1800 + 100,
-        r: Math.random() * 4 + 1.5,
-        delay: Math.random() * 4,
+        x: rand() * 1800 + 100,
+        y: rand() * 1800 + 100,
+        r: rand() * 4 + 1.5,
+        delay: rand() * 4,
       })
     }
     return stars

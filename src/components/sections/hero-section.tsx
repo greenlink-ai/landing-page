@@ -40,7 +40,7 @@ export function HeroSection({ dict }: HeroSectionProps) {
 
   return (
     <section className="relative min-h-screen overflow-hidden pt-16">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-10 py-20 lg:flex-row lg:gap-12 lg:px-16 lg:py-32">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 py-20 lg:flex-row lg:gap-12 lg:py-32">
         {/* Left content */}
         <motion.div
           variants={stagger}

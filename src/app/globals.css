@@ -3,13 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─── Cabinet Grotesk (Fontshare) ─── */
-@font-face {
-  font-family: 'Cabinet Grotesk';
-  src: url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap');
-  font-display: swap;
-}
-
 @theme {
   /* Fonts */
   --font-display: 'Cabinet Grotesk', sans-serif;

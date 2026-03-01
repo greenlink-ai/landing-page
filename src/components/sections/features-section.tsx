@@ -41,7 +41,7 @@ export function FeaturesSection({ dict }: FeaturesSectionProps) {
   ]
 
   return (
-    <section id="infraestrutura" className="relative py-24 lg:py-32">
+    <section id="infraestrutura" className="relative">
       <div className="mx-auto max-w-6xl px-10 lg:px-16">
         {/* Section header */}
         <motion.div
@@ -51,10 +51,16 @@ export function FeaturesSection({ dict }: FeaturesSectionProps) {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] as const }}
           className="mb-16 text-center"
         >
-          {/* Badge */}
-          <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-            {dict.features.badge}
-          </span>
+          {/* Badge with pulsing dot */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-primary" />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              {dict.features.badge}
+            </span>
+          </div>
           {/* Title */}
           <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {dict.features.title}

@@ -89,24 +89,29 @@
   },
   "useCases": {
     "badge": "Use Cases",
-    "title": "For any AI workload",
+    "title": "For any",
+    "titleHighlight": "AI workload",
     "subtitle": "From fine-tuning to production inference, we have the right infrastructure.",
     "cases": {
       "training": {
         "title": "Model Training",
-        "description": "Train LLMs and vision models with GPU clusters of up to hundreds of InfiniBand-connected nodes."
+        "description": "Train LLMs and vision models with GPU clusters of up to hundreds of InfiniBand-connected nodes.",
+        "highlights": ["GPU clusters", "InfiniBand", "LLMs"]
       },
       "inference": {
         "title": "Production Inference",
-        "description": "Deploy models with Triton Inference Server and NVIDIA NIM for maximum throughput."
+        "description": "Deploy models with Triton Inference Server and NVIDIA NIM for maximum throughput.",
+        "highlights": ["Triton Inference Server", "NVIDIA NIM"]
       },
       "finetuning": {
         "title": "Fine-tuning",
-        "description": "Adapt foundational models to your domain with LoRA, QLoRA, and other efficient techniques."
+        "description": "Adapt foundational models to your domain with LoRA, QLoRA, and other efficient techniques.",
+        "highlights": ["LoRA", "QLoRA"]
       },
       "research": {
         "title": "AI Research",
-        "description": "Flexible and reproducible environment for experimentation, with snapshots and environment versioning."
+        "description": "Flexible and reproducible environment for experimentation, with snapshots and environment versioning.",
+        "highlights": ["snapshots", "environment versioning"]
       }
     }
   },

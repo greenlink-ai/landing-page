@@ -18,6 +18,10 @@ export default function RootLayout({
     <html lang="pt" className={`${GeistSans.variable} ${GeistMono.variable} dark`}>
       <head>
         <meta name="apple-mobile-web-app-title" content="Greenlink" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap"
+        />
       </head>
       <body>
         <PostHogProvider>{children}</PostHogProvider>

@@ -19,37 +19,6 @@
       "compliance": { "value": "RGPD", "label": "Conformidade" }
     }
   },
-  "product": {
-    "badge": "Plataforma",
-    "title": "Infraestrutura pensada para IA",
-    "subtitle": "Cada componente otimizado para workloads de machine learning e inferência de modelos de linguagem.",
-    "features": {
-      "gpu": {
-        "title": "NVIDIA Blackwell",
-        "description": "Acesso direto às GPUs mais avançadas do mundo, com MIG (Multi-Instance GPU) para partilha eficiente."
-      },
-      "network": {
-        "title": "Rede InfiniBand",
-        "description": "Interconexão de alta velocidade para treino distribuído com latência sub-microsegundo."
-      },
-      "storage": {
-        "title": "NVMe de Alta Performance",
-        "description": "Armazenamento hierárquico: NVMe local efémero, NVMe centralizado persistente e S3 para arquivo."
-      },
-      "security": {
-        "title": "Isolamento Multi-tenant",
-        "description": "5 camadas de isolamento: Compute, Storage, Rede, Dados e Acesso. Conformidade GDPR garantida."
-      },
-      "observability": {
-        "title": "Observabilidade Total",
-        "description": "Prometheus, Grafana e DCGM para monitorização em tempo real de GPU, CPU, memória e rede."
-      },
-      "support": {
-        "title": "Suporte Técnico",
-        "description": "Equipa técnica especializada em IA disponível 24/7 para suporte e otimização de workloads."
-      }
-    }
-  },
   "features": {
     "badge": "Infraestrutura",
     "title": "Hardware de Elite para Workloads Exigentes",
@@ -88,24 +57,29 @@
   },
   "useCases": {
     "badge": "Casos de Uso",
-    "title": "Para qualquer workload de IA",
-    "subtitle": "Desde fine-tuning a inferência em produção, temos a infraestrutura certa.",
+    "title": "Performance assegurada para o ciclo completo da sua solução de",
+    "titleHighlight": "inteligência artificial",
+    "subtitle": "Desde o treino inicial à inferência em produção, garantimos soberania de dados e latência mínima.",
     "cases": {
       "training": {
-        "title": "Treino de Modelos",
-        "description": "Treina LLMs e modelos de visão com clusters GPU de até centenas de nós interligados por InfiniBand."
+        "title": "Treino Distribuído",
+        "description": "Escala os teus modelos em clusters de GPUs Blackwell interligados por uma rede RoCE v2 de 100Gbps, garantindo comunicação entre nós sem perdas e sem latência.",
+        "highlights": ["GPUs Blackwell", "RoCE v2", "100Gbps"]
       },
       "inference": {
-        "title": "Inferência em Produção",
-        "description": "Deploy de modelos com Triton Inference Server e NVIDIA NIM para throughput máximo."
+        "title": "Inferência Soberana",
+        "description": "Deploy de modelos em larga escala com NVIDIA NIM e Triton Inference Server. Garante que os dados dos teus clientes nunca saem da infraestrutura segura em Portugal.",
+        "highlights": ["NVIDIA NIM", "Triton Inference Server", "Portugal"]
       },
       "finetuning": {
-        "title": "Fine-tuning",
-        "description": "Adapta modelos fundacionais ao teu domínio com LoRA, QLoRA e outras técnicas eficientes."
+        "title": "Fine-tuning de Alta Densidade",
+        "description": "Adapte os seus modelos recorrendo os 96GB de VRAM das nossas Blackwell. Ideal para técnicas de LoRA e QLoRA com datasets privados e sensíveis.",
+        "highlights": ["Llama", "Mistral", "96GB de VRAM", "LoRA", "QLoRA"]
       },
       "research": {
-        "title": "Investigação em IA",
-        "description": "Ambiente flexível e reproduzível para experimentação, com snapshots e versionamento de ambientes."
+        "title": "Investigação & R&D",
+        "description": "Ambiente flexível para equipas de ciência de dados. Provisionamento instantâneo de instâncias com stacks otimizadas para PyTorch, TensorFlow e JAX.",
+        "highlights": ["PyTorch", "TensorFlow", "JAX"]
       }
     }
   },
