@@ -14,6 +14,7 @@ interface FloatingParticle {
 
 export function useParticleCanvas(
   canvasRef: React.RefObject<HTMLCanvasElement | null>,
+  particleCount: number = 40,
 ): void {
   useEffect(() => {
     const canvas = canvasRef.current
@@ -34,7 +35,7 @@ export function useParticleCanvas(
     let rect = updateCanvasSize()
 
     const particles: FloatingParticle[] = []
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
@@ -81,5 +82,5 @@ export function useParticleCanvas(
       cancelAnimationFrame(animId)
       window.removeEventListener("resize", handleResize)
     }
-  }, [canvasRef])
+  }, [canvasRef, particleCount])
 }

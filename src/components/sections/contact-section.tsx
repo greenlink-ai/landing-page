@@ -1,222 +1,378 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { motion } from 'framer-motion'
-import { Send, CheckCircle2, AlertCircle, Mail, Building2, User } from 'lucide-react'
-import type { Dictionary } from '@/lib/get-dictionary'
-import type { Locale } from '@/lib/i18n'
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import { motion } from "framer-motion"
+import { Send, Check, CheckCircle2, AlertCircle } from "lucide-react"
+import type { Dictionary } from "@/lib/get-dictionary"
+import type { Locale } from "@/lib/i18n"
 
-const schema = z.object({
-  fullName: z.string().min(2, 'Nome demasiado curto'),
-  email: z.string().email('Email inválido'),
-  companyName: z.string().optional(),
-  message: z.string().optional(),
+/* ═══════════════════════════════════════════════
+   Multi-Select Checkbox Component
+   ═══════════════════════════════════════════════ */
+function MultiSelectCheckbox({
+  options,
+  selected,
+  onChange,
+}: {
+  options: { id: string; label: string }[]
+  selected: string[]
+  onChange: (selected: string[]) => void
+}) {
+  const toggle = (id: string) => {
+    if (selected.includes(id)) {
+      onChange(selected.filter((s) => s !== id))
+    } else {
+      onChange([...selected, id])
+    }
+  }
+
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      {options.map((option) => {
+        const isSelected = selected.includes(option.id)
+        return (
+          <button
+            key={option.id}
+            type="button"
+            onClick={() => toggle(option.id)}
+            className={`flex items-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
+              isSelected
+                ? "border-primary/50 bg-primary/10 text-primary"
+                : "border-[rgba(255,255,255,0.06)] bg-[#1c1c1f] text-muted-foreground hover:border-primary/30 hover:bg-[#1c1c1f]/80"
+            }`}
+          >
+            <div
+              className={`flex size-4 items-center justify-center rounded border transition-all duration-200 ${
+                isSelected
+                  ? "border-primary bg-primary"
+                  : "border-muted-foreground/40"
+              }`}
+            >
+              {isSelected && (
+                <Check
+                  className="size-3 text-primary-foreground"
+                  strokeWidth={3}
+                />
+              )}
+            </div>
+            {option.label}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════════════
+   Zod Schema
+   ═══════════════════════════════════════════════ */
+const contactSchema = z.object({
+  fullName: z.string().min(2, "Nome demasiado curto"),
+  company: z.string().optional(),
+  email: z.string().email("Email inválido"),
+  phone: z.string().optional(),
+  needs: z.array(z.string()).min(1, "Selecione pelo menos uma necessidade"),
+  message: z.string().min(1, "Mensagem obrigatória"),
 })
 
-type FormData = z.infer<typeof schema>
+type ContactFormData = z.infer<typeof contactSchema>
 
+/* ═══════════════════════════════════════════════
+   Main Component
+   ═══════════════════════════════════════════════ */
 interface ContactSectionProps {
   dict: Dictionary
   lang: Locale
 }
 
 export function ContactSection({ dict, lang }: ContactSectionProps) {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const f = dict.contact.form
+  const t = dict.contact
+  const f = t.form
+
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle")
+  const [selectedNeeds, setSelectedNeeds] = useState<string[]>([])
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
+    trigger,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) })
+  } = useForm<ContactFormData>({ resolver: zodResolver(contactSchema) })
 
-  async function onSubmit(data: FormData) {
-    setStatus('loading')
+  const needsOptions = Object.entries(f.needsOptions).map(([id, label]) => ({
+    id,
+    label,
+  }))
+
+  function handleNeedsChange(needs: string[]) {
+    setSelectedNeeds(needs)
+    setValue("needs", needs)
+    if (errors.needs) trigger("needs")
+  }
+
+  async function onSubmit(data: ContactFormData) {
+    setStatus("loading")
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, locale: lang }),
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+          needs: selectedNeeds,
+          locale: lang,
+        }),
       })
-      if (!res.ok) throw new Error('Request failed')
-      setStatus('success')
+      if (!res.ok) throw new Error("Request failed")
+      setStatus("success")
       reset()
+      setSelectedNeeds([])
     } catch {
-      setStatus('error')
+      setStatus("error")
     }
   }
 
-  const inputStyle = {
-    backgroundColor: 'var(--bg-surface)',
-    border: '1px solid var(--border-default)',
-    color: 'var(--text-primary)',
-    borderRadius: '0.5rem',
-    padding: '0.625rem 0.875rem',
-    width: '100%',
-    fontSize: '0.875rem',
-    outline: 'none',
-    transition: 'border-color 150ms',
-  } as React.CSSProperties
+  const inputBase =
+    "w-full rounded-lg border bg-[#1c1c1f] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none transition-all duration-200"
+  const inputNormal =
+    `${inputBase} border-[rgba(255,255,255,0.06)] focus:border-primary/50 focus:ring-2 focus:ring-primary/20`
+  const inputError =
+    `${inputBase} border-red-500/50 ring-2 ring-red-500/20 focus:border-red-500/50 focus:ring-2 focus:ring-red-500/20`
 
   return (
-    <section id="contacto" className="px-6 py-24">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
-          {/* Left: info */}
+    <section
+      id="contacto"
+      className="relative overflow-hidden py-24 lg:py-32"
+    >
+      <div className="relative mx-auto max-w-6xl px-10 lg:px-16">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left side - Title, subtitle and info */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+            className="flex flex-col justify-center"
           >
-            <span
-              className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest"
-              style={{ backgroundColor: 'var(--accent-bg)', color: 'var(--accent)' }}
-            >
-              {dict.contact.badge}
-            </span>
-            <h2
-              className="mb-4"
-              style={{ fontSize: 'var(--text-h2)', fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--text-primary)' }}
-            >
-              {dict.contact.title}
+            {/* Badge with pulsing dot */}
+            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex size-2 rounded-full bg-primary" />
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                {t.badge}
+              </span>
+            </div>
+
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              {t.title}{" "}
+              <span className="text-primary">{t.titleHighlight}</span>
             </h2>
-            <p className="mb-8 text-base leading-relaxed" style={{ color: 'var(--text-secondary)', maxWidth: '44ch' }}>
-              {dict.contact.subtitle}
+
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground lg:text-lg">
+              {t.subtitle}
             </p>
 
-            <div className="flex flex-col gap-4">
-              {[
-                { icon: Mail, label: 'Email', value: 'hello@greenlink.eu' },
-                { icon: Building2, label: 'Sede', value: 'Lisboa, Portugal 🇵🇹' },
-                { icon: User, label: 'Suporte', value: '24/7 Técnico' },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-3">
-                  <div
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-                    style={{ backgroundColor: 'var(--accent-bg)' }}
-                  >
-                    <item.icon className="h-4 w-4" style={{ color: 'var(--accent)' }} strokeWidth={1.5} />
+            {/* Info items */}
+            <div className="mt-10 space-y-4">
+              {[t.info.response].map((text) => (
+                <div
+                  key={text}
+                  className="flex items-center gap-3 text-sm text-muted-foreground"
+                >
+                  <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
+                    <Check className="size-4 text-primary" />
                   </div>
-                  <div>
-                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{item.label}</p>
-                    <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{item.value}</p>
-                  </div>
+                  <span>{text}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right: form */}
+          {/* Right side - Form */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="rounded-2xl p-6 md:p-8"
-            style={{ backgroundColor: 'var(--bg-elevated)', border: '1px solid var(--border-default)' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.6,
+              delay: 0.15,
+              ease: [0.25, 0.4, 0.25, 1],
+            }}
           >
-            {status === 'success' ? (
-              <div className="flex flex-col items-center gap-4 py-8 text-center">
-                <CheckCircle2 className="h-12 w-12" style={{ color: 'var(--accent)' }} strokeWidth={1.5} />
-                <p className="font-semibold" style={{ color: 'var(--text-primary)' }}>{f.success}</p>
+            {status === "success" ? (
+              <div
+                className="flex flex-col items-center gap-4 rounded-2xl border border-[rgba(255,255,255,0.06)] bg-card/50 py-16 text-center backdrop-blur-sm"
+              >
+                <CheckCircle2
+                  className="size-12 text-primary"
+                  strokeWidth={1.5}
+                />
+                <p className="font-semibold text-foreground">{f.success}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5" noValidate>
-                {/* Name */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
-                    {f.name} <span style={{ color: 'var(--error)' }}>*</span>
-                  </label>
-                  <input
-                    {...register('fullName')}
-                    placeholder={f.namePlaceholder}
-                    style={inputStyle}
-                    onFocus={(e) => (e.target.style.borderColor = 'var(--accent-border)')}
-                    onBlur={(e) => (e.target.style.borderColor = errors.fullName ? 'var(--error)' : 'var(--border-default)')}
-                  />
-                  {errors.fullName && (
-                    <p className="mt-1 text-xs" style={{ color: 'var(--error)' }}>{errors.fullName.message}</p>
-                  )}
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
-                    {f.email} <span style={{ color: 'var(--error)' }}>*</span>
-                  </label>
-                  <input
-                    {...register('email')}
-                    type="email"
-                    placeholder={f.emailPlaceholder}
-                    style={inputStyle}
-                    onFocus={(e) => (e.target.style.borderColor = 'var(--accent-border)')}
-                    onBlur={(e) => (e.target.style.borderColor = errors.email ? 'var(--error)' : 'var(--border-default)')}
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-xs" style={{ color: 'var(--error)' }}>{errors.email.message}</p>
-                  )}
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
-                    {f.company}
-                  </label>
-                  <input
-                    {...register('companyName')}
-                    placeholder={f.companyPlaceholder}
-                    style={inputStyle}
-                    onFocus={(e) => (e.target.style.borderColor = 'var(--accent-border)')}
-                    onBlur={(e) => (e.target.style.borderColor = 'var(--border-default)')}
-                  />
-                </div>
-
-                {/* Use case */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
-                    {f.useCase}
-                  </label>
-                  <textarea
-                    {...register('message')}
-                    rows={4}
-                    placeholder={f.useCasePlaceholder}
-                    style={{ ...inputStyle, resize: 'vertical' }}
-                    onFocus={(e) => (e.target.style.borderColor = 'var(--accent-border)')}
-                    onBlur={(e) => (e.target.style.borderColor = 'var(--border-default)')}
-                  />
-                </div>
-
-                {/* Error */}
-                {status === 'error' && (
-                  <div className="flex items-center gap-2 rounded-lg px-3 py-2.5" style={{ backgroundColor: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)' }}>
-                    <AlertCircle className="h-4 w-4 shrink-0" style={{ color: 'var(--error)' }} />
-                    <p className="text-sm" style={{ color: 'var(--error)' }}>{f.error}</p>
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-card/50 p-6 backdrop-blur-sm lg:p-8"
+                noValidate
+              >
+                <div className="space-y-5">
+                  {/* Full Name */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">
+                      {f.name} <span className="text-primary">*</span>
+                    </label>
+                    <input
+                      {...register("fullName")}
+                      type="text"
+                      placeholder={f.namePlaceholder}
+                      className={errors.fullName ? inputError : inputNormal}
+                    />
+                    {errors.fullName && (
+                      <p className="mt-1 text-xs text-destructive">
+                        {errors.fullName.message}
+                      </p>
+                    )}
                   </div>
-                )}
 
-                {/* Submit */}
-                <button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  className="flex items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold transition-all duration-150 disabled:opacity-60"
-                  style={{ backgroundColor: 'var(--accent)', color: '#000' }}
-                  onMouseEnter={(e) => { if (status !== 'loading') e.currentTarget.style.boxShadow = '0 0 20px var(--accent-glow-strong)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none' }}
-                >
-                  {status === 'loading' ? (
-                    f.submitting
-                  ) : (
-                    <>
-                      {f.submit}
-                      <Send className="h-4 w-4" strokeWidth={2} />
-                    </>
+                  {/* Company (optional) */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">
+                      {f.company}{" "}
+                      <span className="text-xs text-muted-foreground">
+                        {f.companyOptional}
+                      </span>
+                    </label>
+                    <input
+                      {...register("company")}
+                      type="text"
+                      placeholder={f.companyPlaceholder}
+                      className={inputNormal}
+                    />
+                  </div>
+
+                  {/* Email & Phone row */}
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    {/* Email */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-foreground">
+                        {f.email} <span className="text-primary">*</span>
+                      </label>
+                      <input
+                        {...register("email")}
+                        type="email"
+                        placeholder={f.emailPlaceholder}
+                        className={errors.email ? inputError : inputNormal}
+                      />
+                      {errors.email && (
+                        <p className="mt-1 text-xs text-destructive">
+                          {errors.email.message}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Phone */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-foreground">
+                        {f.phone}{" "}
+                        <span className="text-xs text-muted-foreground">
+                          {f.phoneOptional}
+                        </span>
+                      </label>
+                      <input
+                        {...register("phone")}
+                        type="tel"
+                        placeholder={f.phonePlaceholder}
+                        className={inputNormal}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Needs (multi-select) */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">
+                      {f.needs} <span className="text-primary">*</span>
+                    </label>
+                    <div className={errors.needs ? "rounded-lg ring-2 ring-red-500/20" : ""}>
+                      <MultiSelectCheckbox
+                        options={needsOptions}
+                        selected={selectedNeeds}
+                        onChange={handleNeedsChange}
+                      />
+                    </div>
+                    {errors.needs && (
+                      <p className="mt-1 text-xs text-destructive">
+                        {f.needsError}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Message */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">
+                      {f.message} <span className="text-primary">*</span>
+                    </label>
+                    <textarea
+                      {...register("message")}
+                      placeholder={f.messagePlaceholder}
+                      rows={4}
+                      className={`${errors.message ? inputError : inputNormal} resize-none`}
+                    />
+                    {errors.message && (
+                      <p className="mt-1 text-xs text-destructive">
+                        {f.messageError}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Error */}
+                  {status === "error" && (
+                    <div
+                      className="flex items-center gap-2 rounded-lg border px-3 py-2.5"
+                      style={{
+                        backgroundColor: "rgba(239,68,68,0.08)",
+                        borderColor: "rgba(239,68,68,0.3)",
+                      }}
+                    >
+                      <AlertCircle className="size-4 shrink-0 text-destructive" />
+                      <p className="text-sm text-destructive">{f.error}</p>
+                    </div>
                   )}
-                </button>
+
+                  {/* Submit button */}
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 disabled:cursor-not-allowed disabled:opacity-70"
+                  >
+                    {status === "loading" ? (
+                      <>
+                        <div className="size-4 animate-spin rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground" />
+                        {f.submitting}
+                      </>
+                    ) : (
+                      <>
+                        <Send className="size-4" />
+                        {f.submit}
+                      </>
+                    )}
+                  </button>
+
+                  <p className="text-center text-xs text-muted-foreground">
+                    {f.privacy}{" "}
+                    <a href="#" className="text-primary hover:underline">
+                      {f.privacyLink}
+                    </a>
+                    .
+                  </p>
+                </div>
               </form>
             )}
           </motion.div>

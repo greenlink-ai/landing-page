@@ -5,6 +5,7 @@ import { locales } from '@/lib/i18n'
 import { getDictionary } from '@/lib/get-dictionary'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { DotGridBackground } from '@/components/sections/dot-grid-background'
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }))
@@ -46,10 +47,11 @@ export default async function LangLayout({
   const dict = await getDictionary(lang)
 
   return (
-    <>
+    <div className="relative">
+      <DotGridBackground />
       <Header lang={lang} dict={dict} />
       <main>{children}</main>
       <Footer lang={lang} dict={dict} />
-    </>
+    </div>
   )
 }

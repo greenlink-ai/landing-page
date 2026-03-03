@@ -257,6 +257,31 @@
     "perHour": "/hr",
     "perMonth": "/mo"
   },
+  "howItWorks": {
+    "badge": "How It Works",
+    "title": "From idea to deployment in minutes.",
+    "subtitle": "No complex setup. No waiting. Choose resources, launch the instance, and start working.",
+    "steps": {
+      "createAccount": {
+        "title": "Create Account",
+        "description": "Quick sign-up, no credit card required. Immediate access to our dashboard."
+      },
+      "chooseResources": {
+        "title": "Choose Your Resources",
+        "description": "From a simple MIG instance with 24GB VRAM, to a dedicated cluster, or a pre-configured NVIDIA template. Set up in seconds."
+      },
+      "launchInstance": {
+        "title": "Launch Instance",
+        "description": "One click. SSH and Jupyter ready instantly."
+      },
+      "scale": {
+        "title": "Scale",
+        "description": "Smart auto-scaling, ultra-fast NVMe storage, and real-time GPU metrics."
+      }
+    },
+    "cta": "Get Started — It's Free",
+    "ctaSubtext": "No commitment. Cancel anytime."
+  },
   "about": {
     "badge": "Our Mission",
     "title": "The Future of AI in Europe",
@@ -297,29 +322,48 @@
         "description": "With the EU AI Act in effect, data residency on national soil is a strategic imperative. The only high-density solution in Portugal ready for compliance."
       }
     },
-    "closingStatement": "We are the bridge: neither basic hosting from a national operator, nor the walled garden of a hyperscaler. Specialized infrastructure for those building the future."
+    "closingStatement": "We are the bridge: neither basic hosting from a national operator, nor the walled garden of a hyperscaler. Specialized infrastructure for those building the ",
+    "closingStatementHighligh": "future!"
   },
   "contact": {
     "badge": "Contact",
-    "title": "Talk to Us",
-    "subtitle": "Have questions about our platform? Our technical team responds in less than 24 hours.",
+    "title": "Bring the vision.",
+    "titleHighlight": "We deliver the compute.",
+    "subtitle": "Whether it's a dedicated cluster or a single instance, we're ready to set up your environment in moments. Tell us what you're building.",
+    "info": {
+      "response": "Response within 24 hours"
+    },
     "form": {
-      "name": "Name",
+      "name": "Full Name",
       "namePlaceholder": "Your name",
+      "company": "Company",
+      "companyOptional": "(optional)",
+      "companyPlaceholder": "Company name",
       "email": "Email",
       "emailPlaceholder": "email@company.com",
-      "company": "Company",
-      "companyPlaceholder": "Company name",
-      "useCase": "Use case",
-      "useCasePlaceholder": "Describe your use case...",
+      "phone": "Phone",
+      "phoneOptional": "(optional)",
+      "phonePlaceholder": "+351 912 345 678",
+      "needs": "Needs",
+      "needsOptions": {
+        "training": "Training",
+        "finetuning": "Fine-Tuning",
+        "inference": "Inference",
+        "rendering": "Rendering"
+      },
+      "needsError": "Select at least one need",
+      "message": "Message",
+      "messagePlaceholder": "Describe your project or your needs...",
+      "messageError": "Please describe your needs",
       "submit": "Send Message",
       "submitting": "Sending...",
       "success": "Message sent! We'll get back to you soon.",
-      "error": "Error sending. Please try again or contact us by email."
+      "error": "Error sending. Please try again or contact us by email.",
+      "privacy": "By submitting, you agree to our",
+      "privacyLink": "Privacy Policy"
     }
   },
   "footer": {
-    "tagline": "European GPU Cloud for AI",
     "sections": {
       "platform": "Platform",
       "company": "Company"
@@ -328,12 +372,11 @@
       "product": "Product",
       "useCases": "Use Cases",
       "pricing": "Pricing",
-      "about": "About",
+      "about": "About Us",
       "contact": "Contact",
-      "privacy": "Privacy",
-      "terms": "Terms"
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
     },
-    "copyright": "© 2025 Greenlink. All rights reserved.",
-    "euBadge": "We operate in certified data centers"
+    "copyright": "GreenLink. All rights reserved."
   }
 }

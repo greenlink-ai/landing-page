@@ -5,19 +5,21 @@
  * between section boundaries.
  *
  * Glow positions (top %) approximate the transitions between sections:
- *   1→2  Hero → Features        ~17%  right
+ *   1→2  Hero → Features        ~13%  right
  *   2→3  Features → UseCases    ~33%  left
  *   3→4  UseCases → Pricing     ~50%  right
  *   4→5  Pricing → About        ~67%  left
  *   5→6  About → Contact        ~83%  right
+ *   6→7  Contact → Footer       ~95%  left
  */
 
 const glows = [
-  { top: "17%", side: "right" },
-  { top: "33%", side: "left" },
-  { top: "50%", side: "right" },
-  { top: "67%", side: "left" },
-  { top: "83%", side: "right" },
+  { top: "12%", side: "right" },
+  { top: "27%", side: "left" },
+  { top: "41%", side: "right" },
+  { top: "56%", side: "left" },
+  { top: "80%", side: "right" },
+  { top: "93%", side: "left" },
 ] as const
 
 export function DotGridBackground() {
@@ -57,7 +59,7 @@ export function DotGridBackground() {
       {glows.map((glow, i) => (
         <div
           key={i}
-          className="absolute h-[800px] w-[800px] rounded-full opacity-[0.07]"
+          className="absolute h-200 w-200 rounded-full opacity-[0.07]"
           style={{
             top: glow.top,
             [glow.side]: "-15%",

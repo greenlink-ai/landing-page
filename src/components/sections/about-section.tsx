@@ -206,11 +206,12 @@ export function AboutSection({ dict }: AboutSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-          className="mt-16 text-center"
+          className="mt-32 text-center"
         >
-          <p className="mx-auto max-w-2xl text-pretty text-base text-muted-foreground">
+          <h3 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {a.closingStatement}
-          </p>
+            <span className="text-primary">{a.closingStatementHighligh}</span>
+          </h3>
         </motion.div>
       </div>
     </section>

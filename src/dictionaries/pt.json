@@ -224,6 +224,31 @@
     "perHour": "/hora",
     "perMonth": "/mês"
   },
+  "howItWorks": {
+    "badge": "Como Funciona",
+    "title": "Da ideia ao deployment em minutos.",
+    "subtitle": "Sem configuração complexa. Sem esperas. Escolha os recursos, lance a instância, e comece a trabalhar.",
+    "steps": {
+      "createAccount": {
+        "title": "Criar Conta",
+        "description": "Registo rápido, sem cartão de crédito. Acesso imediato à nossa dashboard."
+      },
+      "chooseResources": {
+        "title": "Escolha os Recursos",
+        "description": "Da simples instância MIG com 24GB VRAM, a um cluster dedicado, ou template NVIDIA pré-configurado. Configure em segundos."
+      },
+      "launchInstance": {
+        "title": "Lançar Instância",
+        "description": "Um clique. SSH e Jupyter prontos instantaneamente."
+      },
+      "scale": {
+        "title": "Escalar",
+        "description": "Auto-scaling inteligente, storage NVMe ultra-rápido, e métricas GPU em tempo real."
+      }
+    },
+    "cta": "Começar Agora — É Grátis",
+    "ctaSubtext": "Sem compromisso. Cancele a qualquer momento."
+  },
   "about": {
     "badge": "Sobre nós",
     "title": "O Futuro da IA em Portugal",
@@ -253,7 +278,7 @@
     "pillars": {
       "instantAccess": {
         "title": "Acesso Instantâneo",
-        "description": "A primeira plataforma em Portugal com marketplace self-service para provisionamento imediato de GPUs. Do conceito à produção em minutos."
+        "description": "A primeira plataforma em Portugal self-service para provisionamento imediato de GPUs. Do conceito à produção em minutos."
       },
       "stateOfArt": {
         "title": "Estado da Arte",
@@ -264,29 +289,49 @@
         "description": "Com o EU AI Act em vigor, a residência de dados em solo nacional é imperativo estratégico. A única solução de alta densidade em Portugal preparada para compliance."
       }
     },
-    "closingStatement": "Somos a ponte: nem o alojamento básico de uma operadora nacional, nem o castelo fechado de um hyperscaler. Infraestrutura especializada para quem constrói o futuro."
+    "closingStatement": "Somos a infraestrutura especializada para quem constrói o ",
+    "closingStatementHighligh": "futuro!"
   },
   "contact": {
     "badge": "Contacto",
-    "title": "Fala Connosco",
-    "subtitle": "Tem perguntas sobre a nossa plataforma? A nossa equipa técnica responde em menos de 24 horas.",
+    "title": "Traga a visão. Nós entregamos a computação.",
+    "titleHighlight": "Reserve o seu acesso!",
+    "subtitle": "Estamos a construir a primeira AI Factory on-demand de alta densidade em Portugal. A nossa plataforma está em desenvolvimento — registe o seu interesse hoje para garantir acesso antecipado e condições exclusivas de lançamento.",
+    "info": {
+      "response": "Resposta em menos de 24 horas"
+    },
     "form": {
-      "name": "Nome",
-      "namePlaceholder": "O teu nome",
+      "name": "Nome Completo",
+      "namePlaceholder": "O seu nome",
+      "company": "Empresa",
+      "companyOptional": "(opcional)",
+      "companyPlaceholder": "Nome da empresa",
       "email": "Email",
       "emailPlaceholder": "email@empresa.com",
-      "company": "Empresa",
-      "companyPlaceholder": "Nome da empresa",
-      "useCase": "Caso de uso",
-      "useCasePlaceholder": "Descreve o teu caso de uso...",
-      "submit": "Enviar Mensagem",
+      "phone": "Telefone",
+      "phoneOptional": "(opcional)",
+      "phonePlaceholder": "+351 912 345 678",
+      "needs": "Necessidades",
+      "needsOptions": {
+        "training": "Training",
+        "finetuning": "Fine-Tuning",
+        "inference": "Inference",
+        "rendering": "Rendering",
+        "other": "Outro"
+      },
+      "needsError": "Selecione pelo menos uma necessidade",
+      "message": "Mensagem",
+      "messagePlaceholder": "Descreva o seu projeto ou as suas necessidades...",
+      "messageError": "Por favor descreva as suas necessidades",
+      "submit": "Pedir Acesso Prioritário",
       "submitting": "A enviar...",
       "success": "Mensagem enviada! Entraremos em contacto em breve.",
-      "error": "Erro ao enviar. Tenta novamente ou contacta-nos por email."
+      "error": "Erro ao enviar. Tenta novamente ou contacta-nos por email.",
+      "privacy": "Ao submeter, concorda com a nossa",
+      "privacyLink": "Política de Privacidade"
     }
   },
   "footer": {
-    "tagline": "GPU Cloud Europeu para IA",
     "sections": {
       "platform": "Plataforma",
       "company": "Empresa"
@@ -295,12 +340,11 @@
       "product": "Produto",
       "useCases": "Casos de Uso",
       "pricing": "Preçário",
-      "about": "Sobre",
+      "about": "Sobre Nós",
       "contact": "Contacto",
-      "privacy": "Privacidade",
-      "terms": "Termos"
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço"
     },
-    "copyright": "© 2025 Greenlink. Todos os direitos reservados.",
-    "euBadge": "Operamos em datacenters certificados"
+    "copyright": "GreenLink. Todos os direitos reservados."
   }
 }

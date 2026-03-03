@@ -8,8 +8,9 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import type { Locale } from '@/lib/i18n'
 import type { Dictionary } from '@/lib/get-dictionary'
-import { CircuitTreeLogo } from '@/components/sections/circuit-tree'
 import { LanguageSwitcher } from './language-switcher'
+
+const BRAND_TEXT_SVG = '/greenlink-text.svg'
 
 interface HeaderProps {
   lang: Locale
@@ -19,6 +20,7 @@ interface HeaderProps {
 export function Header({ lang, dict }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [brandPaths, setBrandPaths] = useState<string[]>([])
   const pathname = usePathname()
 
   useEffect(() => {
@@ -27,12 +29,22 @@ export function Header({ lang, dict }: HeaderProps) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    fetch(BRAND_TEXT_SVG)
+      .then((r) => r.text())
+      .then((text) => {
+        const allPaths = [...text.matchAll(/\bd="([\s\S]*?)"/g)]
+        setBrandPaths(allPaths.map((m) => m[1].replace(/[\r\n]+/g, ' ').trim()))
+      })
+      .catch(() => {})
+  }, [])
+
   const navLinks = [
-    { href: `/${lang}#produto`, label: dict.nav.product },
-    { href: `/${lang}#casos-de-uso`, label: dict.nav.useCases },
-    { href: `/${lang}#precario`, label: dict.nav.pricing },
-    { href: `/${lang}#sobre`, label: dict.nav.about },
-    { href: `/${lang}#contacto`, label: dict.nav.contact },
+    { href: `/${lang}#product`, label: dict.nav.product },
+    { href: `/${lang}#use-cases`, label: dict.nav.useCases },
+    { href: `/${lang}#pricing`, label: dict.nav.pricing },
+    { href: `/${lang}#about`, label: dict.nav.about },
+    { href: `/${lang}#contact`, label: dict.nav.contact },
   ]
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/')
@@ -49,12 +61,20 @@ export function Header({ lang, dict }: HeaderProps) {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        {/* Logo */}
-        <Link href={`/${lang}`} className="flex items-center gap-2">
-          <CircuitTreeLogo className="size-8 shrink-0" />
-          <span className="text-lg font-bold tracking-tight text-foreground">
-            Greenlink
-          </span>
+        {/* Greenlink */}
+        <Link href={`/${lang}`} className="flex items-center">
+          {brandPaths.length > 0 && (
+            <svg
+              viewBox="0 0 2750 800"
+              className="h-8 w-auto"
+              fill="none"
+              aria-label="Greenlink"
+            >
+              {brandPaths.map((d, i) => (
+                <path key={i} d={d} fill="#fafafa" />
+              ))}
+            </svg>
+          )}
         </Link>
 
         {/* Desktop Nav */}
