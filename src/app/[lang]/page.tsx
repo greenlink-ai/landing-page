@@ -3,7 +3,7 @@ import { getDictionary } from '@/lib/get-dictionary'
 import { HeroSection } from '@/components/sections/hero-section'
 import { FeaturesSection } from '@/components/sections/features-section'
 import { UseCasesSection } from '@/components/sections/use-cases-section'
-import { PricingSection } from '@/components/sections/pricing-section'
+import { PricingSection } from '@/components/sections/pricing'
 import { AboutSection } from '@/components/sections/about-section'
 import { ContactSection } from '@/components/sections/contact-section'
 import { DotGridBackground } from '@/components/sections/dot-grid-background'
@@ -23,7 +23,7 @@ export default async function HomePage({
       <HeroSection dict={dict} />
       <FeaturesSection dict={dict} />
       <UseCasesSection dict={dict} />
-      <PricingSection dict={dict} lang={lang} />
+      <PricingSection dict={dict} />
       <AboutSection dict={dict} />
       <ContactSection dict={dict} lang={lang} />
     </div>

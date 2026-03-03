@@ -85,53 +85,186 @@
   },
   "pricing": {
     "badge": "Preçário",
-    "title": "Preços transparentes, sem surpresas",
-    "subtitle": "Paga apenas pelo que usas. Sem taxas escondidas, sem comprometimento mínimo.",
-    "calculator": {
-      "title": "Calculadora de Preços",
-      "gpu": "GPU",
-      "hours": "Horas / mês",
-      "instances": "Instâncias",
-      "storage": "Storage NVMe (GB)",
-      "estimate": "Estimativa mensal",
-      "disclaimer": "* Preços indicativos. Contacta-nos para volume e acordos de longo prazo."
+    "title": "Eficiência à medida do seu",
+    "titleHighlight": "projeto",
+    "subtitle": "Inferência de uma solução leve? Treino de um LLM massivo? Aqui encontrará uma solução de acordo com as suas necessidades.",
+    "tabs": {
+      "instances": "Instâncias (até 7 GPUs)",
+      "clusters": "Clusters (A partir de 8 GPUs)"
     },
-    "plans": {
+    "instanceType": "Tipo de Instância",
+    "clusterConfig": "Configuração do Cluster",
+    "billingMode": "Modo de Faturação",
+    "reservedPeriod": "Período de Reserva",
+    "recommended": "Recomendado",
+    "popular": "Popular",
+    "customize": "Personalizar",
+    "customInstanceVram": "48GB — 672GB VRAM",
+    "customInstanceDescription": "Fatias MIG intermédias ou até 7 GPUs completas.",
+    "customClusterVram": "Ilimitado",
+    "customClusterDescription": "Infraestrutura à medida das suas necessidades.",
+    "calculator": {
+      "title": "Calculadora de Investimento",
+      "hours": "Horas / Mês",
+      "storage": "Storage all-flash NVMe adicional",
+      "compute": "Compute",
+      "savings": "Poupança",
+      "storageNvme": "Storage NVMe",
+      "estimate": "Estimativa Mensal",
+      "cta": "Começar Agora",
+      "disclaimer": "* Preços com IVA incluído. Faturação ao segundo.",
+      "sliderMin": "10h",
+      "sliderMax": "730h (24/7)",
+      "storageMin": "0GB",
+      "storageMax": "2000GB",
+      "customConfig": "Configuração",
+      "migSlicesGroup": "MIG Instances",
+      "multiGpuGroup": "Multi GPU Instances",
+      "hoursFixed": "730h (fixo)",
+      "reservedInstanceNote": "Instâncias reserved são faturadas pelo período completo selecionado.",
+      "reservedClusterNote": "Clusters reserved são faturados pelo período completo selecionado.",
+      "clusterStorageMax": "10TB"
+    },
+    "customForm": {
+      "title": "Pedido Personalizado",
+      "description": "Descreva as suas necessidades de infraestrutura e a nossa equipa entrará em contacto em menos de 24 horas.",
+      "label": "A sua mensagem",
+      "placeholder": "Ex: Preciso de um cluster com 256 GPUs para treinar um modelo LLM de 70B parâmetros...",
+      "submit": "Enviar Pedido",
+      "disclaimer": "* Resposta garantida em menos de 24 horas úteis."
+    },
+    "instances": [
+      {
+        "id": "mig-1g",
+        "name": "MIG 1g.24gb",
+        "vram": "24GB VRAM",
+        "rate": 0.49,
+        "cpus": 4,
+        "ram": 48,
+        "nvme": 120,
+        "description": "Ideal para inferência e desenvolvimento.",
+        "recommended": false
+      },
+      {
+        "id": "full-gpu",
+        "name": "1 GPU Blackwell",
+        "vram": "96GB VRAM",
+        "rate": 1.78,
+        "cpus": 16,
+        "ram": 192,
+        "nvme": 480,
+        "description": "GPU completa para workloads exigentes.",
+        "recommended": true
+      }
+    ],
+    "clusters": [
+      {
+        "id": "cluster-8",
+        "name": "8 GPUs Blackwell",
+        "vram": "768GB VRAM",
+        "gpuCount": 8,
+        "description": "Cluster base para treino distribuído.",
+        "recommended": true
+      },
+      {
+        "id": "cluster-120",
+        "name": "120 GPUs Blackwell",
+        "vram": "11.5TB VRAM",
+        "gpuCount": 120,
+        "description": "Escala enterprise para LLMs massivos.",
+        "recommended": false
+      }
+    ],
+    "clusterSpecs": {
+      "network": "RoCE v2 100Gbps"
+    },
+    "billingModes": {
       "onDemand": {
-        "name": "On-Demand",
-        "description": "Ideal para workloads intermitentes e experimentação.",
-        "cta": "Começar"
+        "name": "On-Demand"
+      },
+      "spot": {
+        "name": "Spot",
+        "label": "-60%"
       },
       "reserved": {
-        "name": "Reservado",
-        "description": "Para workloads contínuos. Desconto até 40% face ao on-demand.",
-        "cta": "Contactar"
-      },
-      "enterprise": {
-        "name": "Enterprise",
-        "description": "Clusters dedicados, SLAs customizados e suporte prioritário.",
-        "cta": "Falar Connosco"
+        "name": "Reserved"
       }
-    }
+    },
+    "reservedOptions": {
+      "week": { "name": "1 Semana", "label": "-20%" },
+      "month": { "name": "1 Mês", "label": "-30%" },
+      "year": { "name": "1 Ano", "label": "-40%" }
+    },
+    "rates": {
+      "storageGbMonth": 0.06,
+      "gpuHourly": 1.78,
+      "migHourly": 0.49,
+      "customOptions": {
+        "migSlices": [
+          { "id": "mig-2g", "name": "MIG 2g.48gb", "vram": "48GB", "rate": 0.89, "cpus": 8, "ram": 96, "nvme": 240 },
+          { "id": "mig-3g", "name": "MIG 3g.72gb", "vram": "72GB", "rate": 1.29, "cpus": 12, "ram": 144, "nvme": 360 }
+        ],
+        "multiGpu": [
+          { "id": "gpu-2", "name": "2 GPUs Blackwell", "vram": "192GB", "rate": 3.56, "cpus": 32, "ram": 384, "nvme": 960 },
+          { "id": "gpu-3", "name": "3 GPUs Blackwell", "vram": "288GB", "rate": 5.34, "cpus": 48, "ram": 576, "nvme": 1440 },
+          { "id": "gpu-4", "name": "4 GPUs Blackwell", "vram": "384GB", "rate": 7.12, "cpus": 64, "ram": 768, "nvme": 1920 },
+          { "id": "gpu-5", "name": "5 GPUs Blackwell", "vram": "480GB", "rate": 8.90, "cpus": 80, "ram": 960, "nvme": 2400 },
+          { "id": "gpu-6", "name": "6 GPUs Blackwell", "vram": "576GB", "rate": 10.68, "cpus": 96, "ram": 1152, "nvme": 2880 },
+          { "id": "gpu-7", "name": "7 GPUs Blackwell", "vram": "672GB", "rate": 12.46, "cpus": 112, "ram": 1344, "nvme": 3360 }
+        ]
+      },
+      "discounts": {
+        "spot": 0.60,
+        "reserved": { "week": 0.20, "month": 0.30, "year": 0.40 }
+      }
+    },
+    "cpuUnit": "Cores",
+    "ramUnit": "RAM",
+    "nvmeUnit": "NVMe",
+    "perHour": "/hora",
+    "perMonth": "/mês"
   },
   "about": {
-    "badge": "Sobre",
-    "title": "GPU Cloud com soberania europeia",
-    "description": "A GreenLink nasceu da necessidade de infraestrutura GPU fiável, rápida e em conformidade com a regulação europeia. Operamos em datacenters certificados na UE, garantindo que os teus dados nunca saem do espaço europeu.",
-    "values": {
+    "badge": "Sobre nós",
+    "title": "O Futuro da IA em Portugal",
+    "titleHighlight": "começa aqui.",
+    "subtitle": "Potenciamos a inovação com recurso a infraestrutura de computação de última geração, acessível a todos.",
+    "visionTitle": "Visão",
+    "visionDescription": {
+      "before": "Assumimo-nos como parte da ",
+      "highlight": "solução do paradoxo europeu:",
+      "after": " embora Portugal e a Europa possuam um grande talento em IA, a infraestrutura crítica permanece concentrada em gigantes globais. Quebramos este ciclo ao fornecer a autonomia estratégica e o poder de processamento necessários para que a inovação local floresça."
+    },
+    "goalTitle": "Missão",
+    "goalDescription": {
+      "before": "O nosso objetivo é claro: ",
+      "highlight1": "democratizar o acesso a computação",
+      "mid": ", permitindo que startups, laboratórios de investigação, instituições públicas e programadores ",
+      "highlight2": "se foquem no desenvolvimento",
+      "after": " da sua solução, de forma rápida e prática."
+    },
+    "stats": [
+      { "value": "96GB", "label": "VRAM por GPU" },
+      { "value": "100Gbps", "label": "Rede Non-Blocking" },
+      { "value": "<5min", "label": "Tempo de Deploy" },
+      { "value": "100%", "label": "Dados em Portugal" }
+    ],
+    "valueProposition": "A Nossa Proposta de Valor",
+    "pillars": {
+      "instantAccess": {
+        "title": "Acesso Instantâneo",
+        "description": "A primeira plataforma em Portugal com marketplace self-service para provisionamento imediato de GPUs. Do conceito à produção em minutos."
+      },
+      "stateOfArt": {
+        "title": "Estado da Arte",
+        "description": "Não comprometemos no hardware. Infraestrutura alimentada pela arquitetura NVIDIA Blackwell, desenhada tanto para soluções leves, como para os fluxos mais intensos de treino e inferência."
+      },
       "sovereignty": {
-        "title": "Soberania",
-        "description": "Dados sempre em solo europeu. Conformidade GDPR nativa."
-      },
-      "performance": {
-        "title": "Performance",
-        "description": "Hardware NVIDIA de última geração, sem throttling."
-      },
-      "transparency": {
-        "title": "Transparência",
-        "description": "Preços claros, SLAs documentados, sem surpresas."
+        "title": "Soberania Digital",
+        "description": "Com o EU AI Act em vigor, a residência de dados em solo nacional é imperativo estratégico. A única solução de alta densidade em Portugal preparada para compliance."
       }
-    }
+    },
+    "closingStatement": "Somos a ponte: nem o alojamento básico de uma operadora nacional, nem o castelo fechado de um hyperscaler. Infraestrutura especializada para quem constrói o futuro."
   },
   "contact": {
     "badge": "Contacto",

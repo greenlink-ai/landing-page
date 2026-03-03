@@ -1,6 +1,6 @@
 import type { Locale } from '@/lib/i18n'
 import { getDictionary } from '@/lib/get-dictionary'
-import { PricingSection } from '@/components/sections/pricing-section'
+import { PricingSection } from '@/components/sections/pricing'
 
 export default async function PrecarioPage({
   params,
@@ -9,5 +9,5 @@ export default async function PrecarioPage({
 }) {
   const { lang } = await params
   const dict = await getDictionary(lang)
-  return <PricingSection dict={dict} lang={lang} />
+  return <PricingSection dict={dict} />
 }
