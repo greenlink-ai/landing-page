@@ -64,7 +64,7 @@ export function UseCasesSection({ dict }: UseCasesSectionProps) {
   const t = dict.useCases
 
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
+    <section className="relative overflow-hidden pt-36 pb-28">
       {/* Canvas-based floating particles */}
       <canvas
         ref={canvasRef}

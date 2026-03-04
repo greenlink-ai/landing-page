@@ -1,7 +1,8 @@
 {
   "nav": {
-    "product": "Produto",
+    "product": "Soluções",
     "useCases": "Casos de Uso",
+    "infrastructure": "Infraestrutura",
     "pricing": "Preçário",
     "about": "Sobre",
     "contact": "Contacto",
@@ -9,7 +10,7 @@
   },
   "hero": {
     "badge": "Powered by NVIDIA Blackwell",
-    "title": "Treino.\nFine-tuning.\nEscala.",
+    "title": "Treino.\nFine-tuning.\nInferência.",
     "subtitle": "A primeira plataforma soberana em Portugal para o ciclo de vida integral da Inteligência Artificial.",
     "ctaPrimary": "Começar Agora",
     "ctaSecondary": "Ver Preçário",
@@ -19,7 +20,58 @@
       "compliance": { "value": "RGPD", "label": "Conformidade" }
     }
   },
-  "features": {
+  "whyNow": {
+    "title": "Porquê Agora?",
+    "quotes": [
+      {
+        "text": "I want the future of AI to be made in Europe.",
+        "author": "Ursula von der Leyen",
+        "role": "Presidente da Comissão Europeia",
+        "sourceUrl": "https://www.reuters.com/world/china/eu-rolls-out-11-billion-plan-ramp-up-ai-key-industries-amid-sovereignty-drive-2025-10-08",
+        "sourceDomain": "reuters.com",
+        "align": "left"
+      },
+      {
+        "text": "A European AI is essential for our future independence. It will help power our industries and our societies, from healthcare to defence.",
+        "author": "Ursula von der Leyen",
+        "role": "Presidente da Comissão Europeia",
+        "sourceUrl": "https://ec.europa.eu/commission/presscorner/detail/en/speech_25_2053",
+        "sourceDomain": "ec.europa.eu",
+        "align": "right"
+      },
+      {
+        "text": "Europe needs to build up its own digital infrastructure to reduce dependence on U.S. providers.",
+        "author": "Karsten Wildberger",
+        "role": "Ministro Alemão para a Digitalização e Modernização do Estado",
+        "sourceUrl": "https://www.reuters.com/business/eu-need-digital-sovereignty-does-not-mean-protectionism-german-minister-says-2025-10-11",
+        "sourceDomain": "reuters.com",
+        "align": "left"
+      },
+      {
+        "text": "Garantir que Portugal desenvolve capacidade computacional estratégica e uma economia de dados robusta, reduzindo a dependência externa, assegurando uma articulação diplomática para proteger o acesso contínuo a recursos críticos de IA e criando bases tecnológicas que permitam competir na próxima década.",
+        "author": "Governo de Portugal",
+        "role": "Resolução do Conselho de Ministros n.º 2/2026",
+        "sourceUrl": "https://diariodarepublica.pt/dr/detalhe/resolucao-conselho-ministros/2-2026-1000882016",
+        "sourceDomain": "diariodarepublica.pt",
+        "align": "right"
+      }
+    ],
+    "ctaBefore": "Quer saber mais? Clique",
+    "ctaLink": " aqui.",
+    "ctaAfter": ""
+  },
+  "whySectionLong": {
+    "badge": "Contexto Estratégico",
+    "title": "The Why",
+    "paragraphs": [
+      "A União Europeia está a posicionar-se de forma decisiva na corrida global pela inteligência artificial (IA), reconhecendo o seu potencial para impulsionar o crescimento económico, a inovação e a soberania digital. Com a entrada em vigor do EU AI Act em agosto de 2024, que estabelece um quadro regulatório abrangente e baseado em riscos para a IA – categorizando aplicações em níveis de risco e proibindo práticas inaceitáveis, como sistemas de pontuação social governamental – a Europa visa fomentar uma IA confiável e ética, com aplicação total prevista para agosto de 2026. Esta diretiva não só mitiga riscos, mas também incentiva o desenvolvimento de soluções inovadoras, alinhando-se com investimentos significativos para fortalecer as capacidades europeias em IA.",
+      "Em Portugal, este ímpeto é reforçado pela Resolução do Conselho de Ministros n.º 2/2026, de 8 de janeiro, que aprova a Agenda Nacional de Inteligência Artificial (ANIA) e o seu Plano de Ação 2026-2030. Esta agenda, integrada na Estratégia Digital Nacional, visa elevar a produtividade nacional – atualmente em 75% da média europeia – através de 32 iniciativas concretas, estruturadas em quatro eixos: Infraestrutura e Dados, Talento e Competências, Inovação e Adoção, e Governação e Ética. O foco reside em reduzir a dependência externa de recursos computacionais, promovendo uma economia de dados robusta e capacidades computacionais estratégicas, com financiamento prioritário de fundos europeus e acompanhamento pelo Conselho para o Digital na Administração Pública.",
+      "Esta visão estratégica aborda uma preocupação central: a excessiva dependência de soluções de computação internacionais, dominadas por gigantes americanos como AWS, Google e Microsoft, que controlam cerca de 70% do mercado de cloud na Europa, enquanto provedores europeus detêm apenas 15%. Preocupações com leis como o US CLOUD Act, que permite acesso a dados armazenados globalmente, e riscos geopolíticos – incluindo interrupções em infraestruturas dos EUA – impulsionam a criação de uma \"Eurostack\", uma infraestrutura digital soberana abrangendo semicondutores, cloud, software e IA, baseada em padrões abertos. Projeções indicam que o gasto europeu em cloud soberano triplicará de 2025 a 2027, atingindo valores significativos em resposta a tensões geopolíticas.",
+      "Para incentivar a adoção de poder de processamento europeu, a UE mobiliza €200 mil milhões em investimentos, incluindo a criação de \"AI Factories\" e \"AI Gigafactories\" para treinar modelos de IA avançados, com o InvestAI a alocar €20 mil milhões para cinco instalações equipadas com 100.000 chips de IA. Adicionalmente, programas como Horizon Europe e Digital Europe investem €1 mil milhão anualmente, visando €20 mil milhões por ano com contribuições privadas e estatais, enquanto a proposta de Cloud and AI Development Act visa triplicar a capacidade de data centers na Europa nos próximos cinco a sete anos, simplificando autorizações e acesso a energia. Incentivos fiscais harmonizados para I&D em IA, fundos soberanos e ajustes regulatórios para investimentos privados reforçam esta transição, estimulando empresas portuguesas e europeias a priorizar soluções \"caseiras\" para maior autonomia e competitividade.",
+      "Neste contexto, o nosso projeto de infraestrutura para IA surge no momento ideal, alinhando-se perfeitamente com estas dinâmicas. Ao oferecer capacidades computacionais soberanas e europeias, contribuímos para a redução da dependência externa, promovemos a inovação local e capturamos os benefícios económicos projetados – como um acréscimo de €18 a €22 mil milhões ao PIB português através da adoção acelerada de IA. É uma oportunidade para posicionar Portugal e a Europa como líderes em IA ética e autónoma, transformando desafios em vantagens estratégicas duradouras."
+    ]
+  },
+  "infrastructure": {
     "badge": "Infraestrutura",
     "title": "Hardware de Elite para Workloads Exigentes",
     "items": {
@@ -246,8 +298,7 @@
         "description": "Auto-scaling inteligente, storage NVMe ultra-rápido, e métricas GPU em tempo real."
       }
     },
-    "cta": "Começar Agora — É Grátis",
-    "ctaSubtext": "Sem compromisso. Cancele a qualquer momento."
+    "cta": "Começa agora!"
   },
   "about": {
     "badge": "Sobre nós",
@@ -332,18 +383,25 @@
     }
   },
   "footer": {
+    "tagline": "A primeira AI Factory on-demand de Portugal. Computação de última geração, acessível a todos.",
     "sections": {
-      "platform": "Plataforma",
-      "company": "Empresa"
+      "product": "Soluções",
+      "resources": "Recursos",
+      "company": "Empresa",
+      "legal": "Legal"
     },
     "links": {
-      "product": "Produto",
-      "useCases": "Casos de Uso",
+      "instances": "Instâncias",
+      "clusters": "Clusters",
       "pricing": "Preçário",
+      "infrastructure": "Infraestrutura",
+      "useCases": "Casos de Uso",
+      "whySectionLong": "Porquê agora",
       "about": "Sobre Nós",
       "contact": "Contacto",
       "privacy": "Política de Privacidade",
-      "terms": "Termos de Serviço"
+      "terms": "Termos de Serviço",
+      "gdpr": "RGPD"
     },
     "copyright": "GreenLink. Todos os direitos reservados."
   }

@@ -77,26 +77,42 @@ export function Footer({ lang, dict }: FooterProps) {
       .catch(() => {})
   }, [])
 
-  const platformLinks = [
-    { href: `/${lang}#produto`, label: t.links.product },
+  const productLinks = [
+    { href: `/${lang}#produto`, label: t.links.instances },
+    { href: `/${lang}#produto`, label: t.links.clusters },
     { href: `/${lang}#precario`, label: t.links.pricing },
-    { href: `/${lang}#casos-de-uso`, label: t.links.useCases },
+  ]
+
+  const resourceLinks = [
+    { href: `/${lang}/produto`, label: t.links.infrastructure },
+    { href: `/${lang}/casos-de-uso`, label: t.links.useCases },
+    { href: `/${lang}/why-section-long`, label: t.links.whySectionLong },
   ]
 
   const companyLinks = [
     { href: `/${lang}#sobre`, label: t.links.about },
     { href: `/${lang}#contacto`, label: t.links.contact },
+  ]
+
+  const legalLinks = [
     { href: `/${lang}/privacidade`, label: t.links.privacy },
     { href: `/${lang}/termos`, label: t.links.terms },
+    { href: `/${lang}/rgpd`, label: t.links.gdpr },
+  ]
+
+  const footerColumns = [
+    { title: t.sections.product, links: productLinks },
+    { title: t.sections.resources, links: resourceLinks },
+    { title: t.sections.company, links: companyLinks },
+    { title: t.sections.legal, links: legalLinks },
   ]
 
   return (
     <footer style={{ backgroundColor: "#09090b" }}>
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        {/* Main content: Brand on left, Nav columns on right */}
-        <div className="grid gap-12 lg:grid-cols-[1fr_auto] lg:gap-8">
-          {/* Left — GreenLink brand (full SVG composition) */}
-          <div className="shrink-0" style={{ width: "min(480px, 60vw)" }}>
+        {/* Brand + tagline — centered at top */}
+        <div className="flex flex-col items-center text-center">
+          <div style={{ width: "min(480px, 60vw)" }}>
             {paths && (
               <svg
                 viewBox="0 0 3500 1500"
@@ -168,17 +184,21 @@ export function Footer({ lang, dict }: FooterProps) {
               </svg>
             )}
           </div>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-[#a1a1aa]">
+            {t.tagline}
+          </p>
+        </div>
 
-          {/* Right — Navigation columns, vertically centered */}
-          <div className="flex flex-wrap gap-12 self-center sm:gap-16 lg:justify-end">
-            {/* Platform */}
-            <div>
+        {/* Navigation columns — centered below */}
+        <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:justify-items-center">
+          {footerColumns.map((col) => (
+            <div key={col.title}>
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.05em] text-[#fafafa]">
-                {t.sections.platform}
+                {col.title}
               </p>
               <ul className="flex flex-col gap-3">
-                {platformLinks.map((link) => (
-                  <li key={link.href}>
+                {col.links.map((link) => (
+                  <li key={link.label}>
                     <Link
                       href={link.href}
                       className="text-sm text-[#a1a1aa] transition-colors duration-150 hover:text-[#fafafa]"
@@ -189,26 +209,7 @@ export function Footer({ lang, dict }: FooterProps) {
                 ))}
               </ul>
             </div>
-
-            {/* Company */}
-            <div>
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.05em] text-[#fafafa]">
-                {t.sections.company}
-              </p>
-              <ul className="flex flex-col gap-3">
-                {companyLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-[#a1a1aa] transition-colors duration-150 hover:text-[#fafafa]"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Separator */}

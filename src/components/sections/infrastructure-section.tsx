@@ -26,22 +26,22 @@ const itemVariants = {
   },
 }
 
-interface FeaturesSectionProps {
+interface InfrastructureSectionProps {
   dict: Dictionary
 }
 
-export function FeaturesSection({ dict }: FeaturesSectionProps) {
+export function InfrastructureSection({ dict }: InfrastructureSectionProps) {
   const items = [
-    dict.features.items.compute,
-    dict.features.items.gpu,
-    dict.features.items.network,
-    dict.features.items.security,
-    dict.features.items.storage,
-    dict.features.items.sustainability,
+    dict.infrastructure.items.compute,
+    dict.infrastructure.items.gpu,
+    dict.infrastructure.items.network,
+    dict.infrastructure.items.security,
+    dict.infrastructure.items.storage,
+    dict.infrastructure.items.sustainability,
   ]
 
   return (
-    <section id="infraestrutura" className="relative">
+    <section id="infrastructure" className="relative pt-36 pb-28">
       <div className="mx-auto max-w-6xl px-10 lg:px-16">
         {/* Section header */}
         <motion.div
@@ -58,12 +58,12 @@ export function FeaturesSection({ dict }: FeaturesSectionProps) {
               <span className="relative inline-flex size-2 rounded-full bg-primary" />
             </span>
             <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              {dict.features.badge}
+              {dict.infrastructure.badge}
             </span>
           </div>
           {/* Title */}
           <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            {dict.features.title}
+            {dict.infrastructure.title}
           </h2>
         </motion.div>
 

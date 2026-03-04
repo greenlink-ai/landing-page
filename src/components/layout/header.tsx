@@ -41,7 +41,8 @@ export function Header({ lang, dict }: HeaderProps) {
 
   const navLinks = [
     { href: `/${lang}#product`, label: dict.nav.product },
-    { href: `/${lang}#use-cases`, label: dict.nav.useCases },
+    { href: `/${lang}/casos-de-uso`, label: dict.nav.useCases },
+    { href: `/${lang}/produto`, label: dict.nav.infrastructure },
     { href: `/${lang}#pricing`, label: dict.nav.pricing },
     { href: `/${lang}#about`, label: dict.nav.about },
     { href: `/${lang}#contact`, label: dict.nav.contact },

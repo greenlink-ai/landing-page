@@ -1,5 +1,7 @@
 "use client"
 
+import { usePathname } from "next/navigation"
+
 /**
  * Full-page dot grid background with alternating emerald glows
  * between section boundaries.
@@ -11,6 +13,9 @@
  *   4→5  Pricing → About        ~67%  left
  *   5→6  About → Contact        ~83%  right
  *   6→7  Contact → Footer       ~95%  left
+ *
+ * Glows are only rendered on the homepage — standalone pages
+ * use floating particles instead.
  */
 
 const glows = [
@@ -23,6 +28,9 @@ const glows = [
 ] as const
 
 export function DotGridBackground() {
+  const pathname = usePathname()
+  // Only show glows on the homepage (e.g. /pt, /en)
+  const isHomepage = /^\/[a-z]{2}\/?$/.test(pathname)
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       {/* Dot grid pattern */}
@@ -55,8 +63,8 @@ export function DotGridBackground() {
         />
       </svg>
 
-      {/* Alternating emerald glows between sections */}
-      {glows.map((glow, i) => (
+      {/* Alternating emerald glows between sections (homepage only) */}
+      {isHomepage && glows.map((glow, i) => (
         <div
           key={i}
           className="absolute h-200 w-200 rounded-full opacity-[0.07]"

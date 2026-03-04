@@ -15,6 +15,14 @@ const stepKeys = [
   "scale",
 ] as const
 
+const PARTICLE_DELAY = 500 // ms before animation starts
+const PARTICLE_DURATION = 12000 // ms for full path traversal
+
+/* easeInOut — same curve drives both particle and trail */
+function easeInOut(t: number): number {
+  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
+}
+
 /* ═══════════════════════════════════════════════
    StepCard Component
    ═══════════════════════════════════════════════ */
@@ -84,6 +92,12 @@ export function HowItWorksSection({ dict }: HowItWorksSectionProps) {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
+  // Refs for rAF-driven animation
+  const fullPathRef = useRef<SVGPathElement>(null)
+  const trailMaskRef = useRef<SVGPathElement>(null)
+  const particleGroupRef = useRef<SVGGElement>(null)
+  const animPlayed = useRef(false)
+
   const t = dict.howItWorks
 
   // Measure container dimensions
@@ -99,48 +113,113 @@ export function HowItWorksSection({ dict }: HowItWorksSectionProps) {
     return () => window.removeEventListener("resize", updateDimensions)
   }, [])
 
-  // Calculate SVG path for connecting lines
-  const generatePath = (
-    startX: number,
-    startY: number,
-    endX: number,
-    endY: number,
-    fromLeft: boolean
-  ): string => {
-    const radius = 35
-    const horizontalExtent = dimensions.width * 0.4
-
-    if (fromLeft) {
-      // Left to Right: exit right, curve down, go vertical, curve right, end at left of next card
-      const midX = startX + horizontalExtent
-
-      return `
-        M ${startX} ${startY}
-        L ${midX - radius} ${startY}
-        A ${radius} ${radius} 0 0 1 ${midX} ${startY + radius}
-        L ${midX} ${endY - radius}
-        A ${radius} ${radius} 0 0 1 ${midX - radius} ${endY}
-        L ${endX} ${endY}
-      `
-    } else {
-      // Right to Left: exit left, curve down, go vertical, curve left, end at right of next card
-      const midX = startX - horizontalExtent
-      return `
-        M ${startX} ${startY}
-        L ${midX + radius} ${startY}
-        A ${radius} ${radius} 0 0 0 ${midX} ${startY + radius}
-        L ${midX} ${endY - radius}
-        A ${radius} ${radius} 0 0 1 ${midX + radius} ${endY}
-        L ${endX} ${endY}
-      `
-    }
-  }
-
-  // Pre-calculated approximate positions for desktop layout
-  const stepHeight = 250
+  // Layout constants
+  const stepHeight = 320
   const stepGap = 80
   const cardWidth = 320
   const numberWidth = 80
+  const radius = 45
+  const horizontalExtent = dimensions.width * 0.4
+
+  // Path coordinates
+  const s1 = { x: numberWidth + cardWidth + 40, y: stepHeight / 2 }
+  const e1 = {
+    x: dimensions.width - numberWidth - cardWidth - 40,
+    y: stepHeight + stepGap + stepHeight / 2,
+  }
+  const e2 = {
+    x: numberWidth + cardWidth + 40,
+    y: (stepHeight + stepGap) * 2 + stepHeight / 2,
+  }
+  const e3 = {
+    x: dimensions.width - numberWidth - cardWidth - 40,
+    y: (stepHeight + stepGap) * 3 + stepHeight / 2,
+  }
+
+  const m1 = s1.x + horizontalExtent
+  const m2 = e1.x - horizontalExtent
+  const m3 = e2.x + horizontalExtent
+
+  // Combined continuous path through all 3 segments
+  const fullPathD =
+    dimensions.width > 0
+      ? [
+          // Segment 1: left → right (fromLeft)
+          `M ${s1.x} ${s1.y}`,
+          `L ${m1 - radius} ${s1.y}`,
+          `A ${radius} ${radius} 0 0 1 ${m1} ${s1.y + radius}`,
+          `L ${m1} ${e1.y - radius}`,
+          `A ${radius} ${radius} 0 0 1 ${m1 - radius} ${e1.y}`,
+          `L ${e1.x} ${e1.y}`,
+          // Segment 2: right → left (fromRight) — continues from e1
+          `L ${m2 + radius} ${e1.y}`,
+          `A ${radius} ${radius} 0 0 0 ${m2} ${e1.y + radius}`,
+          `L ${m2} ${e2.y - radius}`,
+          `A ${radius} ${radius} 0 0 0 ${m2 + radius} ${e2.y}`,
+          `L ${e2.x} ${e2.y}`,
+          // Segment 3: left → right (fromLeft) — continues from e2
+          `L ${m3 - radius} ${e2.y}`,
+          `A ${radius} ${radius} 0 0 1 ${m3} ${e2.y + radius}`,
+          `L ${m3} ${e3.y - radius}`,
+        ].join(" ")
+      : ""
+
+  // Single rAF loop drives BOTH particle position AND trail reveal — perfect sync
+  useEffect(() => {
+    if (
+      !isInView ||
+      animPlayed.current ||
+      !fullPathRef.current ||
+      !trailMaskRef.current ||
+      !particleGroupRef.current
+    )
+      return
+
+    animPlayed.current = true
+
+    const path = fullPathRef.current
+    const trailMask = trailMaskRef.current
+    const particle = particleGroupRef.current
+    const totalLength = path.getTotalLength()
+
+    let startTime: number | null = null
+    let rafId: number
+
+    function tick(ts: number) {
+      if (!startTime) startTime = ts
+      const elapsed = ts - startTime - PARTICLE_DELAY
+
+      if (elapsed < 0) {
+        rafId = requestAnimationFrame(tick)
+        return
+      }
+
+      const progress = Math.min(elapsed / PARTICLE_DURATION, 1)
+      const eased = easeInOut(progress)
+
+      // Trail: reveal via mask strokeDashoffset (both driven by same eased value)
+      trailMask.style.strokeDashoffset = String(1 - eased)
+
+      // Particle: position along path
+      const pt = path.getPointAtLength(eased * totalLength)
+      particle.setAttribute("transform", `translate(${pt.x},${pt.y})`)
+
+      // Particle opacity: fade in first 3%, full during middle, fade out last 15%
+      let opacity = 1
+      if (progress < 0.03) opacity = progress / 0.03
+      else if (progress > 0.85) opacity = Math.max(0, (1 - progress) / 0.15)
+      particle.setAttribute("opacity", String(opacity))
+
+      if (progress < 1) {
+        rafId = requestAnimationFrame(tick)
+      }
+    }
+
+    rafId = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(rafId)
+  }, [isInView, fullPathD])
+
+  const viewBoxH = (stepHeight + stepGap) * 4
 
   return (
     <section className="relative overflow-hidden py-24 lg:py-32">
@@ -153,6 +232,16 @@ export function HowItWorksSection({ dict }: HowItWorksSectionProps) {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           className="mb-16 text-center"
         >
+          {/* Badge with pulsing dot */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5">
+            <span className="relative flex size-2">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex size-2 rounded-full bg-primary" />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              {t.badge}
+            </span>
+          </div>
           <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {t.title}
           </h2>
@@ -163,70 +252,78 @@ export function HowItWorksSection({ dict }: HowItWorksSectionProps) {
 
         {/* Steps container with SVG overlay */}
         <div ref={containerRef} className="relative">
-          {/* SVG connecting lines - Desktop only */}
-          {dimensions.width > 0 && (
+          {/* SVG connecting lines — Desktop only */}
+          {dimensions.width > 0 && fullPathD && (
             <svg
               className="pointer-events-none absolute inset-0 hidden lg:block"
               style={{ width: "100%", height: "100%" }}
-              viewBox={`0 0 ${dimensions.width} ${(stepHeight + stepGap) * 4}`}
+              viewBox={`0 0 ${dimensions.width} ${viewBoxH}`}
               preserveAspectRatio="none"
             >
-              {/* Path 1→2 */}
-              <motion.path
-                d={generatePath(
-                  numberWidth + cardWidth + 40,
-                  stepHeight / 2,
-                  dimensions.width - numberWidth - cardWidth - 40,
-                  stepHeight + stepGap + stepHeight / 2,
-                  true
-                )}
+              <defs>
+                {/* Glow filter for the particle */}
+                <filter
+                  id="particle-glow"
+                  x="-200%"
+                  y="-200%"
+                  width="500%"
+                  height="500%"
+                >
+                  <feGaussianBlur stdDeviation="8" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+
+                {/* Mask for progressive trail reveal — solid path that uncovers the dashed trail */}
+                <mask id="trail-mask">
+                  <path
+                    ref={trailMaskRef}
+                    d={fullPathD}
+                    stroke="white"
+                    strokeWidth={6}
+                    fill="none"
+                    pathLength={1}
+                    strokeDasharray="1"
+                    strokeDashoffset="1"
+                  />
+                </mask>
+              </defs>
+
+              {/* Hidden path for getPointAtLength() */}
+              <path
+                ref={fullPathRef}
+                d={fullPathD}
                 fill="none"
-                stroke="#10b981"
-                strokeWidth={2}
-                strokeDasharray="6 6"
-                opacity={1}
-                initial={{ pathLength: 0 }}
-                animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                stroke="none"
               />
 
-              {/* Path 2→3 */}
-              <motion.path
-                d={generatePath(
-                  dimensions.width - numberWidth - cardWidth - 40,
-                  stepHeight + stepGap + stepHeight / 2,
-                  numberWidth + cardWidth + 40,
-                  (stepHeight + stepGap) * 2 + stepHeight / 2,
-                  false
-                )}
+              {/* Base ghost line — low opacity, always visible */}
+              <path
+                d={fullPathD}
                 fill="none"
                 stroke="#10b981"
                 strokeWidth={2}
-                strokeDasharray="6 6"
-                opacity={1}
-                initial={{ pathLength: 0 }}
-                animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                opacity={0.2}
               />
 
-              {/* Path 3→4 */}
-              <motion.path
-                d={generatePath(
-                  numberWidth + cardWidth + 40,
-                  (stepHeight + stepGap) * 2 + stepHeight / 2,
-                  dimensions.width - numberWidth - cardWidth - 40,
-                  (stepHeight + stepGap) * 3 + stepHeight / 2,
-                  true
-                )}
+              {/* Dashed trail — revealed progressively via mask, synced with particle */}
+              <path
+                d={fullPathD}
                 fill="none"
                 stroke="#10b981"
                 strokeWidth={2}
-                strokeDasharray="6 6"
                 opacity={1}
-                initial={{ pathLength: 0 }}
-                animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+                mask="url(#trail-mask)"
               />
+
+              {/* Particle — glowing dot that follows the path */}
+              <g ref={particleGroupRef} opacity="0" filter="url(#particle-glow)">
+                <circle cx="0" cy="0" r="4" fill="#10b981" />
+                <circle cx="0" cy="0" r="10" fill="#10b981" opacity="0.35" />
+              </g>
             </svg>
           )}
 
