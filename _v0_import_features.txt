@@ -1,7 +1,299 @@
-Read DESIGN_SYSTEM.md. Rewrite src/components/sections/HowItWorksSection.tsx completely. The current snake/zigzag layout with separate SVG lines has alignment issues that cannot be fixed incrementally. Replace with this approach:
-LAYOUT: Vertical timeline, centered. A single continuous vertical line (dashed, emerald #10b981, opacity 0.25) runs down the center of the section on desktop. On each side of this line, alternating left and right, are the step cards. Step 1 and 3 on the right of the line, step 2 and 4 on the left. Each step card has a horizontal dashed connector line from the central vertical line to the card. At the junction point on the vertical line, place the step number (just the number, no box, emerald color, font-bold text-2xl).
-SINGLE SVG APPROACH: Instead of multiple separate SVG elements, use ONE absolutely-positioned SVG overlay that covers the entire steps area. In this SVG, draw: (1) the main vertical dashed line from top step to bottom step, (2) horizontal branch lines from the vertical line to each card position. Calculate positions using fixed known values (step spacing, card offset). This guarantees all lines connect perfectly because they're in the same coordinate space.
-ANIMATION: When section scrolls into view (useInView, once: true), animate using stroke-dashoffset: the vertical line draws from top to bottom over 3 seconds. Each horizontal branch line draws outward when the vertical line reaches that step's Y position. Each card fades in (opacity 0→1, y: 20→0) when its horizontal branch finishes drawing. Use Framer Motion for cards, SVG animate for the lines.
-MOBILE: On mobile (below lg), switch to a simple vertical layout — single vertical line on the left side, all cards on the right. No alternating. Step numbers on the vertical line.
-KEEP: All existing i18n integration (dict.howItWorks), the badge, title, subtitle, and CTA. Keep all text content and dictionary keys unchanged. Only change the visual layout and animation approach.
-The key insight: ONE SVG with ALL connecting lines in the same coordinate space = perfect alignment. Multiple separate SVGs in different flex containers = impossible to align reliably.
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import { motion, useInView } from "framer-motion"
+import { Button } from "@/components/ui/button"
+
+/* ═══════════════════════════════════════════════
+   Step data
+   ═══════════════════════════════════════════════ */
+const steps = [
+  {
+    number: "1",
+    title: "Create Account",
+    description:
+      "Quick sign-up, no credit card required. Instant dashboard access.",
+  },
+  {
+    number: "2",
+    title: "Choose Resources",
+    description:
+      "Dedicated GPU, 24GB MIG slice, or pre-configured NVIDIA template. Set up in seconds.",
+  },
+  {
+    number: "3",
+    title: "Launch Instance",
+    description:
+      "One click. SSH and Jupyter ready instantly. Start training or running inference.",
+  },
+  {
+    number: "4",
+    title: "Scale",
+    description:
+      "Smart auto-scaling, ultra-fast NVMe storage, and real-time GPU metrics.",
+  },
+]
+
+/* ═══════════════════════════════════════════════
+   StepCard Component
+   ═══════════════════════════════════════════════ */
+function StepCard({
+  step,
+  index,
+  isLeft,
+}: {
+  step: (typeof steps)[0]
+  index: number
+  isLeft: boolean
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.15, ease: [0.25, 0.4, 0.25, 1] }}
+      className={`flex items-center gap-6 ${isLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}
+    >
+      {/* Step number */}
+      <span
+        className="text-5xl font-extrabold text-primary lg:text-6xl"
+        style={{ fontWeight: 800 }}
+      >
+        {step.number}
+      </span>
+
+      {/* Card */}
+      <div
+        className="group max-w-[400px] rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#111113] p-6 transition-all duration-300 hover:border-[rgba(255,255,255,0.10)] lg:p-8"
+        style={{
+          boxShadow: "none",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.boxShadow =
+            "0 0 30px rgba(16, 185, 129, 0.15)"
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.boxShadow = "none"
+        }}
+      >
+        <h3 className="mb-2 text-lg font-semibold text-[#fafafa]">
+          {step.title}
+        </h3>
+        <p className="text-sm leading-relaxed text-[#a1a1aa]">
+          {step.description}
+        </p>
+      </div>
+    </motion.div>
+  )
+}
+
+/* ═══════════════════════════════════════════════
+   Main HowItWorksSection Component
+   ═══════════════════════════════════════════════ */
+export function HowItWorksSection() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" })
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const [stepRefs] = useState<(HTMLDivElement | null)[]>([])
+
+  // Measure container dimensions
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        setDimensions({ width: rect.width, height: rect.height })
+      }
+    }
+    updateDimensions()
+    window.addEventListener("resize", updateDimensions)
+    return () => window.removeEventListener("resize", updateDimensions)
+  }, [])
+
+  // Calculate SVG path for connecting lines
+  const generatePath = (
+    startX: number,
+    startY: number,
+    endX: number,
+    endY: number,
+    fromLeft: boolean
+  ): string => {
+    const radius = 35
+    const horizontalExtent = dimensions.width * 0.4
+
+    if (fromLeft) {
+      // Left to Right: exit right, curve down, go vertical, curve right, end at left of next card
+      const midX = startX + horizontalExtent
+      const arcY1 = startY + radius
+      const arcY2 = endY - radius
+      return `
+        M ${startX} ${startY}
+        L ${midX - radius} ${startY}
+        A ${radius} ${radius} 0 0 1 ${midX} ${startY + radius}
+        L ${midX} ${endY - radius}
+        A ${radius} ${radius} 0 0 0 ${midX - radius} ${endY}
+        L ${endX} ${endY}
+      `
+    } else {
+      // Right to Left: exit left, curve down, go vertical, curve left, end at right of next card
+      const midX = startX - horizontalExtent
+      return `
+        M ${startX} ${startY}
+        L ${midX + radius} ${startY}
+        A ${radius} ${radius} 0 0 0 ${midX} ${startY + radius}
+        L ${midX} ${endY - radius}
+        A ${radius} ${radius} 0 0 1 ${midX + radius} ${endY}
+        L ${endX} ${endY}
+      `
+    }
+  }
+
+  // Pre-calculated approximate positions for desktop layout
+  const stepHeight = 140
+  const stepGap = 80
+  const cardWidth = 400
+  const numberWidth = 80
+
+  const getStepPositions = (index: number, isLeft: boolean) => {
+    const y = index * (stepHeight + stepGap) + stepHeight / 2
+    if (isLeft) {
+      return {
+        cardRight: numberWidth + cardWidth + 24,
+        cardLeft: numberWidth + 24,
+      }
+    } else {
+      return {
+        cardRight: dimensions.width - numberWidth - 24,
+        cardLeft: dimensions.width - numberWidth - cardWidth - 24,
+      }
+    }
+  }
+
+  return (
+    <section className="relative overflow-hidden py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl px-10 lg:px-16">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          className="mb-16 text-center"
+        >
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            From Idea to Deployment{" "}
+            <span className="text-primary">in Minutes</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
+            Get started with enterprise-grade GPU computing in four simple steps.
+          </p>
+        </motion.div>
+
+        {/* Steps container with SVG overlay */}
+        <div ref={containerRef} className="relative">
+          {/* SVG connecting lines - Desktop only */}
+          {dimensions.width > 0 && (
+            <svg
+              className="pointer-events-none absolute inset-0 hidden lg:block"
+              style={{ width: "100%", height: "100%" }}
+              viewBox={`0 0 ${dimensions.width} ${(stepHeight + stepGap) * 4}`}
+              preserveAspectRatio="none"
+            >
+              {/* Path 1→2 */}
+              <motion.path
+                d={generatePath(
+                  numberWidth + cardWidth + 40,
+                  stepHeight / 2,
+                  dimensions.width - numberWidth - cardWidth - 40,
+                  stepHeight + stepGap + stepHeight / 2,
+                  true
+                )}
+                fill="none"
+                stroke="#10b981"
+                strokeWidth={2}
+                strokeDasharray="6 6"
+                opacity={0.25}
+                initial={{ pathLength: 0 }}
+                animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              />
+
+              {/* Path 2→3 */}
+              <motion.path
+                d={generatePath(
+                  dimensions.width - numberWidth - cardWidth - 40,
+                  stepHeight + stepGap + stepHeight / 2,
+                  numberWidth + cardWidth + 40,
+                  (stepHeight + stepGap) * 2 + stepHeight / 2,
+                  false
+                )}
+                fill="none"
+                stroke="#10b981"
+                strokeWidth={2}
+                strokeDasharray="6 6"
+                opacity={0.25}
+                initial={{ pathLength: 0 }}
+                animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+              />
+
+              {/* Path 3→4 */}
+              <motion.path
+                d={generatePath(
+                  numberWidth + cardWidth + 40,
+                  (stepHeight + stepGap) * 2 + stepHeight / 2,
+                  dimensions.width - numberWidth - cardWidth - 40,
+                  (stepHeight + stepGap) * 3 + stepHeight / 2,
+                  true
+                )}
+                fill="none"
+                stroke="#10b981"
+                strokeWidth={2}
+                strokeDasharray="6 6"
+                opacity={0.25}
+                initial={{ pathLength: 0 }}
+                animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+                transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+              />
+            </svg>
+          )}
+
+          {/* Steps */}
+          <div className="relative flex flex-col gap-16 lg:gap-20">
+            {steps.map((step, index) => {
+              const isLeft = index % 2 === 0
+              return (
+                <div
+                  key={step.number}
+                  className={`flex ${isLeft ? "lg:justify-start" : "lg:justify-end"}`}
+                >
+                  <StepCard step={step} index={index} isLeft={isLeft} />
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Mobile connecting lines */}
+          <div className="absolute left-8 top-0 h-full w-px lg:hidden">
+            <div className="h-full w-full border-l-2 border-dashed border-primary/25" />
+          </div>
+        </div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+          className="mt-16 text-center"
+        >
+          <Button
+            size="lg"
+            className="bg-primary px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary/90"
+          >
+            Start Building Now
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
