@@ -56,9 +56,9 @@
         "align": "right"
       }
     ],
-    "ctaBefore": "Quer saber mais? Clique",
-    "ctaLink": " aqui.",
-    "ctaAfter": ""
+    "ctaBefore": "Clique",
+    "ctaLink": " aqui",
+    "ctaAfter": " para saber mais."
   },
   "whySectionLong": {
     "badge": "Contexto Estratégico",
@@ -68,12 +68,74 @@
       "Em Portugal, este ímpeto é reforçado pela Resolução do Conselho de Ministros n.º 2/2026, de 8 de janeiro, que aprova a Agenda Nacional de Inteligência Artificial (ANIA) e o seu Plano de Ação 2026-2030. Esta agenda, integrada na Estratégia Digital Nacional, visa elevar a produtividade nacional – atualmente em 75% da média europeia – através de 32 iniciativas concretas, estruturadas em quatro eixos: Infraestrutura e Dados, Talento e Competências, Inovação e Adoção, e Governação e Ética. O foco reside em reduzir a dependência externa de recursos computacionais, promovendo uma economia de dados robusta e capacidades computacionais estratégicas, com financiamento prioritário de fundos europeus e acompanhamento pelo Conselho para o Digital na Administração Pública.",
       "Esta visão estratégica aborda uma preocupação central: a excessiva dependência de soluções de computação internacionais, dominadas por gigantes americanos como AWS, Google e Microsoft, que controlam cerca de 70% do mercado de cloud na Europa, enquanto provedores europeus detêm apenas 15%. Preocupações com leis como o US CLOUD Act, que permite acesso a dados armazenados globalmente, e riscos geopolíticos – incluindo interrupções em infraestruturas dos EUA – impulsionam a criação de uma \"Eurostack\", uma infraestrutura digital soberana abrangendo semicondutores, cloud, software e IA, baseada em padrões abertos. Projeções indicam que o gasto europeu em cloud soberano triplicará de 2025 a 2027, atingindo valores significativos em resposta a tensões geopolíticas.",
       "Para incentivar a adoção de poder de processamento europeu, a UE mobiliza €200 mil milhões em investimentos, incluindo a criação de \"AI Factories\" e \"AI Gigafactories\" para treinar modelos de IA avançados, com o InvestAI a alocar €20 mil milhões para cinco instalações equipadas com 100.000 chips de IA. Adicionalmente, programas como Horizon Europe e Digital Europe investem €1 mil milhão anualmente, visando €20 mil milhões por ano com contribuições privadas e estatais, enquanto a proposta de Cloud and AI Development Act visa triplicar a capacidade de data centers na Europa nos próximos cinco a sete anos, simplificando autorizações e acesso a energia. Incentivos fiscais harmonizados para I&D em IA, fundos soberanos e ajustes regulatórios para investimentos privados reforçam esta transição, estimulando empresas portuguesas e europeias a priorizar soluções \"caseiras\" para maior autonomia e competitividade.",
-      "Neste contexto, o nosso projeto de infraestrutura para IA surge no momento ideal, alinhando-se perfeitamente com estas dinâmicas. Ao oferecer capacidades computacionais soberanas e europeias, contribuímos para a redução da dependência externa, promovemos a inovação local e capturamos os benefícios económicos projetados – como um acréscimo de €18 a €22 mil milhões ao PIB português através da adoção acelerada de IA. É uma oportunidade para posicionar Portugal e a Europa como líderes em IA ética e autónoma, transformando desafios em vantagens estratégicas duradouras."
+      "Neste contexto, o nosso projeto de infraestrutura para IA, que esteve a ser delineado nos últimos 2 anos, encontra agora as condições ideais para ser lançado, alinhando-se perfeitamente com estas dinâmicas. Ao oferecer capacidades computacionais soberanas e europeias, contribuímos para a redução da dependência externa, promovemos a inovação local e capturamos os benefícios económicos projetados – como um acréscimo de €18 a €22 mil milhões ao PIB português através da adoção acelerada de IA. É uma oportunidade para posicionar Portugal e a Europa como líderes em IA ética e autónoma, transformando desafios em vantagens estratégicas duradouras."
     ]
+  },
+  "solutions": {
+    "badge": "Soluções",
+    "title": "Computação à Sua Medida.",
+    "subtitle": "Do utilizador iniciante às soluções mais exigentes. Maximizamos a performance e a rentabilidade com ofertas flexíveis.",
+    "blocks": [
+      {
+        "title": "Instâncias",
+        "subtitle": "Para desenvolvimento, inferência e renderização (Até 7 GPUs).",
+        "items": [
+          {
+            "name": "On-Demand",
+            "price": "1,78€ p/GPU/Hora",
+            "description": "Sem qualquer compromisso, computação a pedido e sem interrupções."
+          },
+          {
+            "name": "Reservadas",
+            "price": "Até 40% de desconto",
+            "description": "Garantia 24/7. Mantém o estado do SO e configurações. Ideal para equipas fixas e previsão temporal prolongada."
+          },
+          {
+            "name": "Spot",
+            "price": "Desconto de 60%",
+            "description": "Interrompíveis, com pré-aviso. Apropriadas para fluxos de trabalho flexíveis."
+          }
+        ]
+      },
+      {
+        "title": "Clusters",
+        "subtitle": "Para treino de soluções maiores, simulações científicas pesadas ou grandes renderizações gráficas. A partir de 8 GPUs.",
+        "items": [
+          {
+            "name": "On-Demand",
+            "price": "14,24€ p/8GPUs/Hora",
+            "description": "Acesso rápido para workloads exigentes sem fidelização."
+          },
+          {
+            "name": "Reservados",
+            "price": "Descontos progressivos",
+            "description": "Blocos dedicados (1, 6, 12 meses). Isolamento total para treinos contínuos."
+          },
+          {
+            "name": "Spot",
+            "price": "Desconto de 60%",
+            "description": "Grandes volumes de hardware para laboratórios e VFX."
+          }
+        ]
+      },
+      {
+        "title": "Armazenamento NVMe Flash",
+        "subtitle": "Storage ultra-rápido persistente para acompanhar a velocidade das GPUs.",
+        "items": [
+          {
+            "name": "Centralizado",
+            "price": "0.06€ p/GB",
+            "description": "Storage ultra-rápido provisionado para acompanhar a velocidade de processamento das GPUs. Sem taxas de Ingrees/Egress!"
+          }
+        ]
+      }
+    ],
+    "cta": "Contacte-nos para saber mais"
   },
   "infrastructure": {
     "badge": "Infraestrutura",
     "title": "Hardware de Elite para Workloads Exigentes",
+    "viewMore": "Ver especificações",
     "items": {
       "compute": {
         "title": "Compute Nodes",
@@ -110,28 +172,38 @@
   "useCases": {
     "badge": "Casos de Uso",
     "title": "Performance assegurada para o ciclo completo da sua solução de",
-    "titleHighlight": "inteligência artificial",
-    "subtitle": "Desde o treino inicial à inferência em produção, garantimos soberania de dados e latência mínima.",
+    "titleHighlight": "inteligência artificial e computação avançada.",
+    "subtitle": "Desde o treino inicial à inferência em produção e renderização 3D, garantimos soberania de dados e latência mínima.",
     "cases": {
       "training": {
         "title": "Treino Distribuído",
-        "description": "Escala os teus modelos em clusters de GPUs Blackwell interligados por uma rede RoCE v2 de 100Gbps, garantindo comunicação entre nós sem perdas e sem latência.",
-        "highlights": ["GPUs Blackwell", "RoCE v2", "100Gbps"]
-      },
-      "inference": {
-        "title": "Inferência Soberana",
-        "description": "Deploy de modelos em larga escala com NVIDIA NIM e Triton Inference Server. Garante que os dados dos teus clientes nunca saem da infraestrutura segura em Portugal.",
-        "highlights": ["NVIDIA NIM", "Triton Inference Server", "Portugal"]
+        "description": "Escala os teus modelos em clusters de GPUs Blackwell interligados por uma rede RoCE v2 de 200Gbps, garantindo comunicação entre nós sem perdas e sem latência.",
+        "highlights": ["GPUs Blackwell", "RoCE v2", "200Gbps"]
       },
       "finetuning": {
         "title": "Fine-tuning de Alta Densidade",
-        "description": "Adapte os seus modelos recorrendo os 96GB de VRAM das nossas Blackwell. Ideal para técnicas de LoRA e QLoRA com datasets privados e sensíveis.",
-        "highlights": ["Llama", "Mistral", "96GB de VRAM", "LoRA", "QLoRA"]
+        "description": "Adapte os seus modelos recorrendo aos 96GB de VRAM. Ideal para técnicas de LoRA e QLoRA com datasets privados e sensíveis que não podem sair da Europa.",
+        "highlights": ["Llama", "Mistral", "96GB VRAM", "QLoRA"]
+      },
+      "inference": {
+        "title": "Inferência Soberana",
+        "description": "Deploy de modelos em larga escala com NVIDIA NIM e Triton. Garante que os dados dos teus clientes nunca saem da infraestrutura segura em Portugal.",
+        "highlights": ["NVIDIA NIM", "Triton"]
+      },
+      "rendering": {
+        "title": "Renderização e VFX",
+        "description": "Acelera pipelines de media com os RT Cores de 4ª geração e DLSS 4. Cria cenas fotorrealistas e tira partido dos motores duplos de encode/decode de vídeo.",
+        "highlights": ["RT Cores", "DLSS 4"]
+      },
+      "omniverse": {
+        "title": "Omniverse & Digital Twins",
+        "description": "Desenvolve aplicações de IA física e simulações industriais. Performance excecional para workflows de robótica e geração de dados sintéticos baseados em OpenUSD.",
+        "highlights": ["IA física", "Simulações industriais"]
       },
       "research": {
-        "title": "Investigação & R&D",
-        "description": "Ambiente flexível para equipas de ciência de dados. Provisionamento instantâneo de instâncias com stacks otimizadas para PyTorch, TensorFlow e JAX.",
-        "highlights": ["PyTorch", "TensorFlow", "JAX"]
+        "title": "Computação Científica",
+        "description": "Extrai insights de datasets massivos e corre simulações complexas (FP32). Provisionamento instantâneo com stacks otimizadas para PyTorch, TensorFlow e JAX.",
+        "highlights": ["(FP32)", "PyTorch", "TensorFlow", "JAX"]
       }
     }
   },
@@ -382,6 +454,81 @@
       "privacyLink": "Política de Privacidade"
     }
   },
+  "gpu": {
+    "badge": "Hardware",
+    "title": "NVIDIA RTX PRO™ 6000 Blackwell",
+    "subtitle": "Built on the groundbreaking NVIDIA Blackwell architecture, the NVIDIA RTX PRO™ 6000 Blackwell Server Edition delivers a powerful combination of AI and visual computing capabilities to accelerate enterprise data center workloads. Equipped with 96GB of ultra-fast GDDR7 memory, the NVIDIA RTX PRO 6000 Blackwell provides unparalleled performance and flexibility to accelerate a broad range of use cases - from agentic AI, physical AI, and scientific computing to rendering, 3D graphics, and video.",
+    "specs": {
+      "tensorCores": {
+        "title": "Tensor Cores 5ª Geração",
+        "description": "Acelere aplicações de IA agêntica e generativa.",
+        "specs": ["Até 3X de performance", "Suporte FP4", "DLSS 4 Multi Frame"]
+      },
+      "rtCores": {
+        "title": "RT Cores 4ª Geração",
+        "description": "Cenas fotorrealistas e fisicamente precisas.",
+        "specs": ["Até 2X de performance", "RTX Mega Geometry", "100X mais triângulos ray-traced"]
+      },
+      "cudaCores": {
+        "title": "CUDA Cores",
+        "description": "A GPU profissional RTX mais poderosa alguma vez criada.",
+        "specs": ["Throughput aumentado", "Neural shaders", "Gráficos AI-augmented"]
+      },
+      "gpuMemory": {
+        "title": "96GB de Memória GPU",
+        "description": "Projetos 3D e IA massivos com facilidade.",
+        "specs": ["GDDR7 ultra-rápida", "Largura de banda aumentada", "Pronta para VR em larga escala"]
+      },
+      "nvenc": {
+        "title": "NVENC 9ª Geração",
+        "description": "Acelere a codificação de vídeo com qualidade superior.",
+        "specs": ["4:2:2 H.264 & HEVC", "Qualidade AV1 melhorada"]
+      },
+      "nvdec": {
+        "title": "NVDEC 6ª Geração",
+        "description": "Reprodução de vídeo de alta qualidade e ingestão de dados.",
+        "specs": ["Dobro do throughput H.264", "Edição de vídeo AI-powered"]
+      },
+      "mig": {
+        "title": "Multi-Instance GPU",
+        "description": "Expanda a performance e o alcance dos recursos de computação.",
+        "specs": ["Até 4 instâncias isoladas", "Memória dedicada de alta largura de banda", "QoS garantido"]
+      },
+      "pcie": {
+        "title": "PCIe Gen 5",
+        "description": "Performance mais rápida para tarefas intensivas em dados.",
+        "specs": ["Dobro da largura de banda do Gen 4", "Transferência CPU-GPU mais rápida"]
+      },
+      "displayPort": {
+        "title": "DisplayPort 2.1",
+        "description": "Clareza visual e performance sem paralelo.",
+        "specs": ["8K a 240Hz", "16K a 60Hz", "HDR & profundidade de cor superior"]
+      }
+    },
+    "workloadsTitle": "Workloads Acelerados",
+    "workloads": {
+      "agenticAi": {
+        "title": "IA Agêntica e Generativa",
+        "description": "NVIDIA AI Enterprise simplifica inferência LLM, agentes de IA e IA generativa. Salto massivo de performance versus a geração anterior L40S."
+      },
+      "physicalAi": {
+        "title": "IA Industrial e Física",
+        "description": "Construída sobre Omniverse para digitalização industrial. Performance excepcional para OpenUSD 3D, dados sintéticos e robótica."
+      },
+      "mediaEntertainment": {
+        "title": "Media e Entretenimento",
+        "description": "Revolucione a criação de conteúdo com RTX de nova geração, 4x motores encode/decode para media ao vivo, gaming e cinema."
+      },
+      "rendering": {
+        "title": "Renderização AI-Driven",
+        "description": "Automatize iluminação complexa e geração de texturas com neural shaders. DLSS 4 permite renderização fotorrealista em tempo real."
+      },
+      "scientific": {
+        "title": "Computação Científica",
+        "description": "Execute simulações em larga escala e extraia insights de datasets massivos em engenharia, finanças, saúde e geociências."
+      }
+    }
+  },
   "footer": {
     "tagline": "A primeira AI Factory on-demand de Portugal. Computação de última geração, acessível a todos.",
     "sections": {
@@ -393,8 +540,10 @@
     "links": {
       "instances": "Instâncias",
       "clusters": "Clusters",
+      "storage": "Armazenamento",
       "pricing": "Preçário",
       "infrastructure": "Infraestrutura",
+      "gpu": "RTX PRO 6000",
       "useCases": "Casos de Uso",
       "whySectionLong": "Porquê agora",
       "about": "Sobre Nós",

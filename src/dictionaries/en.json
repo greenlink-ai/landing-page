@@ -88,9 +88,9 @@
         "align": "right"
       }
     ],
-    "ctaBefore": "Want to learn more? ",
-    "ctaLink": "Click here",
-    "ctaAfter": ""
+    "ctaBefore": "Click",
+    "ctaLink": " here",
+    "ctaAfter": " to learn more."
   },
   "whySectionLong": {
     "badge": "Strategic Context",
@@ -103,9 +103,71 @@
       "In this context, our AI infrastructure project comes at the ideal moment, perfectly aligned with these dynamics. By offering sovereign, European computing capabilities, we contribute to reducing external dependence, fostering local innovation, and capturing the projected economic benefits — such as an additional €18 to €22 billion in Portuguese GDP through accelerated AI adoption. It is an opportunity to position Portugal and Europe as leaders in ethical and autonomous AI, turning challenges into lasting strategic advantages."
     ]
   },
+  "solutions": {
+    "badge": "Solutions",
+    "title": "Computing Tailored to You.",
+    "subtitle": "From individual developers to large enterprise clients. We maximise performance and value with flexible offerings.",
+    "blocks": [
+      {
+        "title": "Single GPU Instances",
+        "subtitle": "For development, inference, and rendering (1 to 8 GPUs).",
+        "items": [
+          {
+            "name": "On-Demand",
+            "price": "~€1.78 per GPU/Hour",
+            "description": "Per-second billing. No commitment. Ideal for testing."
+          },
+          {
+            "name": "Reserved",
+            "price": "Up to 40% off",
+            "description": "24/7 guarantee. Keeps OS state and configurations. Ideal for dedicated teams."
+          },
+          {
+            "name": "Spot",
+            "price": "~€0.71 (-60%)",
+            "description": "Surplus capacity. Interruptible with notice. Ideal for flexible workloads."
+          }
+        ]
+      },
+      {
+        "title": "GPU Clusters",
+        "subtitle": "For LLM training and heavy scientific simulations.",
+        "items": [
+          {
+            "name": "On-Demand",
+            "price": "~€14.24 per 8 GPUs/Hour",
+            "description": "Fast access for demanding workloads with no lock-in."
+          },
+          {
+            "name": "Reserved",
+            "price": "Progressive discounts",
+            "description": "Dedicated blocks (1, 6, 12 months). Full isolation for continuous training."
+          },
+          {
+            "name": "Spot",
+            "price": "-60% discount",
+            "description": "Large hardware volumes for labs and VFX."
+          }
+        ]
+      },
+      {
+        "title": "NVMe Flash Storage",
+        "subtitle": "Ultra-fast storage to match the speed of your GPUs.",
+        "items": [
+          {
+            "name": "Centralised",
+            "price": "€0.06 per GB",
+            "description": "Ultra-fast provisioned storage to keep pace with GPU processing speeds."
+          }
+        ]
+      }
+    ],
+    "cta": "Contact us to learn more"
+  },
   "infrastructure": {
     "badge": "Infrastructure",
     "title": "Elite Hardware for Demanding Workloads",
+    "viewMore": "View specifications",
     "items": {
       "compute": {
         "title": "Compute Nodes",
@@ -141,29 +203,39 @@
   },
   "useCases": {
     "badge": "Use Cases",
-    "title": "For any",
-    "titleHighlight": "AI workload",
-    "subtitle": "From fine-tuning to production inference, we have the right infrastructure.",
+    "title": "Assured performance for the full lifecycle of your",
+    "titleHighlight": "artificial intelligence and advanced computing",
+    "subtitle": "From initial training to production inference and 3D rendering, we guarantee data sovereignty and minimal latency.",
     "cases": {
       "training": {
-        "title": "Model Training",
-        "description": "Train LLMs and vision models with GPU clusters of up to hundreds of InfiniBand-connected nodes.",
-        "highlights": ["GPU clusters", "InfiniBand", "LLMs"]
-      },
-      "inference": {
-        "title": "Production Inference",
-        "description": "Deploy models with Triton Inference Server and NVIDIA NIM for maximum throughput.",
-        "highlights": ["Triton Inference Server", "NVIDIA NIM"]
+        "title": "Distributed Training",
+        "description": "Scale your models across Blackwell GPU clusters connected via a 100Gbps RoCE v2 network, ensuring lossless, zero-latency inter-node communication.",
+        "highlights": ["Blackwell GPUs", "RoCE v2", "100Gbps"]
       },
       "finetuning": {
-        "title": "Fine-tuning",
-        "description": "Adapt foundational models to your domain with LoRA, QLoRA, and other efficient techniques.",
-        "highlights": ["LoRA", "QLoRA"]
+        "title": "High-Density Fine-tuning",
+        "description": "Adapt your models using 96GB of VRAM. Ideal for LoRA and QLoRA techniques with private, sensitive datasets that cannot leave Europe.",
+        "highlights": ["Llama", "Mistral", "96GB VRAM", "LoRA"]
+      },
+      "inference": {
+        "title": "Sovereign Inference",
+        "description": "Deploy models at scale with NVIDIA NIM and Triton. Ensure your clients' data never leaves the secure infrastructure in Portugal.",
+        "highlights": ["NVIDIA NIM", "Triton Server", "Data Sovereignty"]
+      },
+      "rendering": {
+        "title": "Rendering & VFX",
+        "description": "Accelerate media pipelines with 4th-gen RT Cores and DLSS 4. Create photorealistic scenes and leverage dual video encode/decode engines.",
+        "highlights": ["Ray Tracing", "DLSS 4", "NVENC/NVDEC"]
+      },
+      "omniverse": {
+        "title": "Omniverse & Digital Twins",
+        "description": "Develop physical AI applications and industrial simulations. Exceptional performance for robotics and synthetic data generation workflows based on OpenUSD.",
+        "highlights": ["NVIDIA Omniverse", "OpenUSD", "3D Simulation"]
       },
       "research": {
-        "title": "AI Research",
-        "description": "Flexible and reproducible environment for experimentation, with snapshots and environment versioning.",
-        "highlights": ["snapshots", "environment versioning"]
+        "title": "Scientific Computing",
+        "description": "Extract insights from massive datasets and run complex simulations (FP32). Instant provisioning with optimized stacks for PyTorch, TensorFlow, and JAX.",
+        "highlights": ["FP32", "PyTorch", "TensorFlow", "JAX"]
       }
     }
   },
@@ -415,6 +487,81 @@
       "privacyLink": "Privacy Policy"
     }
   },
+  "gpu": {
+    "badge": "Hardware",
+    "title": "NVIDIA RTX PRO™ 6000 Blackwell",
+    "subtitle": "Universal AI and Visual Computing Performance for the Data Center. Equipped with 96GB of ultra-fast GDDR7 memory to accelerate agentic AI, physical AI, rendering, and scientific computing.",
+    "specs": {
+      "tensorCores": {
+        "title": "5th Gen Tensor Cores",
+        "description": "Accelerate agentic and generative AI applications.",
+        "specs": ["Up to 3X performance", "FP4 precision support", "DLSS 4 Multi Frame"]
+      },
+      "rtCores": {
+        "title": "4th Gen RT Cores",
+        "description": "Create photoreal, physically accurate scenes.",
+        "specs": ["Up to 2X performance", "RTX Mega Geometry", "100X more ray-traced triangles"]
+      },
+      "cudaCores": {
+        "title": "CUDA Cores",
+        "description": "The most powerful professional RTX GPU ever created.",
+        "specs": ["Increased throughput", "New neural shaders", "AI-augmented graphics"]
+      },
+      "gpuMemory": {
+        "title": "96GB of GPU Memory",
+        "description": "Tackle massive 3D and AI projects with ease.",
+        "specs": ["Ultra-fast GDDR7", "Boosted bandwidth", "Large-scale VR ready"]
+      },
+      "nvenc": {
+        "title": "9th-Gen NVENC",
+        "description": "Accelerate video encoding speed and improve quality.",
+        "specs": ["4:2:2 H.264 & HEVC", "Improved AV1 quality"]
+      },
+      "nvdec": {
+        "title": "6th-Gen NVDEC",
+        "description": "High-quality video playback and data ingestion.",
+        "specs": ["Double H.264 throughput", "AI-powered video editing"]
+      },
+      "mig": {
+        "title": "Multi-Instance GPU",
+        "description": "Expand performance and reach of compute resources.",
+        "specs": ["Up to 4 isolated instances", "Dedicated high-bandwidth memory", "Guaranteed QoS"]
+      },
+      "pcie": {
+        "title": "PCIe Gen 5",
+        "description": "Unlocking faster performance for data-intensive tasks.",
+        "specs": ["Double bandwidth of Gen 4", "Faster CPU-GPU data transfer"]
+      },
+      "displayPort": {
+        "title": "DisplayPort 2.1",
+        "description": "Unparalleled visual clarity and performance.",
+        "specs": ["8K at 240Hz", "16K at 60Hz", "HDR & superior color depth"]
+      }
+    },
+    "workloadsTitle": "Accelerated Workloads",
+    "workloads": {
+      "agenticAi": {
+        "title": "Agentic and Generative AI",
+        "description": "NVIDIA AI Enterprise streamlines LLM inference, AI agents, and generative AI. Delivers a massive leap in performance versus the previous L40S."
+      },
+      "physicalAi": {
+        "title": "Industrial and Physical AI",
+        "description": "Built on Omniverse for industrial digitalization. Exceptional performance for OpenUSD-based 3D, synthetic data, and robotics."
+      },
+      "mediaEntertainment": {
+        "title": "Media and Entertainment",
+        "description": "Revolutionize content creation with next-gen RTX, 4x encode/decode engines for live media, gaming, and film."
+      },
+      "rendering": {
+        "title": "AI-Driven Rendering",
+        "description": "Automate complex lighting and texture generation with neural shaders. DLSS 4 enables real-time photorealistic rendering."
+      },
+      "scientific": {
+        "title": "Scientific Computing",
+        "description": "Run large-scale simulations and extract insights from massive datasets across engineering, finance, healthcare, and geoscience."
+      }
+    }
+  },
   "footer": {
     "tagline": "Portugal's first AI Factory. Next-generation GPU computing, accessible to all.",
     "sections": {
@@ -426,8 +573,10 @@
     "links": {
       "instances": "Instances",
       "clusters": "Clusters",
+      "storage": "Storage",
       "pricing": "Pricing",
       "infrastructure": "Infrastructure",
+      "gpu": "GPU RTX PRO 6000",
       "useCases": "Use Cases",
       "whySectionLong": "Why now",
       "about": "About Us",

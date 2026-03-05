@@ -2,15 +2,15 @@
 
 import { useRef } from "react"
 import { motion } from "framer-motion"
-import { Brain, Server, Sparkles, FlaskConical } from "lucide-react"
+import { Brain, Sparkles, Server, Clapperboard, Globe, FlaskConical } from "lucide-react"
 import { useParticleCanvas } from "@/hooks/use-particle-canvas"
 import type { Dictionary } from "@/lib/get-dictionary"
 
 /* ═══════════════════════════════════════════════
    Icon mapping (order matches dictionary keys)
    ═══════════════════════════════════════════════ */
-const caseIcons = [Brain, Server, Sparkles, FlaskConical] as const
-const caseKeys = ["training", "inference", "finetuning", "research"] as const
+const caseIcons = [Brain, Sparkles, Server, Clapperboard, Globe, FlaskConical] as const
+const caseKeys = ["training", "finetuning", "inference", "rendering", "omniverse", "research"] as const
 
 /* ═══════════════════════════════════════════════
    Animation Variants
@@ -95,7 +95,7 @@ export function UseCasesSection({ dict }: UseCasesSectionProps) {
           {/* Title */}
           <h2 className="mx-auto max-w-3xl text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {t.title}{" "}
-            <span className="text-primary">{t.titleHighlight}</span>.
+            <span className="text-primary">{t.titleHighlight}</span>
           </h2>
 
           {/* Subtitle */}
@@ -104,13 +104,13 @@ export function UseCasesSection({ dict }: UseCasesSectionProps) {
           </p>
         </motion.div>
 
-        {/* Use cases grid - 2x2 layout */}
+        {/* Use cases grid - 2x3 layout */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid gap-6 md:grid-cols-2"
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {caseKeys.map((key, i) => {
             const useCase = t.cases[key]

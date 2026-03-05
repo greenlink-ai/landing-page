@@ -78,14 +78,16 @@ export function Footer({ lang, dict }: FooterProps) {
   }, [])
 
   const productLinks = [
-    { href: `/${lang}#produto`, label: t.links.instances },
-    { href: `/${lang}#produto`, label: t.links.clusters },
+    { href: `/${lang}#solutions-instances`, label: t.links.instances },
+    { href: `/${lang}#solutions-clusters`, label: t.links.clusters },
+    { href: `/${lang}#solutions-storage`, label: t.links.storage },
     { href: `/${lang}#precario`, label: t.links.pricing },
   ]
 
   const resourceLinks = [
-    { href: `/${lang}/produto`, label: t.links.infrastructure },
-    { href: `/${lang}/casos-de-uso`, label: t.links.useCases },
+    { href: `/${lang}/infrastructure`, label: t.links.infrastructure },
+    { href: `/${lang}/gpu`, label: t.links.gpu },
+    { href: `/${lang}/use-cases`, label: t.links.useCases },
     { href: `/${lang}/why-section-long`, label: t.links.whySectionLong },
   ]
 
@@ -95,9 +97,9 @@ export function Footer({ lang, dict }: FooterProps) {
   ]
 
   const legalLinks = [
-    { href: `/${lang}/privacidade`, label: t.links.privacy },
-    { href: `/${lang}/termos`, label: t.links.terms },
-    { href: `/${lang}/rgpd`, label: t.links.gdpr },
+    { href: `/${lang}/privacy`, label: t.links.privacy },
+    { href: `/${lang}/terms`, label: t.links.terms },
+    { href: `/${lang}/gdpr`, label: t.links.gdpr },
   ]
 
   const footerColumns = [

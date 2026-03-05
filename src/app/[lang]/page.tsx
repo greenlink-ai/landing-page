@@ -2,6 +2,7 @@ import type { Locale } from '@/lib/i18n'
 import { getDictionary } from '@/lib/get-dictionary'
 import { HeroSection } from '@/components/sections/hero-section'
 import { WhyNowSection } from '@/components/sections/why-now-section'
+import { SolutionsSection } from '@/components/sections/solutions-section'
 import { HowItWorksSection } from '@/components/sections/how-it-works-section'
 import { PricingSection } from '@/components/sections/pricing'
 import { AboutSection } from '@/components/sections/about-section'
@@ -20,6 +21,7 @@ export default async function HomePage({
     <div className="relative">
       <HeroSection dict={dict} />
       <WhyNowSection dict={dict} lang={lang} />
+      <SolutionsSection dict={dict} />
       <HowItWorksSection dict={dict} />
       <AboutSection dict={dict} />
       <PricingSection dict={dict} />

@@ -1,6 +1,17 @@
 "use client"
 
 import { useEffect } from "react"
+import {
+  PARTICLE_COLOR,
+  PARTICLE_COLOR_RGBA,
+  VELOCITY_SPREAD,
+  SIZE_MIN,
+  SIZE_RANGE,
+  FADE_STEP,
+  OPACITY_MAX,
+  OPACITY_MIN,
+  SHADOW_BLUR,
+} from "@/lib/particle-config"
 
 interface FloatingParticle {
   x: number
@@ -39,9 +50,9 @@ export function useParticleCanvas(
       particles.push({
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 2 + 0.5,
+        vx: (Math.random() - 0.5) * VELOCITY_SPREAD,
+        vy: (Math.random() - 0.5) * VELOCITY_SPREAD,
+        size: Math.random() * SIZE_RANGE + SIZE_MIN,
         opacity: Math.random() * 0.4,
         fadeDir: Math.random() > 0.5 ? 1 : -1,
       })
@@ -53,19 +64,19 @@ export function useParticleCanvas(
       for (const p of particles) {
         p.x += p.vx
         p.y += p.vy
-        p.opacity += p.fadeDir * 0.006
+        p.opacity += p.fadeDir * FADE_STEP
 
-        if (p.opacity >= 0.8) p.fadeDir = -1
-        if (p.opacity <= 0.05) p.fadeDir = 1
+        if (p.opacity >= OPACITY_MAX) p.fadeDir = -1
+        if (p.opacity <= OPACITY_MIN) p.fadeDir = 1
 
         if (p.x < 0 || p.x > rect.width) p.vx *= -1
         if (p.y < 0 || p.y > rect.height) p.vy *= -1
 
         ctx!.beginPath()
         ctx!.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx!.shadowBlur = 8
-        ctx!.shadowColor = "#10b981"
-        ctx!.fillStyle = `rgba(110, 231, 183, ${p.opacity})`
+        ctx!.shadowBlur = SHADOW_BLUR
+        ctx!.shadowColor = PARTICLE_COLOR
+        ctx!.fillStyle = `${PARTICLE_COLOR_RGBA} ${p.opacity})`
         ctx!.fill()
         ctx!.shadowBlur = 0
       }
