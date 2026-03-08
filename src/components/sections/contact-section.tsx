@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { motion } from "framer-motion"
-import { Send, Check, CheckCircle2, AlertCircle } from "lucide-react"
+import Link from "next/link"
+import { Send, Check, CheckCircle2, AlertCircle, ArrowUp } from "lucide-react"
 import type { Dictionary } from "@/lib/get-dictionary"
 import type { Locale } from "@/lib/i18n"
 
@@ -67,18 +68,20 @@ function MultiSelectCheckbox({
 }
 
 /* ═══════════════════════════════════════════════
-   Zod Schema
+   Zod Schema (i18n)
    ═══════════════════════════════════════════════ */
-const contactSchema = z.object({
-  fullName: z.string().min(2, "Nome demasiado curto"),
-  company: z.string().optional(),
-  email: z.string().email("Email inválido"),
-  phone: z.string().optional(),
-  needs: z.array(z.string()).min(1, "Selecione pelo menos uma necessidade"),
-  message: z.string().min(1, "Mensagem obrigatória"),
-})
+function createContactSchema(f: Dictionary["contact"]["form"]) {
+  return z.object({
+    fullName: z.string().min(2, f.nameError),
+    company: z.string().optional(),
+    email: z.string().email(f.emailError),
+    phone: z.string().optional(),
+    needs: z.array(z.string()).min(1, f.needsError),
+    message: z.string().min(1, f.messageError),
+  })
+}
 
-type ContactFormData = z.infer<typeof contactSchema>
+type ContactFormData = z.infer<ReturnType<typeof createContactSchema>>
 
 /* ═══════════════════════════════════════════════
    Main Component
@@ -96,6 +99,8 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
     "idle" | "loading" | "success" | "error"
   >("idle")
   const [selectedNeeds, setSelectedNeeds] = useState<string[]>([])
+
+  const contactSchema = createContactSchema(f)
 
   const {
     register,
@@ -208,15 +213,34 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
             }}
           >
             {status === "success" ? (
-              <div
-                className="flex flex-col items-center gap-4 rounded-2xl border border-[rgba(255,255,255,0.06)] bg-card/50 py-16 text-center backdrop-blur-sm"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+                className="flex flex-col items-center gap-6 rounded-2xl bg-emerald-500 px-8 py-16 text-center"
               >
-                <CheckCircle2
-                  className="size-12 text-primary"
-                  strokeWidth={1.5}
-                />
-                <p className="font-semibold text-foreground">{f.success}</p>
-              </div>
+                <div className="flex size-16 items-center justify-center rounded-full bg-black/10">
+                  <CheckCircle2
+                    className="size-9 text-black"
+                    strokeWidth={1.5}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-bold text-black">
+                    {f.successTitle}
+                  </h3>
+                  <p className="mx-auto max-w-sm text-sm leading-relaxed text-black/70">
+                    {f.successMessage}
+                  </p>
+                </div>
+                <a
+                  href="#hero"
+                  className="mt-2 inline-flex items-center gap-2 rounded-lg bg-black/10 px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-black/20"
+                >
+                  <ArrowUp className="size-4" />
+                  {f.successCta}
+                </a>
+              </motion.div>
             ) : (
               <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -367,9 +391,12 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
 
                   <p className="text-center text-xs text-muted-foreground">
                     {f.privacy}{" "}
-                    <a href="#" className="text-primary hover:underline">
+                    <Link
+                      href={`/${lang}/privacy`}
+                      className="text-primary hover:underline"
+                    >
                       {f.privacyLink}
-                    </a>
+                    </Link>
                     .
                   </p>
                 </div>

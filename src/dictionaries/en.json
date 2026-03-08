@@ -472,13 +472,17 @@
         "rendering": "Rendering"
       },
       "needsError": "Select at least one need",
+      "nameError": "Name is too short",
+      "emailError": "Invalid email",
       "message": "Message",
       "messagePlaceholder": "Describe your project or your needs...",
       "messageError": "Please describe your needs",
       "submit": "Send Message",
       "submitting": "Sending...",
-      "success": "Message sent! We'll get back to you soon.",
-      "error": "Error sending. Please try again or contact us by email.",
+      "successTitle": "Message Sent!",
+      "successMessage": "Thank you for your interest. Our team will review your request and get back to you within 24 hours.",
+      "successCta": "Back to top",
+      "error": "Error sending. Please try again or contact us at geral@greenlink.pt",
       "privacy": "By submitting, you agree to our",
       "privacyLink": "Privacy Policy"
     }

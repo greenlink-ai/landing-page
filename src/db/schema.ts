@@ -15,10 +15,10 @@ export const leads = pgTable('leads', {
   fullName: text('full_name').notNull(),
   email: text('email').notNull(),
   phone: text('phone'),
-  companyName: text('company_name'),
+  company: text('company'),
 
   // Qualificação de Necessidades
-  interests: text('interests').array(),
+  needs: text('needs').array(),
   estimatedUsage: text('estimated_usage'),
   message: text('message'),
 

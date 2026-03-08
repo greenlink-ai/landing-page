@@ -6,8 +6,10 @@ import { leads } from '@/db/schema'
 const contactSchema = z.object({
   fullName: z.string().min(2).max(255),
   email: z.string().email().max(255),
-  companyName: z.string().max(255).optional(),
-  message: z.string().max(2000).optional(),
+  phone: z.string().max(50).optional(),
+  company: z.string().max(255).optional(),
+  needs: z.array(z.string()).min(1),
+  message: z.string().min(1).max(5000),
   locale: z.enum(['pt', 'en']).default('pt'),
 })
 
@@ -19,7 +21,9 @@ export async function POST(request: NextRequest) {
     await db.insert(leads).values({
       fullName: data.fullName,
       email: data.email,
-      companyName: data.companyName,
+      phone: data.phone,
+      company: data.company,
+      needs: data.needs,
       message: data.message,
       locale: data.locale,
     })

@@ -440,13 +440,17 @@
         "other": "Outro"
       },
       "needsError": "Selecione pelo menos uma necessidade",
+      "nameError": "Nome demasiado curto",
+      "emailError": "Email inválido",
       "message": "Mensagem",
       "messagePlaceholder": "Descreva o seu projeto ou as suas necessidades...",
       "messageError": "Por favor descreva as suas necessidades",
       "submit": "Pedir Acesso Prioritário",
       "submitting": "A enviar...",
-      "success": "Mensagem enviada! Entraremos em contacto em breve.",
-      "error": "Erro ao enviar. Tenta novamente ou envie o seu pedido para geral@greenlink.pt",
+      "successTitle": "Mensagem Enviada!",
+      "successMessage": "Obrigado pelo seu interesse. A nossa equipa irá analisar o seu pedido e entrar em contacto consigo em menos de 24 horas.",
+      "successCta": "Voltar ao início",
+      "error": "Erro ao enviar. Tente novamente ou envie o seu pedido para geral@greenlink.pt",
       "privacy": "Ao submeter, concorda com a nossa",
       "privacyLink": "Política de Privacidade"
     }
