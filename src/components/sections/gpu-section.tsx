@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import type { Dictionary } from "@/lib/get-dictionary"
+import Image from "next/image"
 import { useParticleCanvas } from "@/hooks/use-particle-canvas"
 
 /* ═══════════════════════════════════════════════
@@ -160,6 +161,24 @@ export function GpuSection({ dict }: GpuSectionProps) {
           </p>
         </motion.div>
 
+        {/* ── GPU Image ── */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+          className="mb-16 overflow-hidden rounded-2xl"
+        >
+          <Image
+            src="/gpu/GPU3.webp"
+            alt="NVIDIA GPU"
+            width={1200}
+            height={600}
+            className="w-full object-cover"
+            priority
+          />
+        </motion.div>
+
         {/* ── Specs Bento Grid ── */}
         <motion.div
           variants={containerVariants}
@@ -240,7 +259,7 @@ export function GpuSection({ dict }: GpuSectionProps) {
                 <motion.div
                   key={key}
                   variants={itemVariants}
-                  className="border-l-2 border-primary pl-4"
+                  className="border-l-6 border-primary pl-4"
                 >
                   <h4 className="text-lg font-semibold text-foreground">
                     {w.title}

@@ -99,8 +99,16 @@ export function Footer({ lang, dict }: FooterProps) {
   const legalLinks = [
     { href: `/${lang}/privacy`, label: t.links.privacy },
     { href: `/${lang}/terms`, label: t.links.terms },
-    { href: `/${lang}/gdpr`, label: t.links.gdpr },
+{ href: `/${lang}/cookie-policy`, label: t.links.cookiePolicy },
   ]
+
+  const handleConsentPreferences = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const win = window as unknown as Record<string, unknown>
+    if (typeof win.displayPreferenceModal === "function") {
+      ;(win.displayPreferenceModal as () => void)()
+    }
+  }
 
   const footerColumns = [
     { title: t.sections.product, links: productLinks },
@@ -209,6 +217,18 @@ export function Footer({ lang, dict }: FooterProps) {
                     </Link>
                   </li>
                 ))}
+                {/* Consent Preferences — only in the Legal column */}
+                {col.title === t.sections.legal && (
+                  <li>
+                    <a
+                      href="#"
+                      onClick={handleConsentPreferences}
+                      className="termly-display-preferences text-sm text-[#a1a1aa] transition-colors duration-150 hover:text-[#fafafa]"
+                    >
+                      {t.links.consentPreferences}
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
           ))}

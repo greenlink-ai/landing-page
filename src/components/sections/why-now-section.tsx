@@ -41,7 +41,7 @@ function QuoteBlock({ quote }: { quote: Quote }) {
       </span>
 
       {/* Quote text — italic */}
-      <p className="text-base font-normal italic leading-relaxed text-[#fafafa] lg:text-xl">
+      <p className="text-base font-bold italic leading-relaxed text-[#fafafa] lg:text-2xl">
         {quote.text}
       </p>
 
@@ -49,19 +49,19 @@ function QuoteBlock({ quote }: { quote: Quote }) {
       <footer
         className={`mt-6 ${
           isLeft
-            ? "border-l-[3px] border-emerald-500 pl-4"
-            : "border-r-[3px] border-emerald-500 pr-4"
+            ? "border-l-6 border-emerald-500 pl-4"
+            : "border-r-6 border-emerald-500 pr-4"
         } max-lg:border-r-0 max-lg:border-l-[3px] max-lg:pl-4 max-lg:pr-0 max-lg:text-left`}
       >
-        <span className="text-sm font-semibold text-emerald-500">
+        <span className="text-lg font-semibold text-emerald-500">
           {quote.author}
         </span>
-        <span className="block text-sm text-[#71717a]">{quote.role}</span>
+        <span className="block text-md text-[#71717a]">{quote.role}</span>
         <a
           href={quote.sourceUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-1 inline-block text-xs text-[#71717a] transition-colors duration-150 hover:text-[#fafafa]"
+          className="mt-1 inline-block text-sm text-[#71717a] transition-colors duration-150 hover:text-[#fafafa]"
         >
           Source: {quote.sourceDomain}
         </a>

@@ -3,6 +3,7 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Canvas } from "@react-three/fiber"
+import { Check, Cpu, Network, HardDrive } from "lucide-react"
 import type { Dictionary } from "@/lib/get-dictionary"
 import { useParticleCanvas } from "@/hooks/use-particle-canvas"
 import { ChipScene } from "@/components/three/chip"
@@ -30,21 +31,24 @@ function Scene3D({ children }: { children: React.ReactNode }): React.JSX.Element
 
 const SCENE_COMPONENTS = [ChipScene, ClusterScene, StorageScene]
 const BLOCK_IDS = ["solutions-instances", "solutions-clusters", "solutions-storage"]
+const BLOCK_ICONS = [Cpu, Network, HardDrive]
 
 /* ═══════════════════════════════════════════════
    SOLUTION BLOCK
    ═══════════════════════════════════════════════ */
 
-interface SolutionItem {
+interface SolutionTier {
   name: string
   price: string
-  description: string
 }
 
 interface SolutionBlockData {
+  badge: string
   title: string
   subtitle: string
-  items: SolutionItem[]
+  description: string
+  features: string[]
+  tiers: SolutionTier[]
 }
 
 function SolutionBlock({
@@ -58,6 +62,7 @@ function SolutionBlock({
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const isReversed = index % 2 === 1
   const SceneComponent = SCENE_COMPONENTS[index] ?? ChipScene
+  const Icon = BLOCK_ICONS[index] ?? Cpu
   const blockId = BLOCK_IDS[index]
 
   return (
@@ -75,31 +80,61 @@ function SolutionBlock({
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
       >
-        <h3 className="text-2xl font-bold text-foreground sm:text-3xl">
+        {/* Badge */}
+        <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1">
+          <Icon className="size-4 text-primary" strokeWidth={1.5} />
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            {block.badge}
+          </span>
+        </div>
+
+        <h3 className="mb-2 text-2xl font-bold text-foreground sm:text-3xl">
           {block.title}
         </h3>
-        <div className="my-4 h-px w-16 bg-primary/30" />
-        <p className="mb-6 text-sm text-muted-foreground">
+        <p className="mb-4 text-lg font-medium text-primary">
           {block.subtitle}
         </p>
+        <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+          {block.description}
+        </p>
 
-        <div className="space-y-4">
-          {block.items.map((item) => (
-            <div
-              key={item.name}
-              className="rounded-lg border border-[rgba(255,255,255,0.06)] bg-card/30 p-4 backdrop-blur-sm"
+        {/* Features */}
+        <ul className="mb-6 space-y-2">
+          {block.features.map((feature) => (
+            <li
+              key={feature}
+              className="flex items-center gap-2 text-sm text-muted-foreground"
             >
-              <div className="flex items-center justify-between gap-4">
-                <span className="font-semibold text-foreground">
-                  {item.name}
-                </span>
-                <span className="rounded bg-emerald-900/20 px-2 py-1 font-mono text-xs text-primary">
-                  {item.price}
-                </span>
+              <Check
+                className="size-4 flex-shrink-0 text-primary"
+                strokeWidth={2}
+              />
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        {/* Pricing tiers */}
+        <div className="flex flex-wrap gap-3">
+          {block.tiers.map((tier, tierIndex) => (
+            <div
+              key={tier.name}
+              className={`rounded-lg border px-4 py-2 ${
+                tierIndex === 1
+                  ? "border-primary/50 bg-primary/10"
+                  : "border-border bg-secondary/50"
+              }`}
+            >
+              <div className="text-xs text-muted-foreground">
+                {tier.name}
               </div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {item.description}
-              </p>
+              <div
+                className={`text-sm font-semibold ${
+                  tierIndex === 1 ? "text-primary" : "text-foreground"
+                }`}
+              >
+                {tier.price}
+              </div>
             </div>
           ))}
         </div>

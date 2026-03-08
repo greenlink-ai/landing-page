@@ -85,7 +85,7 @@ export function HeroSection({ dict }: HeroSectionProps) {
           {/* Stats row */}
           <motion.div
             variants={fadeInUp}
-            className="mt-8 flex items-center gap-8 border-l-2 border-primary/30 pl-6"
+            className="mt-8 flex items-center gap-8 border-l-6 border-primary/30 pl-6"
           >
             {stats.map((stat, i) => (
               <span key={i} className="flex items-center gap-8">

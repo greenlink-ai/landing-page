@@ -77,56 +77,52 @@
     "subtitle": "Do utilizador iniciante às soluções mais exigentes. Maximizamos a performance e a rentabilidade com ofertas flexíveis.",
     "blocks": [
       {
-        "title": "Instâncias",
-        "subtitle": "Para desenvolvimento, inferência e renderização (Até 7 GPUs).",
-        "items": [
-          {
-            "name": "On-Demand",
-            "price": "1,78€ p/GPU/Hora",
-            "description": "Sem qualquer compromisso, computação a pedido e sem interrupções."
-          },
-          {
-            "name": "Reservadas",
-            "price": "Até 40% de desconto",
-            "description": "Garantia 24/7. Mantém o estado do SO e configurações. Ideal para equipas fixas e previsão temporal prolongada."
-          },
-          {
-            "name": "Spot",
-            "price": "Desconto de 60%",
-            "description": "Interrompíveis, com pré-aviso. Apropriadas para fluxos de trabalho flexíveis."
-          }
+        "badge": "Instâncias",
+        "title": "Instâncias GPU Unitárias",
+        "subtitle": "Poder de computação à medida, sem compromissos.",
+        "description": "Acesso imediato a GPUs NVIDIA Blackwell com 96GB de VRAM. Ideal para desenvolvimento, prototipagem rápida e workloads que não exigem escala massiva.",
+        "features": [
+          "Deploy em menos de 5 minutos",
+          "Escala vertical até 8 GPUs por nó",
+          "Storage NVMe local incluído",
+          "Rede dedicada de 200Gbps"
+        ],
+        "tiers": [
+          { "name": "MIG 1g.24gb", "price": "0,45€/hora" },
+          { "name": "1x GPU 96GB", "price": "1,78€/hora" },
+          { "name": "4x GPU", "price": "7,12€/hora" }
         ]
       },
       {
-        "title": "Clusters",
-        "subtitle": "Para treino de soluções maiores, simulações científicas pesadas ou grandes renderizações gráficas. A partir de 8 GPUs.",
-        "items": [
-          {
-            "name": "On-Demand",
-            "price": "14,24€ p/8GPUs/Hora",
-            "description": "Acesso rápido para workloads exigentes sem fidelização."
-          },
-          {
-            "name": "Reservados",
-            "price": "Descontos progressivos",
-            "description": "Blocos dedicados (1, 6, 12 meses). Isolamento total para treinos contínuos."
-          },
-          {
-            "name": "Spot",
-            "price": "Desconto de 60%",
-            "description": "Grandes volumes de hardware para laboratórios e VFX."
-          }
+        "badge": "Clusters",
+        "title": "Clusters GPU Dedicados",
+        "subtitle": "Escala horizontal para os desafios mais exigentes.",
+        "description": "Clusters multi-nó interligados por fabric RoCE v2 de 200Gbps. Arquitectura non-blocking para treino distribuído de modelos de grande escala sem bottlenecks.",
+        "features": [
+          "Até 572 GPUs interligadas",
+          "GPUDirect RDMA com RoCE para comunicações de alta performance",
+          "Suporte para PyTorch DDP e DeepSpeed",
+          "SLA alvo de 99.9% uptime"
+        ],
+        "tiers": [
+          { "name": "8x GPU", "price": "14,24€/hora" },
+          { "name": "32x GPU", "price": "56,96€/hora" },
+          { "name": "120x GPU", "price": "Contacte-nos" }
         ]
       },
       {
+        "badge": "Armazenamento",
         "title": "Armazenamento NVMe Flash",
-        "subtitle": "Storage ultra-rápido persistente para acompanhar a velocidade das GPUs.",
-        "items": [
-          {
-            "name": "Centralizado",
-            "price": "0.06€ p/GB",
-            "description": "Storage ultra-rápido provisionado para acompanhar a velocidade de processamento das GPUs. Sem taxas de Ingrees/Egress!"
-          }
+        "subtitle": "Latência de microssegundos para datasets massivos.",
+        "description": "Storage all-flash de alta performance para datasets de treino e checkpoints. Throughput sustentado para alimentar as GPUs mais exigentes sem estrangulamentos.",
+        "features": [
+          "Latência reduzida (< 150 μs teóricos)",
+          "Throughput até 25GB/s",
+          "Snapshots instantâneos",
+          "Replicação síncrona opcional"
+        ],
+        "tiers": [
+          { "name": "Preço p/GB", "price": "0,06€" }
         ]
       }
     ],
@@ -213,8 +209,8 @@
     "titleHighlight": "projeto",
     "subtitle": "Inferência de uma solução leve? Treino de um LLM massivo? Aqui encontrará uma solução de acordo com as suas necessidades.",
     "tabs": {
-      "instances": "Instâncias (até 7 GPUs)",
-      "clusters": "Clusters (A partir de 8 GPUs)"
+      "instances": "Instâncias (até 8 GPUs)",
+      "clusters": "Clusters (A partir de 9 GPUs)"
     },
     "instanceType": "Tipo de Instância",
     "clusterConfig": "Configuração do Cluster",
@@ -223,8 +219,8 @@
     "recommended": "Recomendado",
     "popular": "Popular",
     "customize": "Personalizar",
-    "customInstanceVram": "48GB — 672GB VRAM",
-    "customInstanceDescription": "Fatias MIG intermédias ou até 7 GPUs completas.",
+    "customInstanceVram": "48GB — 768GB VRAM",
+    "customInstanceDescription": "Até 8 GPUs.",
     "customClusterVram": "Ilimitado",
     "customClusterDescription": "Infraestrutura à medida das suas necessidades.",
     "calculator": {
@@ -283,10 +279,10 @@
     ],
     "clusters": [
       {
-        "id": "cluster-8",
-        "name": "8 GPUs Blackwell",
-        "vram": "768GB VRAM",
-        "gpuCount": 8,
+        "id": "cluster-9",
+        "name": "9 GPUs Blackwell",
+        "vram": "864GB VRAM",
+        "gpuCount": 9,
         "description": "Cluster base para treino distribuído.",
         "recommended": true
       },
@@ -300,7 +296,7 @@
       }
     ],
     "clusterSpecs": {
-      "network": "RoCE v2 100Gbps"
+      "network": "RoCE v2 200Gbps"
     },
     "billingModes": {
       "onDemand": {
@@ -334,7 +330,8 @@
           { "id": "gpu-4", "name": "4 GPUs Blackwell", "vram": "384GB", "rate": 7.12, "cpus": 64, "ram": 768, "nvme": 1920 },
           { "id": "gpu-5", "name": "5 GPUs Blackwell", "vram": "480GB", "rate": 8.90, "cpus": 80, "ram": 960, "nvme": 2400 },
           { "id": "gpu-6", "name": "6 GPUs Blackwell", "vram": "576GB", "rate": 10.68, "cpus": 96, "ram": 1152, "nvme": 2880 },
-          { "id": "gpu-7", "name": "7 GPUs Blackwell", "vram": "672GB", "rate": 12.46, "cpus": 112, "ram": 1344, "nvme": 3360 }
+          { "id": "gpu-7", "name": "7 GPUs Blackwell", "vram": "672GB", "rate": 12.46, "cpus": 112, "ram": 1344, "nvme": 3360 },
+          { "id": "gpu-8", "name": "8 GPUs Blackwell", "vram": "768GB", "rate": 14.24, "cpus": 128, "ram": 1536, "nvme": 3840 }
         ]
       },
       "discounts": {
@@ -393,7 +390,7 @@
     },
     "stats": [
       { "value": "96GB", "label": "VRAM por GPU" },
-      { "value": "100Gbps", "label": "Rede Non-Blocking" },
+      { "value": "200Gbps", "label": "Rede Non-Blocking" },
       { "value": "<5min", "label": "Tempo de Deploy" },
       { "value": "100%", "label": "Dados em Portugal" }
     ],
@@ -421,7 +418,7 @@
     "titleHighlight": "Reserve o seu acesso!",
     "subtitle": "Estamos a construir a primeira AI Factory on-demand de alta densidade em Portugal. A nossa plataforma está em desenvolvimento — registe o seu interesse hoje para garantir acesso antecipado e condições exclusivas de lançamento.",
     "info": {
-      "response": "Resposta em menos de 24 horas"
+      "response": "Fique descansado, a sua mensagem não ficará perdida no espaço. Resposta em menos de 24 horas!"
     },
     "form": {
       "name": "Nome Completo",
@@ -449,7 +446,7 @@
       "submit": "Pedir Acesso Prioritário",
       "submitting": "A enviar...",
       "success": "Mensagem enviada! Entraremos em contacto em breve.",
-      "error": "Erro ao enviar. Tenta novamente ou contacta-nos por email.",
+      "error": "Erro ao enviar. Tenta novamente ou envie o seu pedido para geral@greenlink.pt",
       "privacy": "Ao submeter, concorda com a nossa",
       "privacyLink": "Política de Privacidade"
     }
@@ -457,7 +454,7 @@
   "gpu": {
     "badge": "Hardware",
     "title": "NVIDIA RTX PRO™ 6000 Blackwell",
-    "subtitle": "Built on the groundbreaking NVIDIA Blackwell architecture, the NVIDIA RTX PRO™ 6000 Blackwell Server Edition delivers a powerful combination of AI and visual computing capabilities to accelerate enterprise data center workloads. Equipped with 96GB of ultra-fast GDDR7 memory, the NVIDIA RTX PRO 6000 Blackwell provides unparalleled performance and flexibility to accelerate a broad range of use cases - from agentic AI, physical AI, and scientific computing to rendering, 3D graphics, and video.",
+    "subtitle": "Construída com base na inovadora arquitetura NVIDIA Blackwell, a NVIDIA RTX PRO™ 6000 Blackwell Server Edition oferece uma combinação poderosa de capacidades de IA e computação visual para acelerar as cargas de trabalho dos centros de dados empresariais. Equipada com 96 GB de memória GDDR7 ultrarrápida, a NVIDIA RTX PRO 6000 Blackwell proporciona um desempenho e flexibilidade sem precedentes para acelerar uma vasta gama de casos de utilização — desde IA baseada em agentes, IA física e computação científica até renderização, gráficos 3D e vídeo",
     "specs": {
       "tensorCores": {
         "title": "Tensor Cores 5ª Geração",
@@ -529,6 +526,264 @@
       }
     }
   },
+  "privacyPolicy": {
+    "title": "Política de Privacidade",
+    "lastUpdated": "Última atualização: 8 de março de 2026",
+    "intro": "Este Aviso de Privacidade da Greenlink AI Datacenter, Sociedade Unipessoal LDA ('nós', 'nos' ou 'nosso/a'), descreve como e porque podemos aceder, recolher, armazenar, utilizar e/ou partilhar ('processar') as suas informações pessoais quando utiliza os nossos serviços ('Serviços'), incluindo quando:",
+    "serviceDescription": "Visita o nosso website em http://www.greenlink.pt ou qualquer website nosso que contenha ligação a este Aviso de Privacidade. Utiliza Computação on-demand. A nossa plataforma atua como facilitador para acesso on-demand a recursos de computação, fornecendo hardware especializado — nomeadamente GPUs de alta performance — exclusivamente destinado ao desenvolvimento de inteligência artificial (IA), treino e inferência de modelos, bem como tarefas de renderização gráfica. Através da nossa interface web (dashboard), os utilizadores podem lançar instâncias de computação temporárias, configurar e executar os seus workloads de forma autónoma e imediata. A plataforma não fornece serviços de armazenamento de dados persistente, gestão de bases de dados, hospedagem de aplicações ou infraestrutura como serviço (IaaS) no sentido convencional. Não atuamos como responsável pelo tratamento ou subcontratante dos dados processados pelos utilizadores nas instâncias lançadas; o utilizador permanece totalmente responsável pela legalidade, conteúdo e tratamento de quaisquer dados introduzidos ou gerados durante a utilização das instâncias.",
+    "engageWith": "Interage connosco de outras formas relacionadas, incluindo quaisquer eventos ou marketing.",
+    "questionsIntro": "Questões ou preocupações? A leitura deste Aviso de Privacidade ajudá-lo-á a compreender os seus direitos e escolhas de privacidade. Somos responsáveis pelas decisões sobre como as suas informações pessoais são processadas. Se não concordar com as nossas políticas e práticas, por favor não utilize os nossos Serviços. Se ainda tiver questões ou preocupações, contacte-nos em",
+    "summaryTitle": "Resumo dos Pontos-Chave",
+    "summaryIntro": "Este resumo fornece os pontos-chave do nosso Aviso de Privacidade, mas pode encontrar mais detalhes sobre qualquer um destes tópicos utilizando o índice abaixo.",
+    "summaryPoints": [
+      "Que informações pessoais processamos? Quando visita, utiliza ou navega nos nossos Serviços, podemos processar informações pessoais dependendo da forma como interage connosco, das escolhas que faz e das funcionalidades que utiliza.",
+      "Processamos alguma informação pessoal sensível? Não processamos informações sensíveis.",
+      "Recolhemos informações de terceiros? Não recolhemos informações de terceiros.",
+      "Como processamos as suas informações? Processamos as suas informações para fornecer, melhorar e administrar os nossos Serviços, comunicar consigo, para segurança e prevenção de fraude, e para cumprir a lei.",
+      "Em que situações e com que partes partilhamos informações pessoais? Podemos partilhar informações em situações específicas e com terceiros específicos.",
+      "Como mantemos as suas informações seguras? Dispomos de processos e procedimentos organizacionais e técnicos adequados para proteger as suas informações pessoais.",
+      "Quais são os seus direitos? Dependendo da sua localização geográfica, a lei de privacidade aplicável pode significar que tem determinados direitos relativamente às suas informações pessoais.",
+      "Como exerce os seus direitos? A forma mais fácil de exercer os seus direitos é submetendo um pedido de acesso aos dados, ou contactando-nos."
+    ],
+    "tocTitle": "Índice",
+    "tocItems": [
+      "Que informações recolhemos?",
+      "Como processamos as suas informações?",
+      "Em que bases legais nos apoiamos para processar as suas informações pessoais?",
+      "Quando e com quem partilhamos as suas informações pessoais?",
+      "Utilizamos cookies e outras tecnologias de rastreio?",
+      "Como tratamos os seus logins sociais?",
+      "Durante quanto tempo mantemos as suas informações?",
+      "Como mantemos as suas informações seguras?",
+      "Recolhemos informações de menores?",
+      "Quais são os seus direitos de privacidade?",
+      "Controlos para funcionalidades Do-Not-Track",
+      "Fazemos atualizações a este aviso?",
+      "Como pode contactar-nos sobre este aviso?",
+      "Como pode rever, atualizar ou eliminar os dados que recolhemos?"
+    ],
+    "sections": [
+      {
+        "title": "Que informações recolhemos?",
+        "paragraphs": [
+          "Em Resumo: Recolhemos informações pessoais que nos fornece voluntariamente.",
+          "Recolhemos informações pessoais que nos fornece voluntariamente quando se regista nos Serviços, manifesta interesse em obter informações sobre nós ou os nossos produtos e Serviços, quando participa em atividades nos Serviços, ou quando nos contacta.",
+          "As informações pessoais que recolhemos podem incluir: nomes, números de telefone, endereços de email, nomes de utilizador, palavras-passe, endereços de faturação, dados de contacto ou autenticação.",
+          "Informações Sensíveis: Não processamos informações sensíveis.",
+          "Dados de Pagamento: Podemos recolher dados necessários para processar o seu pagamento se optar por efetuar compras, como o número do seu instrumento de pagamento e o código de segurança associado. Todos os dados de pagamento são tratados e armazenados pelo Stripe. Pode consultar o respetivo aviso de privacidade em: https://stripe.com/privacy.",
+          "Dados de Login de Redes Sociais: Podemos fornecer-lhe a opção de se registar utilizando a sua conta de rede social existente (como Facebook, X ou outra). Se optar por se registar desta forma, recolheremos determinadas informações do perfil do fornecedor de rede social.",
+          "Todas as informações pessoais que nos fornece devem ser verdadeiras, completas e precisas, e deve notificar-nos de quaisquer alterações.",
+          "Em Resumo: Algumas informações — como o seu endereço IP e/ou características do browser e dispositivo — são recolhidas automaticamente quando visita os nossos Serviços.",
+          "Recolhemos automaticamente determinadas informações quando visita, utiliza ou navega nos Serviços. Estas informações não revelam a sua identidade específica, mas podem incluir informações de dispositivo e utilização, como o seu endereço IP, características do browser e dispositivo, sistema operativo, preferências de idioma, URLs de referência, nome do dispositivo, país, localização, informações sobre como e quando utiliza os nossos Serviços, e outras informações técnicas.",
+          "Dados de Registo e Utilização: Dados de registo e utilização são informações relacionadas com o serviço, diagnóstico, utilização e desempenho que os nossos servidores recolhem automaticamente quando acede ou utiliza os nossos Serviços.",
+          "Dados de Localização: Recolhemos dados de localização como informações sobre a localização do seu dispositivo, que podem ser precisas ou imprecisas. Pode optar por não permitir a recolha destas informações recusando o acesso ou desativando as definições de Localização no seu dispositivo.",
+          "A nossa utilização de informações recebidas de APIs do Google cumprirá a Política de Dados de Utilizador dos Serviços API do Google, incluindo os requisitos de Utilização Limitada."
+        ]
+      },
+      {
+        "title": "Como processamos as suas informações?",
+        "paragraphs": [
+          "Em Resumo: Processamos as suas informações para fornecer, melhorar e administrar os nossos Serviços, comunicar consigo, para segurança e prevenção de fraude, e para cumprir a lei.",
+          "Processamos as suas informações pessoais por diversas razões, dependendo da forma como interage com os nossos Serviços, incluindo: para facilitar a criação e autenticação de contas e de outra forma gerir contas de utilizador; para lhe enviar comunicações de marketing e promocionais (pode optar por não as receber a qualquer momento); e para salvar ou proteger o interesse vital de um indivíduo."
+        ]
+      },
+      {
+        "title": "Em que bases legais nos apoiamos para processar as suas informações?",
+        "paragraphs": [
+          "Em Resumo: Apenas processamos as suas informações pessoais quando acreditamos ser necessário e temos uma razão legal válida para o fazer ao abrigo da lei aplicável.",
+          "O Regulamento Geral sobre a Proteção de Dados (RGPD) e o RGPD do Reino Unido exigem que expliquemos as bases legais válidas em que nos apoiamos para processar as suas informações pessoais.",
+          "Consentimento: Podemos processar as suas informações se nos tiver dado permissão para utilizar as suas informações pessoais para uma finalidade específica. Pode retirar o seu consentimento a qualquer momento.",
+          "Interesses Legítimos: Podemos processar as suas informações quando acreditamos ser razoavelmente necessário para alcançar os nossos interesses comerciais legítimos e esses interesses não prevalecem sobre os seus interesses e direitos e liberdades fundamentais.",
+          "Obrigações Legais: Podemos processar as suas informações quando acreditamos ser necessário para cumprir as nossas obrigações legais, como cooperar com uma autoridade policial ou agência reguladora, exercer ou defender os nossos direitos legais, ou divulgar as suas informações como prova em litígios em que estejamos envolvidos.",
+          "Interesses Vitais: Podemos processar as suas informações quando acreditamos ser necessário para proteger os seus interesses vitais ou os interesses vitais de terceiros."
+        ]
+      },
+      {
+        "title": "Quando e com quem partilhamos as suas informações pessoais?",
+        "paragraphs": [
+          "Em Resumo: Podemos partilhar informações em situações específicas descritas nesta secção e/ou com os seguintes terceiros.",
+          "Fornecedores, Consultores e Outros Prestadores de Serviços Terceiros: Podemos partilhar os seus dados com fornecedores terceiros, prestadores de serviços, contratantes ou agentes que realizam serviços para nós ou em nosso nome e necessitam de acesso a essas informações para realizar esse trabalho. Temos contratos em vigor com os nossos terceiros, desenhados para ajudar a salvaguardar as suas informações pessoais.",
+          "Transferências Empresariais: Podemos partilhar ou transferir as suas informações em conexão com, ou durante negociações de, qualquer fusão, venda de ativos da empresa, financiamento ou aquisição de toda ou parte do nosso negócio por outra empresa."
+        ]
+      },
+      {
+        "title": "Utilizamos cookies e outras tecnologias de rastreio?",
+        "paragraphs": [
+          "Em Resumo: Podemos utilizar cookies e outras tecnologias de rastreio para recolher e armazenar as suas informações.",
+          "Podemos utilizar cookies e tecnologias de rastreio semelhantes (como web beacons e pixels) para recolher informações quando interage com os nossos Serviços. Algumas tecnologias de rastreio online ajudam-nos a manter a segurança dos nossos Serviços e da sua conta, prevenir falhas, corrigir bugs, guardar as suas preferências e auxiliar em funções básicas do site.",
+          "Também permitimos que terceiros e prestadores de serviços utilizem tecnologias de rastreio online nos nossos Serviços para analítica e publicidade, incluindo para ajudar a gerir e exibir anúncios, adaptar anúncios aos seus interesses, ou enviar lembretes de carrinho abandonado."
+        ]
+      },
+      {
+        "title": "Como tratamos os seus logins sociais?",
+        "paragraphs": [
+          "Em Resumo: Se optar por se registar ou iniciar sessão nos nossos Serviços utilizando uma conta de rede social, podemos ter acesso a determinadas informações sobre si.",
+          "Os nossos Serviços oferecem-lhe a capacidade de se registar e iniciar sessão utilizando os detalhes da sua conta de rede social de terceiros (como o seu login do Facebook ou X). Quando opta por o fazer, receberemos determinadas informações do perfil do seu fornecedor de rede social. As informações do perfil que recebemos podem variar dependendo do fornecedor de rede social em questão, mas frequentemente incluirão o seu nome, endereço de email, lista de amigos e foto de perfil.",
+          "Utilizaremos as informações que recebermos apenas para as finalidades descritas neste Aviso de Privacidade. Note que não controlamos, e não somos responsáveis por, outras utilizações das suas informações pessoais pelo seu fornecedor de rede social de terceiros."
+        ]
+      },
+      {
+        "title": "Durante quanto tempo mantemos as suas informações?",
+        "paragraphs": [
+          "Em Resumo: Mantemos as suas informações durante o tempo necessário para cumprir as finalidades descritas neste Aviso de Privacidade, salvo se exigido de outra forma por lei.",
+          "Manteremos as suas informações pessoais apenas durante o tempo necessário para as finalidades estabelecidas neste Aviso de Privacidade, a menos que um período de retenção mais longo seja exigido ou permitido por lei (como requisitos fiscais, contabilísticos ou outros requisitos legais). Nenhuma finalidade neste aviso exigirá que mantenhamos as suas informações pessoais por mais tempo do que o período em que os utilizadores têm uma conta connosco.",
+          "Quando não tivermos necessidade comercial legítima contínua de processar as suas informações pessoais, eliminaremos ou anonimizaremos essas informações, ou, se tal não for possível, armazenaremos de forma segura as suas informações pessoais e isolá-las-emos de qualquer processamento adicional até que a eliminação seja possível."
+        ]
+      },
+      {
+        "title": "Como mantemos as suas informações seguras?",
+        "paragraphs": [
+          "Em Resumo: Pretendemos proteger as suas informações pessoais através de um sistema de medidas de segurança organizacionais e técnicas.",
+          "Implementámos medidas de segurança técnicas e organizacionais apropriadas e razoáveis, desenhadas para proteger a segurança de quaisquer informações pessoais que processamos. No entanto, apesar das nossas salvaguardas e esforços para proteger as suas informações, nenhuma transmissão eletrónica através da Internet ou tecnologia de armazenamento de informações pode ser garantida como 100% segura, pelo que não podemos prometer ou garantir que hackers, cibercriminosos ou outros terceiros não autorizados não conseguirão ultrapassar a nossa segurança e recolher, aceder, roubar ou modificar indevidamente as suas informações.",
+          "Embora façamos o nosso melhor para proteger as suas informações pessoais, a transmissão de informações pessoais de e para os nossos Serviços é por sua conta e risco. Deve aceder aos Serviços apenas num ambiente seguro."
+        ]
+      },
+      {
+        "title": "Recolhemos informações de menores?",
+        "paragraphs": [
+          "Em Resumo: Não recolhemos conscientemente dados de ou dirigimos marketing a crianças com menos de 18 anos de idade.",
+          "Não recolhemos, solicitamos dados de, nem dirigimos conscientemente marketing a crianças com menos de 18 anos de idade, nem vendemos conscientemente tais informações pessoais. Ao utilizar os Serviços, declara que tem pelo menos 18 anos ou que é o pai ou tutor de tal menor e consente na utilização dos Serviços pelo menor dependente. Se tomarmos conhecimento de que foram recolhidas informações pessoais de utilizadores com menos de 18 anos de idade, desativaremos a conta e tomaremos medidas razoáveis para eliminar prontamente esses dados dos nossos registos. Se tomar conhecimento de quaisquer dados que possamos ter recolhido de crianças com menos de 18 anos, por favor contacte-nos em privacy@greenlink.pt."
+        ]
+      },
+      {
+        "title": "Quais são os seus direitos de privacidade?",
+        "paragraphs": [
+          "Em Resumo: Em algumas regiões, como o Espaço Económico Europeu (EEE), Reino Unido e Suíça, tem direitos que lhe permitem maior acesso e controlo sobre as suas informações pessoais. Pode rever, alterar ou terminar a sua conta a qualquer momento.",
+          "Em algumas regiões, tem determinados direitos ao abrigo das leis de proteção de dados aplicáveis. Estes podem incluir o direito (i) de solicitar acesso e obter uma cópia das suas informações pessoais, (ii) de solicitar retificação ou apagamento; (iii) de restringir o processamento das suas informações pessoais; (iv) se aplicável, à portabilidade dos dados; e (v) de não ser sujeito a decisões automatizadas. Em certas circunstâncias, pode também ter o direito de se opor ao processamento das suas informações pessoais.",
+          "Retirada do consentimento: Se nos baseamos no seu consentimento para processar as suas informações pessoais, tem o direito de retirar o seu consentimento a qualquer momento contactando-nos.",
+          "Optar por não receber comunicações de marketing e promocionais: Pode cancelar a subscrição das nossas comunicações de marketing e promocionais a qualquer momento clicando no link de cancelamento de subscrição nos emails que enviamos, ou contactando-nos.",
+          "Informações da Conta: Se desejar a qualquer momento rever ou alterar as informações na sua conta ou terminar a sua conta, pode iniciar sessão nas definições da sua conta e atualizar a sua conta de utilizador. Após o seu pedido de término da conta, desativaremos ou eliminaremos a sua conta e informações das nossas bases de dados ativas.",
+          "Se tiver questões ou comentários sobre os seus direitos de privacidade, pode enviar-nos um email para privacy@greenlink.pt."
+        ]
+      },
+      {
+        "title": "Controlos para funcionalidades Do-Not-Track",
+        "paragraphs": [
+          "A maioria dos browsers web e alguns sistemas operativos e aplicações móveis incluem uma funcionalidade ou definição Do-Not-Track ('DNT') que pode ativar para sinalizar a sua preferência de privacidade para que os dados sobre as suas atividades de navegação online não sejam monitorizados e recolhidos. Nesta fase, nenhum padrão tecnológico uniforme para reconhecer e implementar sinais DNT foi finalizado. Como tal, não respondemos atualmente a sinais de browser DNT ou qualquer outro mecanismo que comunique automaticamente a sua escolha de não ser rastreado online. Se um padrão para rastreio online for adotado que devamos seguir no futuro, informá-lo-emos sobre essa prática numa versão revista deste Aviso de Privacidade."
+        ]
+      },
+      {
+        "title": "Fazemos atualizações a este aviso?",
+        "paragraphs": [
+          "Em Resumo: Sim, atualizaremos este aviso conforme necessário para nos mantermos em conformidade com as leis relevantes.",
+          "Podemos atualizar este Aviso de Privacidade periodicamente. A versão atualizada será indicada por uma data 'Revisto' atualizada no topo deste Aviso de Privacidade. Se fizermos alterações materiais a este Aviso de Privacidade, podemos notificá-lo publicando de forma proeminente um aviso de tais alterações ou enviando-lhe diretamente uma notificação. Encorajamo-lo a rever este Aviso de Privacidade frequentemente para estar informado sobre como estamos a proteger as suas informações."
+        ]
+      },
+      {
+        "title": "Como pode contactar-nos sobre este aviso?",
+        "paragraphs": [
+          "Se tiver questões ou comentários sobre este aviso, pode enviar-nos um email para privacy@greenlink.pt ou contactar-nos por correio no seguinte endereço:"
+        ]
+      },
+      {
+        "title": "Como pode rever, atualizar ou eliminar os dados que recolhemos?",
+        "paragraphs": [
+          "Com base nas leis aplicáveis do seu país, pode ter o direito de solicitar acesso às informações pessoais que recolhemos sobre si, detalhes sobre como as processámos, corrigir imprecisões ou eliminar as suas informações pessoais. Pode também ter o direito de retirar o seu consentimento ao nosso processamento das suas informações pessoais. Estes direitos podem ser limitados em algumas circunstâncias pela lei aplicável. Para solicitar a revisão, atualização ou eliminação das suas informações pessoais, por favor preencha e submeta um pedido de acesso aos dados."
+        ]
+      }
+    ],
+    "thirdParties": [
+      { "category": "Faturação e Pagamentos", "providers": "Stripe, Google Wallet e Apple Pay" },
+      { "category": "Registo e Autenticação de Contas", "providers": "Supabase" },
+      { "category": "Analítica Web e Móvel", "providers": "PostHog" }
+    ],
+    "cookieNoticeRef": "Informações específicas sobre como utilizamos tais tecnologias e como pode recusar determinados cookies estão definidas no nosso Aviso de Cookies:",
+    "cookieNoticeLink": "Aviso de Cookies",
+    "companyName": "Greenlink AI Datacenter, Sociedade Unipessoal LDA",
+    "companyAddress": "Rua B Lote 34, Ferreira do Alentejo, Alentejo 7900, Portugal"
+  },
+  "cookiePolicy": {
+    "title": "Politica de Cookies",
+    "lastUpdated": "Ultima atualização: 7 de março de 2026",
+    "intro": "Esta Politica de Cookies explica como a GreenLink (\"Empresa\", \"nós\", \"nos\" e \"nosso/a\") utiliza cookies e tecnologias semelhantes para o reconhecer quando visita o nosso website em http://www.greenlink.pt (\"Website\"). Explica o que são estas tecnologias e porque as utilizamos, bem como os seus direitos para controlar a nossa utilização das mesmas.",
+    "introPersonalInfo": "Em alguns casos, podemos utilizar cookies para recolher informações pessoais, ou que se tornam informações pessoais se as combinarmos com outras informações.",
+    "whatAreCookiesTitle": "O que são cookies?",
+    "whatAreCookiesBody": "Cookies são pequenos ficheiros de dados que são colocados no seu computador ou dispositivo móvel quando visita um website. Os cookies são amplamente utilizados pelos proprietários de websites para fazer os seus websites funcionar, ou funcionar de forma mais eficiente, bem como para fornecer informações de relatório.",
+    "whatAreCookiesTypes": "Os cookies definidos pelo proprietário do website (neste caso, a GreenLink) são chamados \"cookies primários\". Os cookies definidos por terceiros que não o proprietário do website são chamados \"cookies de terceiros\". Os cookies de terceiros permitem que funcionalidades ou características de terceiros sejam fornecidas no ou através do website (por exemplo, publicidade, conteúdo interativo e analítica). As partes que definem estes cookies de terceiros podem reconhecer o seu computador tanto quando visita o website em questão como quando visita outros websites.",
+    "whyWeUseCookiesTitle": "Porque utilizamos cookies?",
+    "whyWeUseCookiesBody": "Utilizamos cookies primários e de terceiros por diversas razões. Alguns cookies são necessários por razões técnicas para que o nosso Website funcione, e referimo-nos a estes como cookies \"essenciais\" ou \"estritamente necessários\". Outros cookies também nos permitem rastrear e direcionar os interesses dos nossos utilizadores para melhorar a experiência nas nossas Propriedades Online. Terceiros servem cookies através do nosso Website para publicidade, analítica e outros fins. Isto é descrito com mais detalhe abaixo.",
+    "howToControlTitle": "Como posso controlar os cookies?",
+    "howToControlBody": "Tem o direito de decidir se aceita ou rejeita cookies. Pode exercer os seus direitos de cookies definindo as suas preferências no Centro de Preferências de Cookies. O Centro de Preferências de Cookies permite-lhe selecionar quais categorias de cookies aceita ou rejeita. Os cookies essenciais não podem ser rejeitados pois são estritamente necessários para lhe fornecer serviços.",
+    "howToControlDetails": "O Centro de Preferências de Cookies pode ser encontrado no banner de notificação e no nosso Website. Se optar por rejeitar cookies, ainda pode utilizar o nosso Website, embora o seu acesso a algumas funcionalidades e áreas do nosso Website possa ser restrito. Também pode definir ou alterar os controlos do seu navegador web para aceitar ou recusar cookies.",
+    "analyticsCookiesTitle": "Cookies de analítica e personalização:",
+    "analyticsCookiesDescription": "Estes cookies recolhem informações que são utilizadas de forma agregada para nos ajudar a compreender como o nosso Website está a ser utilizado ou quão eficazes são as nossas campanhas de marketing, ou para nos ajudar a personalizar o nosso Website para si.",
+    "cookieTableHeaders": {
+      "name": "Nome:",
+      "purpose": "Finalidade:",
+      "provider": "Fornecedor:",
+      "service": "Serviço:",
+      "type": "Tipo:",
+      "expiresIn": "Expira em:"
+    },
+    "viewPrivacyPolicy": "Ver Politica de Privacidade",
+    "cookies": [
+      {
+        "name": "_gid",
+        "purpose": "Mantém um registo de ID único que é depois utilizado para gerar dados estatísticos sobre a utilização do website pelos visitantes. É um cookie HTTP que expira após uma sessão de navegação.",
+        "provider": ".greenlink.pt",
+        "service": "Google Analytics",
+        "serviceUrl": "https://business.safety.google/privacy/",
+        "type": "http_cookie",
+        "expiresIn": "1 dia"
+      },
+      {
+        "name": "_ga_#",
+        "purpose": "Utilizado para distinguir utilizadores individuais através da atribuição de um número gerado aleatoriamente como identificador de cliente, permitindo o cálculo de visitas e sessões.",
+        "provider": ".greenlink.pt",
+        "service": "Google Analytics",
+        "serviceUrl": "https://business.safety.google/privacy/",
+        "type": "http_cookie",
+        "expiresIn": "1 ano 1 mês 4 dias"
+      },
+      {
+        "name": "_gat#",
+        "purpose": "Permite ao Google Analytics regular a taxa de pedidos. É um cookie HTTP que dura uma sessão.",
+        "provider": ".greenlink.pt",
+        "service": "Google Analytics",
+        "serviceUrl": "https://business.safety.google/privacy/",
+        "type": "http_cookie",
+        "expiresIn": "1 minuto"
+      },
+      {
+        "name": "_ga",
+        "purpose": "Regista um ID particular utilizado para gerar dados sobre a utilização do website pelo utilizador.",
+        "provider": ".greenlink.pt",
+        "service": "Google Analytics",
+        "serviceUrl": "https://business.safety.google/privacy/",
+        "type": "http_cookie",
+        "expiresIn": "1 ano 1 mês 4 dias"
+      }
+    ],
+    "browserControlTitle": "Como posso controlar os cookies no meu navegador?",
+    "browserControlBody": "Como os meios pelos quais pode recusar cookies através dos controlos do seu navegador web variam de navegador para navegador, deve visitar o menu de ajuda do seu navegador para mais informações. Seguem-se informações sobre como gerir cookies nos navegadores mais populares:",
+    "browsers": [
+      { "name": "Chrome", "url": "https://support.google.com/chrome/answer/95647#zippy=%2Callow-or-block-cookies" },
+      { "name": "Internet Explorer", "url": "https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d" },
+      { "name": "Firefox", "url": "https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" },
+      { "name": "Safari", "url": "https://support.apple.com/en-ie/guide/safari/sfri11471/mac" },
+      { "name": "Edge", "url": "https://support.microsoft.com/en-us/windows/microsoft-edge-browsing-data-and-privacy-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd" },
+      { "name": "Opera", "url": "https://help.opera.com/en/latest/web-preferences/" }
+    ],
+    "adNetworksBody": "Além disso, a maioria das redes de publicidade oferece-lhe uma forma de optar por não receber publicidade direcionada. Se pretender obter mais informações, visite:",
+    "adNetworks": [
+      { "name": "Digital Advertising Alliance", "url": "http://www.aboutads.info/choices/" },
+      { "name": "Digital Advertising Alliance of Canada", "url": "https://youradchoices.ca/" },
+      { "name": "European Interactive Digital Advertising Alliance", "url": "http://www.youronlinechoices.com/" }
+    ],
+    "webBeaconsTitle": "E outras tecnologias de rastreio, como web beacons?",
+    "webBeaconsBody": "Os cookies não são a única forma de reconhecer ou rastrear visitantes de um website. Podemos utilizar outras tecnologias semelhantes de tempos a tempos, como web beacons (por vezes chamados \"tracking pixels\" ou \"clear gifs\"). Estes são pequenos ficheiros gráficos que contêm um identificador único que nos permite reconhecer quando alguém visitou o nosso Website ou abriu um email que os inclui. Isto permite-nos, por exemplo, monitorizar os padrões de tráfego dos utilizadores de uma página para outra dentro de um website, entregar ou comunicar com cookies, compreender se veio ao website a partir de um anúncio online exibido num website de terceiros, melhorar o desempenho do site e medir o sucesso de campanhas de email marketing. Em muitos casos, estas tecnologias dependem de cookies para funcionar corretamente, e portanto recusar cookies prejudicará o seu funcionamento.",
+    "flashCookiesTitle": "Utilizam Flash cookies ou Local Shared Objects?",
+    "flashCookiesBody1": "Os websites também podem utilizar os chamados \"Flash Cookies\" (também conhecidos como Local Shared Objects ou \"LSOs\") para, entre outras coisas, recolher e armazenar informações sobre a sua utilização dos nossos serviços, prevenção de fraude e para outras operações do site.",
+    "flashCookiesBody2": "Se não quiser Flash Cookies armazenados no seu computador, pode ajustar as configurações do seu Flash player para bloquear o armazenamento de Flash Cookies utilizando as ferramentas contidas no Painel de Configurações de Armazenamento do Website. Também pode controlar os Flash Cookies acedendo ao Painel de Configurações de Armazenamento Global e seguindo as instruções.",
+    "flashCookiesBody3": "Por favor note que definir o Flash Player para restringir ou limitar a aceitação de Flash Cookies pode reduzir ou impedir a funcionalidade de algumas aplicações Flash, incluindo, potencialmente, aplicações Flash utilizadas em conexão com os nossos serviços ou conteúdo online.",
+    "targetedAdTitle": "Servem publicidade direcionada?",
+    "targetedAdBody": "Terceiros podem servir cookies no seu computador ou dispositivo móvel para servir publicidade através do nosso Website. Estas empresas podem utilizar informações sobre as suas visitas a este e outros websites para fornecer anúncios relevantes sobre bens e serviços que possam ser do seu interesse. Podem também empregar tecnologia utilizada para medir a eficácia dos anúncios. Podem conseguir isto utilizando cookies ou web beacons para recolher informações sobre as suas visitas a este e outros sites para fornecer anúncios relevantes sobre bens e serviços de potencial interesse para si. As informações recolhidas através deste processo não nos permitem a nós ou a eles identificar o seu nome, dados de contacto ou outros detalhes que o identifiquem diretamente, a menos que opte por fornecê-los.",
+    "updatesTitle": "Com que frequência atualizam esta Politica de Cookies?",
+    "updatesBody": "Podemos atualizar esta Politica de Cookies periodicamente para refletir, por exemplo, alterações aos cookies que utilizamos ou por outras razões operacionais, legais ou regulamentares. Por favor, revisite esta Politica de Cookies regularmente para se manter informado sobre a nossa utilização de cookies e tecnologias relacionadas.",
+    "updatesDate": "A data no topo desta Politica de Cookies indica quando foi atualizada pela última vez.",
+    "contactTitle": "Onde posso obter mais informações?",
+    "contactBody": "Se tiver alguma questão sobre a nossa utilização de cookies ou outras tecnologias, por favor contacte-nos através de geral@greenlink.pt."
+  },
   "footer": {
     "tagline": "A primeira AI Factory on-demand de Portugal. Computação de última geração, acessível a todos.",
     "sections": {
@@ -550,7 +805,8 @@
       "contact": "Contacto",
       "privacy": "Política de Privacidade",
       "terms": "Termos de Serviço",
-      "gdpr": "RGPD"
+"cookiePolicy": "Politica de Cookies",
+      "consentPreferences": "Preferências de Cookies"
     },
     "copyright": "GreenLink. Todos os direitos reservados."
   }

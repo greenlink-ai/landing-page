@@ -152,7 +152,7 @@ export function AboutSection({ dict }: AboutSectionProps) {
           transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.4, 0.25, 1] }}
           className="mb-10"
         >
-          <h3 className="text-xl font-semibold text-foreground">
+          <h3 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {a.valueProposition}
           </h3>
         </motion.div>

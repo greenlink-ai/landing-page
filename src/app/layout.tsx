@@ -22,6 +22,12 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap"
         />
+        {/* Termly Consent Banner */}
+        <script
+          type="text/javascript"
+          src="https://app.termly.io/resource-blocker/d50a0771-6a74-4b95-a3f4-bd57bb7135c3?autoBlock=on"
+          async
+        />
       </head>
       <body>
         <PostHogProvider>{children}</PostHogProvider>

@@ -152,7 +152,7 @@ O GPU Scheduler (Go service) decide o modo de alocação com base no pedido do c
 
 | Tecnologia | Propósito |
 |------------|-----------|
-| **Plausible** ou **PostHog** | Analytics GDPR-compliant (sem cookies, sem consent banners) |
+| **PostHog** | Analytics GDPR-compliant (sem cookies, sem consent banners) |
 
 ---
 
