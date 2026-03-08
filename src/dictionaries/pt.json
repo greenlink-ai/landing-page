@@ -144,7 +144,7 @@
         "specs": ["96GB VRAM", "FP4 Tensor Cores", "PCIe Gen5 P2P", "GDDR7 e ECC"]
       },
       "network": {
-        "title": "Rede 100Gbps RoCE v2",
+        "title": "Rede 200Gbps RoCE v2",
         "description": "Infraestrutura redundante de latência ultra-baixa.",
         "specs": ["SmartNICs NVIDIA ConnectX-7", "RoCE v2", "Comutação Non-blocking <1μs"]
       },

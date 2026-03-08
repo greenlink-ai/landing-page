@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Send, Check, CheckCircle2, AlertCircle, ArrowUp } from "lucide-react"
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile"
 import type { Dictionary } from "@/lib/get-dictionary"
 import type { Locale } from "@/lib/i18n"
 
@@ -99,6 +100,8 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
     "idle" | "loading" | "success" | "error"
   >("idle")
   const [selectedNeeds, setSelectedNeeds] = useState<string[]>([])
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const turnstileRef = useRef<TurnstileInstance>(null)
 
   const contactSchema = createContactSchema(f)
 
@@ -123,6 +126,7 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
   }
 
   async function onSubmit(data: ContactFormData) {
+    if (!turnstileToken) return
     setStatus("loading")
     try {
       const res = await fetch("/api/contact", {
@@ -132,14 +136,18 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
           ...data,
           needs: selectedNeeds,
           locale: lang,
+          turnstileToken,
         }),
       })
       if (!res.ok) throw new Error("Request failed")
       setStatus("success")
       reset()
       setSelectedNeeds([])
+      setTurnstileToken(null)
     } catch {
       setStatus("error")
+      turnstileRef.current?.reset()
+      setTurnstileToken(null)
     }
   }
 
@@ -152,7 +160,7 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
 
   return (
     <section
-      id="contacto"
+      id="contact"
       className="relative overflow-hidden py-24 lg:py-32"
     >
       <div className="relative mx-auto max-w-6xl px-10 lg:px-16">
@@ -370,10 +378,19 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
                     </div>
                   )}
 
+                  {/* Turnstile */}
+                  <Turnstile
+                    ref={turnstileRef}
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                    onSuccess={setTurnstileToken}
+                    onExpire={() => setTurnstileToken(null)}
+                    options={{ theme: "dark", size: "flexible" }}
+                  />
+
                   {/* Submit button */}
                   <button
                     type="submit"
-                    disabled={status === "loading"}
+                    disabled={status === "loading" || !turnstileToken}
                     className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {status === "loading" ? (

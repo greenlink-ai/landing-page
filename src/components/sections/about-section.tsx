@@ -50,7 +50,7 @@ export function AboutSection({ dict }: AboutSectionProps) {
   ]
 
   return (
-    <section id="sobre" className="relative overflow-hidden py-24 lg:py-32">
+    <section id="about" className="relative overflow-hidden py-24 lg:py-32">
       {/* Canvas-based floating particles */}
       <canvas
         ref={canvasRef}

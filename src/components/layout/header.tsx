@@ -45,7 +45,7 @@ export function Header({ lang, dict }: HeaderProps) {
     { href: `/${lang}/infrastructure`, label: dict.nav.infrastructure },
     { href: `/${lang}#pricing`, label: dict.nav.pricing },
     { href: `/${lang}#about`, label: dict.nav.about },
-    { href: `/${lang}#contacto`, label: dict.nav.contact },
+    { href: `/${lang}#contact`, label: dict.nav.contact },
   ]
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/')
@@ -103,7 +103,7 @@ export function Header({ lang, dict }: HeaderProps) {
             size="sm"
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
           >
-            <Link href={`/${lang}#contacto`}>
+            <Link href={`/${lang}#contact`}>
               {dict.nav.getStarted}
             </Link>
           </Button>
@@ -150,7 +150,7 @@ export function Header({ lang, dict }: HeaderProps) {
                 className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
               >
                 <Link
-                  href={`/${lang}#contacto`}
+                  href={`/${lang}#contact`}
                   onClick={() => setIsMobileOpen(false)}
                 >
                   {dict.nav.getStarted}

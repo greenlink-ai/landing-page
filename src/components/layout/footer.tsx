@@ -81,7 +81,7 @@ export function Footer({ lang, dict }: FooterProps) {
     { href: `/${lang}#solutions-instances`, label: t.links.instances },
     { href: `/${lang}#solutions-clusters`, label: t.links.clusters },
     { href: `/${lang}#solutions-storage`, label: t.links.storage },
-    { href: `/${lang}#precario`, label: t.links.pricing },
+    { href: `/${lang}#pricing`, label: t.links.pricing },
   ]
 
   const resourceLinks = [
@@ -92,14 +92,13 @@ export function Footer({ lang, dict }: FooterProps) {
   ]
 
   const companyLinks = [
-    { href: `/${lang}#sobre`, label: t.links.about },
-    { href: `/${lang}#contacto`, label: t.links.contact },
+    { href: `/${lang}#about`, label: t.links.about },
+    { href: `/${lang}#contact`, label: t.links.contact },
   ]
 
   const legalLinks = [
     { href: `/${lang}/privacy`, label: t.links.privacy },
-    { href: `/${lang}/terms`, label: t.links.terms },
-{ href: `/${lang}/cookie-policy`, label: t.links.cookiePolicy },
+    { href: `/${lang}/cookie-policy`, label: t.links.cookiePolicy },
   ]
 
   const handleConsentPreferences = (e: React.MouseEvent<HTMLAnchorElement>) => {

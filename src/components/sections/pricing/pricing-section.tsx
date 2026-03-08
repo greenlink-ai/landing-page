@@ -23,7 +23,7 @@ export function PricingSection({ dict }: PricingSectionProps) {
   const p = dict.pricing
 
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="pricing" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Canvas particles */}
       <canvas
         ref={canvasRef}

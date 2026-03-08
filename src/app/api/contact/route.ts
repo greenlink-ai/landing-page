@@ -3,6 +3,8 @@ import { z } from 'zod'
 import { db } from '@/db'
 import { leads } from '@/db/schema'
 
+const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
+
 const contactSchema = z.object({
   fullName: z.string().min(2).max(255),
   email: z.string().email().max(255),
@@ -11,12 +13,31 @@ const contactSchema = z.object({
   needs: z.array(z.string()).min(1),
   message: z.string().min(1).max(5000),
   locale: z.enum(['pt', 'en']).default('pt'),
+  turnstileToken: z.string().min(1),
 })
+
+async function verifyTurnstile(token: string): Promise<boolean> {
+  const res = await fetch(TURNSTILE_VERIFY_URL, {
+    method: 'POST',
+    body: `secret=${encodeURIComponent(process.env.TURNSTILE_SECRET_KEY!)}&response=${encodeURIComponent(token)}`,
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+  })
+  const data = (await res.json()) as { success: boolean }
+  return data.success
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body: unknown = await request.json()
     const data = contactSchema.parse(body)
+
+    const turnstileValid = await verifyTurnstile(data.turnstileToken)
+    if (!turnstileValid) {
+      return NextResponse.json(
+        { success: false, error: 'Turnstile verification failed' },
+        { status: 403 }
+      )
+    }
 
     await db.insert(leads).values({
       fullName: data.fullName,

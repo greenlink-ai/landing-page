@@ -649,7 +649,7 @@ O preçário na landing page pode já mencionar "Serverless Inference — em bre
 | Componente | Plataforma | Notas |
 |------------|------------|-------|
 | Frontend (Next.js) | **Vercel** | Edge network europeia, CI/CD automático via GitHub |
-| PostgreSQL | **Supabase** ou **Neon** | Managed PostgreSQL com região EU |
+| PostgreSQL | **Supabase** | Managed PostgreSQL com região EU |
 | Monitorização | **Cluster próprio** | Prometheus + Grafana + DCGM nos servidores físicos |
 
 ### CI/CD

@@ -222,7 +222,7 @@ export function SolutionsSection({ dict }: SolutionsSectionProps): React.JSX.Ele
           className="mt-20 text-center"
         >
           <a
-            href="#contacto"
+            href="#contact"
             className="inline-flex items-center rounded-lg bg-primary px-8 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             {t.cta}
