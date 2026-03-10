@@ -2,10 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { locales, defaultLocale } from '@/lib/i18n'
 import type { Locale } from '@/lib/i18n'
 
-function getLocale(request: NextRequest): Locale {
-  const acceptLanguage = request.headers.get('accept-language') ?? ''
-  const preferred = acceptLanguage.split(',')[0]?.split('-')[0]?.toLowerCase()
-  return locales.includes(preferred as Locale) ? (preferred as Locale) : defaultLocale
+function getLocale(_request: NextRequest): Locale {
+  return defaultLocale
 }
 
 export function middleware(request: NextRequest) {
