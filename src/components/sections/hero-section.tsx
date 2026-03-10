@@ -39,7 +39,7 @@ export function HeroSection({ dict }: HeroSectionProps) {
   ] as { value: string; label: string }[]
 
   return (
-    <section className="relative min-h-screen overflow-hidden pt-16">
+    <section id="hero" className="relative min-h-screen overflow-hidden pt-16">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 py-20 lg:flex-row lg:gap-12 lg:py-32">
         {/* Left content */}
         <motion.div

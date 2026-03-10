@@ -448,11 +448,21 @@
       "submit": "Pedir Acesso Prioritário",
       "submitting": "A enviar...",
       "successTitle": "Mensagem Enviada!",
-      "successMessage": "Obrigado pelo seu interesse. A nossa equipa irá analisar o seu pedido e entrar em contacto consigo em menos de 24 horas.",
+      "successMessage": "Obrigado pelo seu interesse! Iremos analisar o seu pedido e entraremos em contacto o mais breve possível.",
       "successCta": "Voltar ao início",
-      "error": "Erro ao enviar. Tente novamente ou envie o seu pedido para geral@greenlink.pt",
+      "error": "Erro ao enviar. Tente novamente ou envie o seu pedido para hello@greenlink.pt",
       "privacy": "Ao submeter, concorda com a nossa",
       "privacyLink": "Política de Privacidade"
+    },
+    "confirmationEmail": {
+      "subject": "A sua visão encontrou a nossa solução!",
+      "salutation": "Olá",
+      "intro": "Confirmamos a receção da sua mensagem. Vamos analisar o seu pedido e apresentar-lhe a solução que melhor ajudará o seu projeto a crescer.",
+      "context": "Estamos num momento emocionante a finalizar o desenvolvimento da nossa plataforma, que estará associada ao primeiro hub on-demand de computação específica para soluções de inteligência artificial e renderização em solo nacional.",
+      "benefit": "Ao contactar-nos nesta fase, acaba de garantir o seu acesso prioritário.",
+      "signOff": "Até breve,",
+      "teamName": "A Equipa GreenLink",
+      "privacyLabel": "Política de Privacidade"
     }
   },
   "gpu": {

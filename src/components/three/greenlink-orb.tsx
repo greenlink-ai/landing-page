@@ -126,12 +126,14 @@ export function GreenLinkOrb({ className = "" }: GreenLinkOrbProps) {
     const glowPulses: GlowPulse[] = []
 
     let animationId: number
-    const clock = new THREE.Clock()
+    const timer = new THREE.Timer()
+    timer.connect(document)
     let cameraAngle = 0
 
     const animate = () => {
       animationId = requestAnimationFrame(animate)
-      const elapsed = clock.getElapsedTime()
+      timer.update()
+      const elapsed = timer.getElapsed()
 
       // Rotate orb
       orb.rotation.y += 0.002
@@ -280,6 +282,7 @@ export function GreenLinkOrb({ className = "" }: GreenLinkOrbProps) {
 
     return () => {
       cancelAnimationFrame(animationId)
+      timer.disconnect()
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("resize", handleResize)
       renderer.dispose()

@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en">
+  <head>
+    <meta content="width=device-width" name="viewport" />
+    <link
+      rel="preload"
+      as="image"
+      href="https://resend-attachments.s3.amazonaws.com/9df6894c-78c7-4127-bee1-02587abe2f2a"
+    />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta content="telephone=no,address=no,email=no,date=no,url=no" name="format-detection" />
+  </head>
+  <body>
+    <!--$--><!--html--><!--head--><!--body-->
+    <table border="0" width="100%" cellpadding="0" cellspacing="0" role="presentation" align="center">
+      <tbody>
+        <tr>
+          <td>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="font-family:-apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, &#x27;Roboto&#x27;, &#x27;Oxygen&#x27;, &#x27;Ubuntu&#x27;, &#x27;Cantarell&#x27;, &#x27;Fira Sans&#x27;, &#x27;Droid Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif;font-size:16px;min-height:100%;line-height:155%"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <table
+                      width="100%"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      role="presentation"
+                      style="width:100%;font-family:-apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, &#x27;Roboto&#x27;, &#x27;Oxygen&#x27;, &#x27;Ubuntu&#x27;, &#x27;Cantarell&#x27;, &#x27;Fira Sans&#x27;, &#x27;Droid Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif"
+                    >
+                      <tbody>
+                        <tr>
+                          <td>
+                            <table
+                              align="center"
+                              width="100%"
+                              border="0"
+                              cellpadding="0"
+                              cellspacing="0"
+                              role="presentation"
+                              style="margin-top:0;margin-right:auto;margin-bottom:0;margin-left:auto;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;background-color:#f4f4f5"
+                            >
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <tr style="margin:0;padding:0">
+                                      <td data-id="__react-email-column" style="margin:0;padding:0">
+                                        <table
+                                          align="center"
+                                          width="100%"
+                                          border="0"
+                                          cellpadding="0"
+                                          cellspacing="0"
+                                          role="presentation"
+                                          style="margin-top:0;margin-right:auto;margin-bottom:0;margin-left:auto;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;font-family:-apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, &#x27;Roboto&#x27;, &#x27;Oxygen&#x27;, &#x27;Ubuntu&#x27;, &#x27;Cantarell&#x27;, &#x27;Fira Sans&#x27;, &#x27;Droid Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif;font-size:1.0769230769230769em;min-height:100%;line-height:155%"
+                                        >
+                                          <tbody>
+                                            <tr>
+                                              <td>
+                                                <tr style="margin:0;padding:0">
+                                                  <td data-id="__react-email-column" style="margin:0;padding:0">
+                                                    <table
+                                                      align="center"
+                                                      width="100%"
+                                                      border="0"
+                                                      cellpadding="0"
+                                                      cellspacing="0"
+                                                      role="presentation"
+                                                      style="margin-top:0;margin-right:auto;margin-bottom:0;margin-left:auto;padding-top:0;padding-right:0px;padding-bottom:0;padding-left:0px;align:center;width:100%;line-height:155%;max-width:560px;font-family:-apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, &#x27;Roboto&#x27;, &#x27;Oxygen&#x27;, &#x27;Ubuntu&#x27;, &#x27;Cantarell&#x27;, &#x27;Fira Sans&#x27;, &#x27;Droid Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif"
+                                                    >
+                                                      <tbody>
+                                                        <tr>
+                                                          <td>
+                                                            <tr style="margin:0;padding:0">
+                                                              <td
+                                                                data-id="__react-email-column"
+                                                                style="margin:0;padding:0"
+                                                              >
+                                                                <p
+                                                                  style="margin:0;padding:0;font-size:1em;padding-top:1.5em;padding-bottom:0em"
+                                                                >
+                                                                  <br />
+                                                                </p>
+                                                                <table
+                                                                  width="100%"
+                                                                  border="0"
+                                                                  cellpadding="0"
+                                                                  cellspacing="0"
+                                                                  role="presentation"
+                                                                  style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;background-color:#ffffff;border-radius:12px;overflow:hidden"
+                                                                >
+                                                                  <tbody>
+                                                                    <tr>
+                                                                      <td>
+                                                                        <tr style="margin:0;padding:0">
+                                                                          <td
+                                                                            data-id="__react-email-column"
+                                                                            style="margin:0;padding:0;height:4px;background:linear-gradient(90deg,#10b981,#34d399);font-size:0;line-height:0"
+                                                                          >
+                                                                            <p
+                                                                              style="margin:0;padding:0;font-size:1em;padding-top:0.5em;padding-bottom:0.5em"
+                                                                            >
+                                                                              <span> </span>
+                                                                            </p>
+                                                                          </td>
+                                                                        </tr>
+                                                                        <tr style="margin:0;padding:0">
+                                                                          <td
+                                                                            align="center"
+                                                                            data-id="__react-email-column"
+                                                                            style="margin:0;padding:32px 40px 0 40px"
+                                                                          >
+                                                                            <img
+                                                                              alt="GreenLink"
+                                                                              height="auto"
+                                                                              src="https://resend-attachments.s3.amazonaws.com/9df6894c-78c7-4127-bee1-02587abe2f2a"
+                                                                              style="display:block;outline:none;border:none;text-decoration:none;max-width:180px;height:auto"
+                                                                              width="180"
+                                                                            />
+                                                                          </td>
+                                                                        </tr>
+                                                                        <tr style="margin:0;padding:0">
+                                                                          <td
+                                                                            align="center"
+                                                                            data-id="__react-email-column"
+                                                                            style="margin:0;padding:24px 40px 8px 40px"
+                                                                          >
+                                                                            <h1
+                                                                              style="margin:0;padding:0;font-size:1.4em;line-height:1.3em;padding-top:0.389em;font-weight:700;color:#09090b;letter-spacing:-0.02em"
+                                                                            >
+                                                                              <span
+                                                                                ><strong
+                                                                                  >Novo contacto recebido</strong
+                                                                                ></span
+                                                                              >
+                                                                            </h1>
+                                                                          </td>
+                                                                        </tr>
+                                                                        <tr style="margin:0;padding:0">
+                                                                          <td
+                                                                            align="center"
+                                                                            data-id="__react-email-column"
+                                                                            style="margin:0;padding:0 40px 24px 40px"
+                                                                          >
+                                                                            <p
+                                                                              style="margin:0;padding:0;font-size:0.85em;padding-top:0.5em;padding-bottom:0.5em;color:#71717a;line-height:1.5"
+                                                                            >
+                                                                              <span
+                                                                                >Foram submetidos os seguintes dados
+                                                                                pelo formulário de contacto.</span
+                                                                              >
+                                                                            </p>
+                                                                          </td>
+                                                                        </tr>
+                                                                        <tr style="margin:0;padding:0">
+                                                                          <td
+                                                                            data-id="__react-email-column"
+                                                                            style="margin:0;padding:0 40px"
+                                                                          >
+                                                                            <table
+                                                                              width="100%"
+                                                                              border="0"
+                                                                              cellpadding="0"
+                                                                              cellspacing="0"
+                                                                              role="presentation"
+                                                                              style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"
+                                                                            >
+                                                                              <tbody>
+                                                                                <tr>
+                                                                                  <td>
+                                                                                    <tr style="margin:0;padding:0">
+                                                                                      <td
+                                                                                        data-id="__react-email-column"
+                                                                                        style="margin:0;padding:0;height:1px;background-color:#e4e4e7"
+                                                                                      >
+                                                                                        <p
+                                                                                          style="margin:0;padding:0;font-size:1em;padding-top:0.5em;padding-bottom:0.5em"
+                                                                                        >
+                                                                                          <br />
+                                                                                        </p>
+                                                                                      </td>
+                                                                                    </tr>
+                                                                                  </td>
+                                                                                </tr>
+                                                                              </tbody>
+                                                                            </table>
+                                                                          </td>
+                                                                        </tr>
+                                                                        <tr style="margin:0;padding:0">
+                                                                          <td
+                                                                            data-id="__react-email-column"
+                                                                            style="margin:0;padding:24px 40px"
+                                                                          >
+                                                                            <p
+                                                                              style="margin:0 0 4px 0;padding:0;font-size:0.7em;padding-top:0.5em;padding-bottom:0.5em;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#10b981"
+                                                                            >
+                                                                              <span>Nome</span>
+                                                                            </p>
+                                                                            <p
+                                                                              style="margin:0 0 20px 0;padding:0;font-size:0.92em;padding-top:0.5em;padding-bottom:0.5em;color:#09090b;line-height:1.5"
+                                                                            >
+                                                                              {{{full_name}}}
+                                                                            </p>
+                                                                            <table
+                                                                              width="100%"
+                                                                              border="0"
+                                                                              cellpadding="0"
+                                                                              cellspacing="0"
+                                                                              role="presentation"
+                                                                              style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"
+                                                                            >
+                                                                              <tbody>
+                                                                                <tr>
+                                                                                  <td>
+                                                                                    <tr style="margin:0;padding:0">
+                                                                                      <td
+                                                                                        data-id="__react-email-column"
+                                                                                        style="margin:0;padding:0;padding-right:12px"
+                                                                                      >
+                                                                                        <p
+                                                                                          style="margin:0 0 4px 0;padding:0;font-size:0.7em;padding-top:0.5em;padding-bottom:0.5em;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#10b981"
+                                                                                        >
+                                                                                          <span>Email</span>
+                                                                                        </p>
+                                                                                        <p
+                                                                                          style="margin:0 0 20px 0;padding:0;font-size:0.92em;padding-top:0.5em;padding-bottom:0.5em;color:#09090b;line-height:1.5"
+                                                                                        >
+                                                                                          {{{email}}}
+                                                                                        </p>
+                                                                                      </td>
+                                                                                      <td
+                                                                                        data-id="__react-email-column"
+                                                                                        style="margin:0;padding:0;padding-left:12px"
+                                                                                      >
+                                                                                        <p
+                                                                                          style="margin:0 0 4px 0;padding:0;font-size:0.7em;padding-top:0.5em;padding-bottom:0.5em;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#10b981"
+                                                                                        >
+                                                                                          <span>Telefone</span>
+                                                                                        </p>
+                                                                                        <p
+                                                                                          style="margin:0 0 20px 0;padding:0;font-size:0.92em;padding-top:0.5em;padding-bottom:0.5em;color:#09090b;line-height:1.5"
+                                                                                        >
+                                                                                          {{{phone}}}
+                                                                                        </p>
+                                                                                      </td>
+                                                                                    </tr>
+                                                                                  </td>
+                                                                                </tr>
+                                                                              </tbody>
+                                                                            </table>
+                                                                            <p
+                                                                              style="margin:0 0 4px 0;padding:0;font-size:0.7em;padding-top:0.5em;padding-bottom:0.5em;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#10b981"
+                                                                            >
+                                                                              <span>Empresa</span>
+                                                                            </p>
+                                                                            <p
+                                                                              style="margin:0 0 20px 0;padding:0;font-size:0.92em;padding-top:0.5em;padding-bottom:0.5em;color:#09090b;line-height:1.5"
+                                                                            >
+                                                                              {{{company}}}
+                                                                            </p>
+                                                                            <p
+                                                                              style="margin:0 0 4px 0;padding:0;font-size:0.7em;padding-top:0.5em;padding-bottom:0.5em;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#10b981"
+                                                                            >
+                                                                              <span>Necessidades</span>
+                                                                            </p>
+                                                                            <p
+                                                                              style="margin:0 0 20px 0;padding:0;font-size:0.85em;padding-top:0.5em;padding-bottom:0.5em;color:#09090b;line-height:1.8"
+                                                                            >
+                                                                              {{{needs}}}
+                                                                            </p>
+                                                                            <p
+                                                                              style="margin:0 0 8px 0;padding:0;font-size:0.7em;padding-top:0.5em;padding-bottom:0.5em;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#10b981"
+                                                                            >
+                                                                              <span>Mensagem</span>
+                                                                            </p>
+                                                                            <table
+                                                                              width="100%"
+                                                                              border="0"
+                                                                              cellpadding="0"
+                                                                              cellspacing="0"
+                                                                              role="presentation"
+                                                                              style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"
+                                                                            >
+                                                                              <tbody>
+                                                                                <tr>
+                                                                                  <td>
+                                                                                    <tr style="margin:0;padding:0">
+                                                                                      <td
+                                                                                        data-id="__react-email-column"
+                                                                                        style="margin:0;padding:16px;background-color:#f4f4f5;border-radius:8px"
+                                                                                      >
+                                                                                        <p
+                                                                                          style="margin:0;padding:0;font-size:0.85em;padding-top:0.5em;padding-bottom:0.5em;color:#3f3f46;line-height:1.6"
+                                                                                        >
+                                                                                          {{{message}}}
+                                                                                        </p>
+                                                                                      </td>
+                                                                                    </tr>
+                                                                                  </td>
+                                                                                </tr>
+                                                                              </tbody>
+                                                                            </table>
+                                                                          </td>
+                                                                        </tr>
+                                                                        <tr style="margin:0;padding:0">
+                                                                          <td
+                                                                            data-id="__react-email-column"
+                                                                            style="margin:0;padding:0 40px"
+                                                                          >
+                                                                            <table
+                                                                              width="100%"
+                                                                              border="0"
+                                                                              cellpadding="0"
+                                                                              cellspacing="0"
+                                                                              role="presentation"
+                                                                              style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"
+                                                                            >
+                                                                              <tbody>
+                                                                                <tr>
+                                                                                  <td>
+                                                                                    <tr style="margin:0;padding:0">
+                                                                                      <td
+                                                                                        data-id="__react-email-column"
+                                                                                        style="margin:0;padding:0;height:1px;background-color:#e4e4e7"
+                                                                                      >
+                                                                                        <p
+                                                                                          style="margin:0;padding:0;font-size:1em;padding-top:0.5em;padding-bottom:0.5em"
+                                                                                        >
+                                                                                          <br />
+                                                                                        </p>
+                                                                                      </td>
+                                                                                    </tr>
+                                                                                  </td>
+                                                                                </tr>
+                                                                              </tbody>
+                                                                            </table>
+                                                                          </td>
+                                                                        </tr>
+                                                                        <tr style="margin:0;padding:0">
+                                                                          <td
+                                                                            align="center"
+                                                                            data-id="__react-email-column"
+                                                                            style="margin:0;padding:24px 40px 32px 40px"
+                                                                          >
+                                                                            <p
+                                                                              style="margin:0;padding:0;font-size:0.72em;padding-top:0.5em;padding-bottom:0.5em;color:#a1a1aa;line-height:1.5"
+                                                                            >
+                                                                              <span
+                                                                                >Este email foi gerado automaticamente
+                                                                                pelo formulário de contacto em </span
+                                                                              ><span
+                                                                                ><a
+                                                                                  href="https://greenlink.pt"
+                                                                                  rel="noopener noreferrer nofollow"
+                                                                                  style="color:#10b981;text-decoration-line:none;text-decoration:none"
+                                                                                  target="_blank"
+                                                                                  >greenlink.pt</a
+                                                                                ></span
+                                                                              >
+                                                                            </p>
+                                                                          </td>
+                                                                        </tr>
+                                                                      </td>
+                                                                    </tr>
+                                                                  </tbody>
+                                                                </table>
+                                                                <p
+                                                                  style="margin:0;padding:0;font-size:1em;padding-top:1.5em;padding-bottom:0.5em"
+                                                                >
+                                                                  <br />
+                                                                </p>
+                                                              </td>
+                                                            </tr>
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </td>
+                                                </tr>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <p style="margin:0;padding:0;font-size:1em;padding-top:0.5em;padding-bottom:0.5em">
+                              <br />
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--/$-->
+  </body>
+</html>

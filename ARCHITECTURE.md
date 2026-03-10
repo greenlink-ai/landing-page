@@ -211,6 +211,10 @@ project-root/
 │   ├── dictionaries/                # Ficheiros de tradução por língua
 │   │   ├── pt.json                  # Traduções PT-PT (língua por defeito)
 │   │   └── en.json                  # Traduções EN
+│   ├── templates/
+│   │   └── emails/                  # Templates HTML para emails Resend (source of truth local)
+│   │       ├── landing-page-income-message.txt  # Notificação interna de novo contacto
+│   │       └── landing-page-form-auto-response.txt  # Confirmação enviada ao remetente
 │   ├── content/                     # Conteúdo estático (dados, não texto UI)
 │   │   ├── pricing.ts               # Dados de preçário (GPU/MIG tiers + storage NVMe/S3 tiers)
 │   │   ├── use-cases.ts             # Dados dos casos de uso por sector

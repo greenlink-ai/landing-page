@@ -485,6 +485,16 @@
       "error": "Error sending. Please try again or contact us at geral@greenlink.pt",
       "privacy": "By submitting, you agree to our",
       "privacyLink": "Privacy Policy"
+    },
+    "confirmationEmail": {
+      "subject": "Your vision met our solution!",
+      "salutation": "Hello, {{full_name}}.",
+      "intro": "We confirm receipt of your message. We will review your request and present the solution that best helps your project grow.",
+      "context": "We are at an exciting stage finalising the development of our platform, which will be associated with the first on-demand hub for AI and rendering-specific computing on Portuguese soil.",
+      "benefit": "By reaching out at this stage, you have just secured your priority access.",
+      "signOff": "See you soon,",
+      "teamName": "The GreenLink Team",
+      "privacyLabel": "Privacy Policy"
     }
   },
   "gpu": {

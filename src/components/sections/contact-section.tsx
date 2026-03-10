@@ -243,6 +243,7 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
                 </div>
                 <a
                   href="#hero"
+                  onClick={() => setStatus("idle")}
                   className="mt-2 inline-flex items-center gap-2 rounded-lg bg-black/10 px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-black/20"
                 >
                   <ArrowUp className="size-4" />

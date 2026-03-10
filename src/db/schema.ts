@@ -19,7 +19,6 @@ export const leads = pgTable('leads', {
 
   // Qualificação de Necessidades
   needs: text('needs').array(),
-  estimatedUsage: text('estimated_usage'),
   message: text('message'),
 
   // Contexto de Aquisição

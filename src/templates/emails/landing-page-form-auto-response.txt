@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en">
+  <head>
+    <meta content="width=device-width" name="viewport" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta content="telephone=no,address=no,email=no,date=no,url=no" name="format-detection" />
+  </head>
+  <body>
+    <!--$--><!--html--><!--head--><!--body-->
+    <table
+      border="0"
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      role="presentation"
+      align="center"
+      style="background-color:#f4f4f5"
+    >
+      <tbody>
+        <tr>
+          <td>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="font-family:-apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, &#x27;Roboto&#x27;, &#x27;Oxygen&#x27;, &#x27;Ubuntu&#x27;, &#x27;Cantarell&#x27;, &#x27;Fira Sans&#x27;, &#x27;Droid Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif;font-size:1.0769230769230769em;min-height:100%;line-height:155%"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <table
+                      align="center"
+                      width="100%"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      role="presentation"
+                      style="align:center;width:100%;padding-left:0px;padding-right:0px;line-height:155%;max-width:560px;font-family:-apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, &#x27;Roboto&#x27;, &#x27;Oxygen&#x27;, &#x27;Ubuntu&#x27;, &#x27;Cantarell&#x27;, &#x27;Fira Sans&#x27;, &#x27;Droid Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif"
+                    >
+                      <tbody>
+                        <tr>
+                          <td>
+                            <!-- Spacer top -->
+                            <p style="margin:0;padding:0;font-size:1em;padding-top:1.5em;padding-bottom:0em">
+                              <br />
+                            </p>
+
+                            <!-- Card wrapper -->
+                            <table
+                              border="0"
+                              width="100%"
+                              cellpadding="0"
+                              cellspacing="0"
+                              role="presentation"
+                              style="background-color:#ffffff;border-radius:12px;overflow:hidden"
+                            >
+                              <tbody>
+                                <!-- Emerald accent bar -->
+                                <tr>
+                                  <td
+                                    style="height:4px;background:linear-gradient(90deg,#10b981,#34d399);font-size:0;line-height:0"
+                                  >
+                                    &nbsp;
+                                  </td>
+                                </tr>
+
+                                <!-- Logo -->
+                                <tr>
+                                  <td align="center" style="padding:32px 40px 0 40px">
+                                    <img
+                                      alt="GreenLink"
+                                      src="https://resend-attachments.s3.amazonaws.com/9df6894c-78c7-4127-bee1-02587abe2f2a"
+                                      style="display:block;outline:none;border:none;text-decoration:none;max-width:180px;height:auto"
+                                      width="180"
+                                    />
+                                  </td>
+                                </tr>
+
+                                <!-- Salutation -->
+                                <tr>
+                                  <td style="padding:28px 40px 0 40px">
+                                    <h1
+                                      style="margin:0;padding:0;font-size:1.4em;line-height:1.3em;font-weight:700;color:#09090b;letter-spacing:-0.02em"
+                                    >
+                                      <span><strong>{{{salutation}}}, {{{full_name}}}</strong></span>
+                                    </h1>
+                                  </td>
+                                </tr>
+
+                                <!-- Intro -->
+                                <tr>
+                                  <td style="padding:16px 40px 0 40px">
+                                    <p style="margin:0;padding:0;font-size:0.92em;color:#3f3f46;line-height:1.7">
+                                      {{{intro}}}
+                                    </p>
+                                  </td>
+                                </tr>
+
+                                <!-- Context -->
+                                <tr>
+                                  <td style="padding:12px 40px 0 40px">
+                                    <p style="margin:0;padding:0;font-size:0.92em;color:#3f3f46;line-height:1.7">
+                                      {{{context}}}
+                                    </p>
+                                  </td>
+                                </tr>
+
+                                <!-- Benefit -->
+                                <tr>
+                                  <td style="padding:12px 40px 0 40px">
+                                    <p
+                                      style="margin:0;padding:0;font-size:0.92em;font-weight:600;color:#09090b;line-height:1.7"
+                                    >
+                                      {{{benefit}}}
+                                    </p>
+                                  </td>
+                                </tr>
+
+                                <!-- Divider -->
+                                <tr>
+                                  <td style="padding:24px 40px 0 40px">
+                                    <table border="0" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                                      <tr>
+                                        <td style="height:1px;background-color:#e4e4e7"></td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+
+                                <!-- Sign off -->
+                                <tr>
+                                  <td style="padding:24px 40px 32px 40px">
+                                    <p style="margin:0;padding:0;font-size:0.92em;color:#3f3f46;line-height:1.6">
+                                      {{{sign_off}}}
+                                    </p>
+                                    <p
+                                      style="margin:6px 0 0 0;padding:0;font-size:0.92em;font-weight:600;color:#09090b;line-height:1.5"
+                                    >
+                                      {{{team_name}}}
+                                    </p>
+                                  </td>
+                                </tr>
+
+                                <!-- Divider -->
+                                <tr>
+                                  <td style="padding:0 40px">
+                                    <table border="0" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                                      <tr>
+                                        <td style="height:1px;background-color:#e4e4e7"></td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+
+                                <!-- Footer -->
+                                <tr>
+                                  <td align="center" style="padding:24px 40px 32px 40px">
+                                    <p style="margin:0;padding:0;font-size:0.72em;color:#a1a1aa;line-height:1.5">
+                                      <a href="{{{website_url}}}" style="color:#10b981;text-decoration:none"
+                                        >greenlink.pt</a
+                                      >
+                                      &nbsp;|&nbsp;
+                                      <a href="{{{privacy_url}}}" style="color:#a1a1aa;text-decoration:underline"
+                                        >{{{privacy_label}}}</a
+                                      >
+                                    </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!-- Spacer bottom -->
+                            <p style="margin:0;padding:0;font-size:1em;padding-top:1.5em;padding-bottom:0.5em">
+                              <br />
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--/$-->
+  </body>
+</html>

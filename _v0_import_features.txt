@@ -1,5 +1,17 @@
-Concent Banner:
-"d50a0771-6a74-4b95-a3f4-bd57bb7135c3"
-
-Embed preference center link:
-<a href="#" class="termly-display-preferences">Consent Preferences</a>"
+{
+  "subject": "A sua visão encontrou a nossa potência, {{full_name}} 🚀",
+  "full_name": "Nome do Utilizador",
+  "email_content": {
+    "salutation": "Olá, {{full_name}}.",
+    "intro": "Confirmamos a receção da sua mensagem. Vamos analisar o seu pedido e apresentar-lhe a solução que melhor ajudará o seu projeto a crescer.",
+    "context": "Estamos num momento emocionante a finalizar o desenvolvimento da nossa plataforma, que estará associada ao primeiro hub on-demand de computação específica para soluções de inteligência artificial e renderização em solo nacional.",
+    "benefit": "Ao contactar-nos nesta fase, acaba de garantir o seu acesso prioritário.",
+    "sign_off": "Até breve,",
+    "team_name": "A Equipa GreenLink"
+  },
+  "footer": {
+    "website_url": "https://greenlink.pt",
+    "privacy_url": "https://greenlink.pt/en/privacy",
+    "unsubscribe_url": "URL_DINAMICA_DE_UNSUBSCRIBE"
+  }
+}
