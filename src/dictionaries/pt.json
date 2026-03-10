@@ -83,7 +83,7 @@
         "description": "Acesso imediato a GPUs NVIDIA Blackwell com 96GB de VRAM. Ideal para desenvolvimento, prototipagem rápida e workloads que não exigem escala massiva.",
         "features": [
           "Deploy em menos de 5 minutos",
-          "Escala vertical até 8 GPUs por nó",
+          "Escala vertical até 8 GPUs",
           "Storage NVMe local incluído",
           "Rede dedicada de 200Gbps"
         ],

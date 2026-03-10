@@ -9,9 +9,9 @@
     "getStarted": "Get Started"
   },
   "hero": {
-    "badge": "European GPU Cloud",
-    "title": "GPU Infrastructure for AI\nWithout Compromise",
-    "subtitle": "NVIDIA Blackwell compute with European sovereignty. Ultra-low latency, GDPR compliance, guaranteed availability.",
+    "badge": "Powered by NVIDIA Blackwell",
+    "title": "Training.\nFine-tuning.\nInference.",
+    "subtitle": "Portugal’s first sovereign on-demand platform for the full Artificial Intelligence lifecycle.",
     "ctaPrimary": "Get Started",
     "ctaSecondary": "View Pricing",
     "stats": {
@@ -115,7 +115,7 @@
         "description": "Immediate access to NVIDIA Blackwell GPUs with 96GB of VRAM. Ideal for development, rapid prototyping, and workloads that don't require massive scale.",
         "features": [
           "Deploy in under 5 minutes",
-          "Vertical scaling up to 8 GPUs per node",
+          "Vertical scaling up to 8 GPUs",
           "Local NVMe storage included",
           "Dedicated 200Gbps network"
         ],
