@@ -40,13 +40,13 @@ export function HeroSection({ dict }: HeroSectionProps) {
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden pt-16">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 py-20 lg:flex-row lg:gap-12 lg:py-32">
-        {/* Left content */}
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-6 py-20 lg:flex-row lg:gap-12 lg:py-32">
+        {/* Content — centered on mobile, left-aligned on desktop */}
         <motion.div
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="relative z-10 flex flex-1 flex-col items-start"
+          className="relative z-10 flex flex-1 flex-col items-center text-center lg:items-start lg:text-left"
         >
           {/* Headline */}
           <motion.h1
@@ -85,10 +85,10 @@ export function HeroSection({ dict }: HeroSectionProps) {
           {/* Stats row */}
           <motion.div
             variants={fadeInUp}
-            className="mt-8 flex items-center gap-8 border-l-6 border-primary/30 pl-6"
+            className="mt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:justify-start lg:border-l-6 lg:border-primary/30 lg:pl-6"
           >
             {stats.map((stat, i) => (
-              <span key={i} className="flex items-center gap-8">
+              <span key={i} className="flex items-center gap-6 sm:gap-8">
                 {i > 0 && <div className="h-8 w-px bg-border" />}
                 <div>
                   <p className="text-2xl font-bold text-foreground">{stat.value}</p>
@@ -99,7 +99,7 @@ export function HeroSection({ dict }: HeroSectionProps) {
           </motion.div>
 
           {/* Buttons */}
-          <motion.div variants={fadeInUp} className="mt-10 flex flex-wrap items-center gap-4">
+          <motion.div variants={fadeInUp} className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
             <Button
               size="lg"
               className="group bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 h-12"
@@ -119,7 +119,7 @@ export function HeroSection({ dict }: HeroSectionProps) {
 
         </motion.div>
 
-        {/* Right visual */}
+        {/* Right visual — desktop only */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -127,19 +127,16 @@ export function HeroSection({ dict }: HeroSectionProps) {
           className="relative flex-1 hidden lg:block"
         >
           <div className="relative aspect-square w-full max-w-140 ml-auto">
-            {/* Outer ring */}
             <div className="absolute inset-0 rounded-full border border-border/30" />
             <div className="absolute inset-4 rounded-full border border-border/20" />
             <div className="absolute inset-8 rounded-full border border-primary/10" />
-
-            {/* Circuit tree */}
             <div className="absolute inset-12">
               <CircuitTree />
             </div>
           </div>
         </motion.div>
 
-        {/* Mobile circuit visual */}
+        {/* Circuit visual — mobile only */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

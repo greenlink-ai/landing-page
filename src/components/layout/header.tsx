@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { BrandLogo } from '@/components/ui/brand-logo'
+import { useBrandLogo } from '@/lib/use-brand-logo'
 import type { Locale } from '@/lib/i18n'
 import type { Dictionary } from '@/lib/get-dictionary'
 import { LanguageSwitcher } from './language-switcher'
@@ -17,10 +18,37 @@ interface HeaderProps {
   dict: Dictionary
 }
 
+function HamburgerIcon({ isOpen }: { isOpen: boolean }) {
+  return (
+    <div className="relative flex h-6 w-7 flex-col items-center justify-center">
+      <span
+        className="absolute h-[2px] w-full rounded-full bg-current transition-all duration-300 ease-in-out"
+        style={{
+          transform: isOpen ? 'rotate(45deg)' : 'translateY(-8px)',
+        }}
+      />
+      <span
+        className="absolute h-[2px] w-full rounded-full bg-current transition-all duration-300 ease-in-out"
+        style={{
+          opacity: isOpen ? 0 : 1,
+          transform: isOpen ? 'scaleX(0)' : 'scaleX(1)',
+        }}
+      />
+      <span
+        className="absolute h-[2px] w-full rounded-full bg-current transition-all duration-300 ease-in-out"
+        style={{
+          transform: isOpen ? 'rotate(-45deg)' : 'translateY(8px)',
+        }}
+      />
+    </div>
+  )
+}
+
 export function Header({ lang, dict }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [brandPaths, setBrandPaths] = useState<string[]>([])
+  const logoPaths = useBrandLogo()
   const pathname = usePathname()
 
   useEffect(() => {
@@ -38,6 +66,16 @@ export function Header({ lang, dict }: HeaderProps) {
       })
       .catch(() => {})
   }, [])
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [isMobileOpen])
 
   const navLinks = [
     { href: `/${lang}#solutions`, label: dict.nav.product },
@@ -62,8 +100,8 @@ export function Header({ lang, dict }: HeaderProps) {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        {/* Greenlink */}
-        <Link href={`/${lang}`} className="flex items-center">
+        {/* Brand text — hidden on mobile */}
+        <Link href={`/${lang}`} className="hidden items-center md:flex">
           {brandPaths.length > 0 && (
             <svg
               viewBox="0 0 2750 800"
@@ -77,6 +115,9 @@ export function Header({ lang, dict }: HeaderProps) {
             </svg>
           )}
         </Link>
+
+        {/* Mobile: empty spacer to keep hamburger on the right */}
+        <div className="md:hidden" />
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
@@ -95,7 +136,7 @@ export function Header({ lang, dict }: HeaderProps) {
           ))}
         </nav>
 
-        {/* Right side */}
+        {/* Right side — desktop */}
         <div className="hidden items-center gap-3 md:flex">
           <LanguageSwitcher lang={lang} />
           <Button
@@ -109,57 +150,77 @@ export function Header({ lang, dict }: HeaderProps) {
           </Button>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile menu button — animated hamburger/X */}
         <button
-          className="text-foreground md:hidden"
+          className="text-foreground md:hidden p-1"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label="Toggle menu"
         >
-          {isMobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          <HamburgerIcon isOpen={isMobileOpen} />
         </button>
       </div>
 
-      {/* Mobile nav */}
-      {isMobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="border-t border-border bg-background/95 backdrop-blur-xl md:hidden"
-        >
-          <nav className="flex flex-col gap-1 p-4" aria-label="Mobile navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`rounded-md px-3 py-2.5 text-sm transition-colors ${
-                  isActive(link.href)
-                    ? 'bg-secondary text-foreground'
-                    : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
-                }`}
-                onClick={() => setIsMobileOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-            <div className="mt-3 flex items-center gap-3 border-t border-border pt-3">
-              <LanguageSwitcher lang={lang} />
-              <Button
-                asChild
-                size="sm"
-                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
-              >
-                <Link
-                  href={`/${lang}#contact`}
+      {/* Mobile nav — fullscreen overlay */}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="fixed inset-0 top-16 z-40 bg-background/98 backdrop-blur-2xl md:hidden"
+            style={{ height: '80dvh' }}
+          >
+            <nav
+              className="flex h-full flex-col items-center justify-center gap-2 px-6"
+              aria-label="Mobile navigation"
+            >
+              {/* Logo at the top of the menu */}
+              {logoPaths && (
+                <div className="mb-6" style={{ width: 'min(220px, 50vw)' }}>
+                  <BrandLogo paths={logoPaths} className="h-auto w-full" />
+                </div>
+              )}
+
+              {/* Nav links — centered */}
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * i, duration: 0.25 }}
+                  className={`w-full rounded-lg py-3 text-center text-base font-medium transition-colors ${
+                    isActive(link.href)
+                      ? 'text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
                   onClick={() => setIsMobileOpen(false)}
                 >
-                  {dict.nav.getStarted}
-                </Link>
-              </Button>
-            </div>
-          </nav>
-        </motion.div>
-      )}
+                  {link.label}
+                </motion.a>
+              ))}
+
+              {/* Language switcher — centered */}
+              <div className="mt-6 flex flex-col items-center gap-4">
+                <LanguageSwitcher lang={lang} />
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8"
+                >
+                  <Link
+                    href={`/${lang}#contact`}
+                    onClick={() => setIsMobileOpen(false)}
+                  >
+                    {dict.nav.getStarted}
+                  </Link>
+                </Button>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   )
 }

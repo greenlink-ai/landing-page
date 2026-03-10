@@ -1,11 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import Link from "next/link"
+import { BrandLogo } from "@/components/ui/brand-logo"
+import { useBrandLogo } from "@/lib/use-brand-logo"
 import type { Locale } from "@/lib/i18n"
 import type { Dictionary } from "@/lib/get-dictionary"
-
-const BRAND_SVG_URL = "/GreenLink-V2.svg"
 
 /* ─── Inline SVG social icons (no library dependency) ─── */
 function LinkedInIcon({ className }: { className?: string }) {
@@ -51,31 +50,9 @@ interface FooterProps {
   dict: Dictionary
 }
 
-interface BrandPaths {
-  tree: string
-  green: string
-  link: string
-}
-
 export function Footer({ lang, dict }: FooterProps) {
-  const [paths, setPaths] = useState<BrandPaths | null>(null)
+  const paths = useBrandLogo()
   const t = dict.footer
-
-  useEffect(() => {
-    fetch(BRAND_SVG_URL)
-      .then((r) => r.text())
-      .then((text) => {
-        const allPaths = [...text.matchAll(/\bd="([\s\S]*?)"/g)]
-        if (allPaths.length >= 3) {
-          setPaths({
-            link: allPaths[0][1].replace(/[\r\n]+/g, " ").trim(),
-            green: allPaths[1][1].replace(/[\r\n]+/g, " ").trim(),
-            tree: allPaths[2][1].replace(/[\r\n]+/g, " ").trim(),
-          })
-        }
-      })
-      .catch(() => {})
-  }, [])
 
   const productLinks = [
     { href: `/${lang}#solutions-instances`, label: t.links.instances },
@@ -123,74 +100,7 @@ export function Footer({ lang, dict }: FooterProps) {
         <div className="flex flex-col items-center text-center">
           <div style={{ width: "min(480px, 60vw)" }}>
             {paths && (
-              <svg
-                viewBox="0 0 3500 1500"
-                className="h-auto w-full"
-                fill="none"
-              >
-                <defs>
-                  <filter
-                    id="footer-glow"
-                    x="-50%"
-                    y="-50%"
-                    width="200%"
-                    height="200%"
-                  >
-                    <feGaussianBlur
-                      in="SourceGraphic"
-                      stdDeviation="6"
-                      result="blur1"
-                    />
-                    <feGaussianBlur
-                      in="SourceGraphic"
-                      stdDeviation="2"
-                      result="blur2"
-                    />
-                    <feMerge>
-                      <feMergeNode in="blur1" />
-                      <feMergeNode in="blur2" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-
-                {/* Tree — emerald with glow */}
-                <g filter="url(#footer-glow)">
-                  <path
-                    d={paths.tree}
-                    stroke="#10b981"
-                    strokeWidth={5}
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d={paths.tree}
-                    stroke="#6ee7b7"
-                    strokeWidth={1.5}
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    opacity={0.5}
-                  />
-                </g>
-
-                {/* "Green" text — white */}
-                <path
-                  d={paths.green}
-                  fill="#fafafa"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-
-                {/* "Link" text — white */}
-                <path
-                  d={paths.link}
-                  fill="#fafafa"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <BrandLogo paths={paths} glow className="h-auto w-full" />
             )}
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-[#a1a1aa]">
@@ -199,9 +109,9 @@ export function Footer({ lang, dict }: FooterProps) {
         </div>
 
         {/* Navigation columns — centered below */}
-        <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:justify-items-center">
+        <div className="mt-12 grid grid-cols-2 justify-items-center gap-8 sm:grid-cols-4">
           {footerColumns.map((col) => (
-            <div key={col.title}>
+            <div key={col.title} className="text-center sm:text-left">
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.05em] text-[#fafafa]">
                 {col.title}
               </p>

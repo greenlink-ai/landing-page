@@ -198,12 +198,13 @@ project-root/
 │   │       └── newsletter/
 │   │           └── route.ts         # POST — subscrição newsletter
 │   ├── components/                  # Componentes UI reutilizáveis
-│   │   ├── ui/                      # Shadcn/UI components (Button, Input, Dialog, etc.)
+│   │   ├── ui/                      # Shadcn/UI components (Button, Input, Dialog, etc.) + BrandLogo
 │   │   ├── layout/                  # Header (com LanguageSwitcher), Footer, Navigation, MobileMenu
 │   │   ├── sections/                # Secções de página (Hero, Features, CTA, Testimonials)
 │   │   └── forms/                   # ContactForm, NewsletterForm
 │   ├── lib/                         # Utilitários e configuração
 │   │   ├── utils.ts                 # Helpers genéricos (cn(), formatCurrency(), etc.)
+│   │   ├── use-brand-logo.ts        # Hook para fetch/parse do SVG da marca (usado por Header e Footer)
 │   │   ├── validations.ts           # Schemas Zod partilhados
 │   │   ├── constants.ts             # Constantes (pricing tiers, GPU specs, URLs)
 │   │   ├── db.ts                    # Conexão PostgreSQL via Drizzle

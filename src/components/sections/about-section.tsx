@@ -68,20 +68,22 @@ export function AboutSection({ dict }: AboutSectionProps) {
           className="mb-20"
         >
           {/* Badge with pulsing dot */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex size-2 rounded-full bg-primary" />
-            </span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              {a.badge}
-            </span>
+          <div className="mb-6 flex justify-center lg:justify-start">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex size-2 rounded-full bg-primary" />
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                {a.badge}
+              </span>
+            </div>
           </div>
 
           {/* Title row with 3D orb */}
           <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Left - Title and subtitle */}
-            <div>
+            <div className="text-center lg:text-left">
               <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                 {a.title}{" "}
                 <span className="text-primary">{a.titleHighlight}</span>
@@ -100,7 +102,7 @@ export function AboutSection({ dict }: AboutSectionProps) {
           {/* Vision & Mission side by side */}
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:gap-12">
             <div>
-              <h3 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              <h3 className="text-center lg:text-left mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                 {a.visionTitle}
               </h3>
               <p className="text-base leading-relaxed text-muted-foreground">
@@ -110,7 +112,7 @@ export function AboutSection({ dict }: AboutSectionProps) {
               </p>
             </div>
             <div>
-              <h3 className="mb-4 text-2xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              <h3 className="text-center lg:text-left mb-4 text-2xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                 {a.goalTitle}
               </h3>
               <p className="text-base leading-relaxed text-muted-foreground">
@@ -150,7 +152,7 @@ export function AboutSection({ dict }: AboutSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.4, 0.25, 1] }}
-          className="mb-10"
+          className="mb-10 text-center lg:text-left"
         >
           <h3 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {a.valueProposition}
@@ -176,18 +178,20 @@ export function AboutSection({ dict }: AboutSectionProps) {
                   boxShadow: "0 0 30px 0 rgba(16, 185, 129, 0.1)",
                 }}
               >
-                <div className="mb-4 flex size-12 items-center justify-center rounded-lg border border-primary/20 bg-primary/5 transition-colors duration-300 group-hover:border-primary/40 group-hover:bg-primary/10">
-                  <Icon
-                    className="size-6 text-primary"
-                    strokeWidth={1.5}
-                  />
+                <div className="mb-4 flex items-center justify-center lg:justify-start">
+                  <div className="flex size-12 items-center justify-center rounded-lg border border-primary/20 bg-primary/5 transition-colors duration-300 group-hover:border-primary/40 group-hover:bg-primary/10">
+                    <Icon
+                      className="size-6 text-primary"
+                      strokeWidth={1.5}
+                    />
+                  </div>
                 </div>
 
-                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                <h3 className="mb-2 text-center text-lg font-semibold text-foreground lg:text-left">
                   {pillar.title}
                 </h3>
 
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-center text-sm leading-relaxed text-muted-foreground lg:text-left">
                   {pillar.description}
                 </p>
 

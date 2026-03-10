@@ -171,7 +171,7 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-            className="flex flex-col justify-center"
+            className="flex flex-col items-center justify-center lg:items-start"
           >
             {/* Badge with pulsing dot */}
             <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5">
@@ -184,7 +184,7 @@ export function ContactSection({ dict, lang }: ContactSectionProps) {
               </span>
             </div>
 
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h2 className="text-balance text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-left lg:text-5xl">
               {t.title}{" "}
               <span className="text-primary">{t.titleHighlight}</span>
             </h2>

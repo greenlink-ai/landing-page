@@ -53,10 +53,10 @@ function QuoteBlock({ quote }: { quote: Quote }) {
             : "border-r-6 border-emerald-500 pr-4"
         } max-lg:border-r-0 max-lg:border-l-[3px] max-lg:pl-4 max-lg:pr-0 max-lg:text-left`}
       >
-        <span className="text-lg font-semibold text-emerald-500">
+        <span className="text-sm font-semibold text-emerald-500 lg:text-lg">
           {quote.author}
         </span>
-        <span className="block text-md text-[#71717a]">{quote.role}</span>
+        <span className="block text-xs text-[#71717a] lg:text-md">{quote.role}</span>
         <a
           href={quote.sourceUrl}
           target="_blank"

@@ -5,6 +5,20 @@ import { motion } from "framer-motion"
 import type { Dictionary } from "@/lib/get-dictionary"
 import { useParticleCanvas } from "@/hooks/use-particle-canvas"
 
+/** Parses **bold** markers into React nodes with white highlight. */
+function renderHighlighted(text: string): React.ReactNode[] {
+  const parts = text.split(/\*\*(.*?)\*\*/g)
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} className="font-semibold text-[#fafafa]">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  )
+}
+
 interface WhySectionLongProps {
   dict: Dictionary
 }
@@ -22,7 +36,7 @@ export function WhySectionLong({ dict }: WhySectionLongProps) {
         className="pointer-events-none absolute inset-0 h-full w-full"
         style={{ width: "100%", height: "100%" }}
       />
-      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl px-8 sm:px-6 lg:px-8">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +74,7 @@ export function WhySectionLong({ dict }: WhySectionLongProps) {
               }}
               className="text-base leading-relaxed text-[#a1a1aa] lg:text-lg"
             >
-              {paragraph}
+              {renderHighlighted(paragraph)}
             </motion.p>
           ))}
         </div>
