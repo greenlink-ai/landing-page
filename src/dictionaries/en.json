@@ -292,8 +292,8 @@
         "vram": "24GB VRAM",
         "rate": 0.49,
         "cpus": 8,
-        "ram": 384,
-        "nvme": 960,
+        "ram": 48,
+        "nvme": 120,
         "description": "Ideal for inference and development.",
         "recommended": false
       },
@@ -311,24 +311,23 @@
     ],
     "clusters": [
       {
-        "id": "cluster-8",
-        "name": "8x GPU Blackwell",
-        "vram": "768GB VRAM",
-        "gpuCount": 8,
+        "id": "cluster-9",
+        "name": "9 GPUs Blackwell",
+        "vram": "864GB VRAM",
+        "gpuCount": 9,
         "description": "Base cluster for distributed training.",
         "recommended": false
       },
       {
         "id": "cluster-120",
-        "name": "120x GPU Blackwell",
+        "name": "120 GPUs Blackwel",
         "vram": "11.5TB VRAM",
         "gpuCount": 120,
         "description": "Enterprise scale for massive LLMs.",
-        "recommended": true
+        "recommended": false
       }
     ],
     "clusterSpecs": {
-      "nvlink": "NVLink Fabric",
       "network": "RoCE v2 100Gbps"
     },
     "billingModes": {
@@ -363,7 +362,8 @@
           { "id": "gpu-4", "name": "4 GPUs Blackwell", "vram": "384GB", "rate": 7.12, "cpus": 64, "ram": 768, "nvme": 1920 },
           { "id": "gpu-5", "name": "5 GPUs Blackwell", "vram": "480GB", "rate": 8.90, "cpus": 80, "ram": 960, "nvme": 2400 },
           { "id": "gpu-6", "name": "6 GPUs Blackwell", "vram": "576GB", "rate": 10.68, "cpus": 96, "ram": 1152, "nvme": 2880 },
-          { "id": "gpu-7", "name": "7 GPUs Blackwell", "vram": "672GB", "rate": 12.46, "cpus": 112, "ram": 1344, "nvme": 3360 }
+          { "id": "gpu-7", "name": "7 GPUs Blackwell", "vram": "672GB", "rate": 12.46, "cpus": 112, "ram": 1344, "nvme": 3360 },
+          { "id": "gpu-8", "name": "8 GPUs Blackwell", "vram": "768GB", "rate": 14.24, "cpus": 128, "ram": 1536, "nvme": 3840 }
         ]
       },
       "discounts": {
@@ -371,7 +371,7 @@
         "reserved": { "week": 0.20, "month": 0.30, "year": 0.40 }
       }
     },
-    "cpuUnit": "CPUs",
+    "cpuUnit": "Cores",
     "ramUnit": "RAM",
     "nvmeUnit": "NVMe",
     "perHour": "/hr",
@@ -423,7 +423,7 @@
     },
     "stats": [
       { "value": "96GB", "label": "VRAM per GPU" },
-      { "value": "100Gbps", "label": "Non-Blocking Network" },
+      { "value": "200Gbps", "label": "Non-Blocking Network" },
       { "value": "<5min", "label": "Deploy Time" },
       { "value": "100%", "label": "Data in Europe" }
     ],
