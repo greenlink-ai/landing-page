@@ -171,14 +171,14 @@
         "specs": ["128 PCIe Gen5 lanes", "Up to 192 cores", "DDR5 ECC Memory"]
       },
       "gpu": {
-        "title": "NVIDIA RTX PRO6000 Blackwell",
+        "title": "NVIDIA RTX PRO 6000 Blackwell",
         "description": "Next-Gen AI Acceleration",
-        "specs": ["96GB VRAM", "FP4 Tensor Cores", "NVLink 5.0"]
+        "specs": ["96GB VRAM", "FP4 Tensor Cores", "PCIe Gen5 P2P", "GDDR7 e ECC"]
       },
       "network": {
-        "title": "100Gbps Network",
-        "description": "Ultra-Low Latency Fabric",
-        "specs": ["Non-blocking topology", "RDMA over Converged Ethernet", "<1μs switch latency"]
+        "title": "200Gbps RoCE v2 Network",
+        "description": "Ultra-Low redundant Latency Fabric",
+        "specs": ["SmartNICs NVIDIA ConnectX-7", "RoCE v2", "Non-blocking <1μs Comuting"]
       },
       "security": {
         "title": "Zero-Trust Security",
@@ -188,12 +188,12 @@
       "storage": {
         "title": "NVMe All-Flash Storage",
         "description": "Blazing Fast I/O",
-        "specs": ["Microsecond latency", "Parallel file systems", "Tiered caching"]
+        "specs": ["Ultra-low latency with All-NVMe architecture", "Direct Memory Access (DMA) to NVIDIA infrastructure", "Data Intelligence for RAG and Vector Search"]
       },
       "sustainability": {
         "title": "Sustainable by Design",
-        "description": "Green Computing Infrastructure",
-        "specs": ["Solar-powered facility", "PUE < 1.2", "Carbon-neutral operations"]
+        "description": "Where Artificial Intelligence meets renewable energy.",
+        "specs": ["Infrastructure powered by Solar Self-Consumption (UPAC)", ">3,000 annual sunshine hours", "100% Renewables-powered", "Target PUE: < 1.3"]
       }
     }
   },
@@ -205,28 +205,28 @@
     "cases": {
       "training": {
         "title": "Distributed Training",
-        "description": "Scale your models across Blackwell GPU clusters connected via a 100Gbps RoCE v2 network, ensuring lossless, zero-latency inter-node communication.",
-        "highlights": ["Blackwell GPUs", "RoCE v2", "100Gbps"]
+        "description": "Scale your models across Blackwell GPU clusters connected via a 200Gbps RoCE v2 network, ensuring lossless, zero-latency inter-node communication.",
+        "highlights": ["Blackwell GPUs", "RoCE v2", "200Gbps"]
       },
       "finetuning": {
         "title": "High-Density Fine-tuning",
         "description": "Adapt your models using 96GB of VRAM. Ideal for LoRA and QLoRA techniques with private, sensitive datasets that cannot leave Europe.",
-        "highlights": ["Llama", "Mistral", "96GB VRAM", "LoRA"]
+        "highlights": ["Llama", "Mistral", "96GB VRAM", "QLoRA"]
       },
       "inference": {
         "title": "Sovereign Inference",
-        "description": "Deploy models at scale with NVIDIA NIM and Triton. Ensure your clients' data never leaves the secure infrastructure in Portugal.",
-        "highlights": ["NVIDIA NIM", "Triton Server", "Data Sovereignty"]
+        "description": "Large-scale model deployment with NVIDIA NIM and Triton.",
+        "highlights": ["NVIDIA NIM", "Triton Server"]
       },
       "rendering": {
         "title": "Rendering & VFX",
-        "description": "Accelerate media pipelines with 4th-gen RT Cores and DLSS 4. Create photorealistic scenes and leverage dual video encode/decode engines.",
+        "description": "Accelerate media pipelines with 4th Gen RT Cores and DLSS 4. Create photorealistic scenes and leverage dual video encode/decode engines.",
         "highlights": ["Ray Tracing", "DLSS 4", "NVENC/NVDEC"]
       },
       "omniverse": {
         "title": "Omniverse & Digital Twins",
         "description": "Develop physical AI applications and industrial simulations. Exceptional performance for robotics and synthetic data generation workflows based on OpenUSD.",
-        "highlights": ["NVIDIA Omniverse", "OpenUSD", "3D Simulation"]
+        "highlights": ["NVIDIA Omniverse", "Fisic AI", "3D Simulation"]
       },
       "research": {
         "title": "Scientific Computing",

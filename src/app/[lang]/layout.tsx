@@ -21,7 +21,7 @@ export async function generateMetadata({
   const dict = await getDictionary(lang)
   return {
     title: {
-      default: 'Greenlink — Sovereign AI Infrastructure',
+      default: 'Greenlink | AI Factory on-demand',
       template: '%s | Greenlink',
     },
     description: dict.hero.subtitle,

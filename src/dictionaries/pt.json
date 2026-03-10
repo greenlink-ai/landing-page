@@ -161,7 +161,7 @@
       "sustainability": {
         "title": "Computação Sustentável",
         "description": "Onde a inteligência artificial encontra a energia renovável",
-        "specs": ["Infraestrutura alimentada por UPAC Solar", ">3000 horas anuais de sol", "100% Alimentado por Fontes Renováveis", "Target PUE: < 1.2"]
+        "specs": ["Infraestrutura alimentada por UPAC Solar", ">3000 horas anuais de sol", "100% Alimentado por Fontes Renováveis", "Target PUE: < 1.3"]
       }
     }
   },
@@ -189,17 +189,17 @@
       "rendering": {
         "title": "Renderização e VFX",
         "description": "Acelera pipelines de media com os RT Cores de 4ª geração e DLSS 4. Cria cenas fotorrealistas e tira partido dos motores duplos de encode/decode de vídeo.",
-        "highlights": ["RT Cores", "DLSS 4"]
+        "highlights": ["Ray Tracing", "DLSS 4", "NVENC/NVDEC"]
       },
       "omniverse": {
         "title": "Omniverse & Digital Twins",
         "description": "Desenvolve aplicações de IA física e simulações industriais. Performance excecional para workflows de robótica e geração de dados sintéticos baseados em OpenUSD.",
-        "highlights": ["IA física", "Simulações industriais"]
+        "highlights": ["NVIDIA Omniverse", "IA física", "Simulações 3D"]
       },
       "research": {
         "title": "Computação Científica",
         "description": "Extrai insights de datasets massivos e corre simulações complexas (FP32). Provisionamento instantâneo com stacks otimizadas para PyTorch, TensorFlow e JAX.",
-        "highlights": ["(FP32)", "PyTorch", "TensorFlow", "JAX"]
+        "highlights": ["FP32", "PyTorch", "TensorFlow", "JAX"]
       }
     }
   },
