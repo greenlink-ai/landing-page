@@ -17,7 +17,7 @@ const contactSchema = z.object({
   company: z.string().max(255).optional(),
   needs: z.array(z.string()).min(1),
   message: z.string().min(1).max(5000),
-  locale: z.enum(['pt', 'en']).default('pt'),
+  locale: z.enum(['pt', 'en']).default('en'),
   turnstileToken: z.string().min(1),
 })
 

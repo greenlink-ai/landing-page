@@ -22,20 +22,20 @@ function HamburgerIcon({ isOpen }: { isOpen: boolean }) {
   return (
     <div className="relative flex h-6 w-7 flex-col items-center justify-center">
       <span
-        className="absolute h-[2px] w-full rounded-full bg-current transition-all duration-300 ease-in-out"
+        className="absolute h-0.5 w-full rounded-full bg-current transition-all duration-300 ease-in-out"
         style={{
           transform: isOpen ? 'rotate(45deg)' : 'translateY(-8px)',
         }}
       />
       <span
-        className="absolute h-[2px] w-full rounded-full bg-current transition-all duration-300 ease-in-out"
+        className="absolute h-0.5 w-full rounded-full bg-current transition-all duration-300 ease-in-out"
         style={{
           opacity: isOpen ? 0 : 1,
           transform: isOpen ? 'scaleX(0)' : 'scaleX(1)',
         }}
       />
       <span
-        className="absolute h-[2px] w-full rounded-full bg-current transition-all duration-300 ease-in-out"
+        className="absolute h-0.5 w-full rounded-full bg-current transition-all duration-300 ease-in-out"
         style={{
           transform: isOpen ? 'rotate(-45deg)' : 'translateY(8px)',
         }}

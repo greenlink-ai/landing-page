@@ -17,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>
 }): Promise<Metadata> {
   const { lang: rawLang } = await params
-  const lang = locales.includes(rawLang as Locale) ? (rawLang as Locale) : 'pt'
+  const lang = locales.includes(rawLang as Locale) ? (rawLang as Locale) : 'en'
   const dict = await getDictionary(lang)
   return {
     title: {

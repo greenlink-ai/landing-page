@@ -158,8 +158,7 @@ export function Footer({ lang, dict }: FooterProps) {
           {/* Social icons */}
           <div className="flex items-center gap-4">
             <a
-              href="https://linkedin.com/company/greenlink"
-              target="_blank"
+              href="#"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="text-[#fafafa] transition-colors duration-150 hover:text-emerald-500"
@@ -167,8 +166,7 @@ export function Footer({ lang, dict }: FooterProps) {
               <LinkedInIcon className="size-7" />
             </a>
             <a
-              href="https://x.com/greenlink"
-              target="_blank"
+              href="#"
               rel="noopener noreferrer"
               aria-label="X"
               className="text-[#fafafa] transition-colors duration-150 hover:text-emerald-500"

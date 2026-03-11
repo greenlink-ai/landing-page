@@ -447,11 +447,11 @@
   },
   "contact": {
     "badge": "Contact",
-    "title": "Bring the vision.",
-    "titleHighlight": "We deliver the compute.",
-    "subtitle": "Whether it's a dedicated cluster or a single instance, we're ready to set up your environment in moments. Tell us what you're building.",
+    "title": "Bring the vision. We deliver the solution.",
+    "titleHighlight": "Reserve your access!",
+    "subtitle": "We are building Portugal's first high-density, on-demand AI Factory. Our platform is currently under development — register your interest today to secure early access and exclusive launch terms.",
     "info": {
-      "response": "Response within 24 hours"
+      "response": "Rest assured, your message won't get lost in space. Expect a response in under 24 hours!"
     },
     "form": {
       "name": "Full Name",
@@ -482,16 +482,16 @@
       "successTitle": "Message Sent!",
       "successMessage": "Thank you for your interest. Our team will review your request and get back to you within 24 hours.",
       "successCta": "Back to top",
-      "error": "Error sending. Please try again or contact us at geral@greenlink.pt",
+      "error": "Error sending. Please try again or contact us at hello@greenlink.pt",
       "privacy": "By submitting, you agree to our",
       "privacyLink": "Privacy Policy"
     },
     "confirmationEmail": {
       "subject": "Your vision met our solution!",
-      "salutation": "Hello, {{full_name}}.",
-      "intro": "We confirm receipt of your message. We will review your request and present the solution that best helps your project grow.",
-      "context": "We are at an exciting stage finalising the development of our platform, which will be associated with the first on-demand hub for AI and rendering-specific computing on Portuguese soil.",
-      "benefit": "By reaching out at this stage, you have just secured your priority access.",
+      "salutation": "Hello",
+      "intro": "We have received your message. Our team will analyze your request and present the best solution to help your project scale.",
+      "context": "We are at an exciting stage, finalizing the development of our platform, which will be integrated with the nation's first on-demand computing hub dedicated to AI and rendering solutions.",
+      "benefit": "By reaching out to us at this stage, you have just secured priority access.",
       "signOff": "See you soon,",
       "teamName": "The GreenLink Team",
       "privacyLabel": "Privacy Policy"
@@ -576,7 +576,7 @@
     "title": "Privacy Policy",
     "lastUpdated": "Last updated: March 08, 2026",
     "intro": "This Privacy Notice for Greenlink AI Datacenter, Sociedade Unipessoal LDA ('we', 'us', or 'our'), describes how and why we might access, collect, store, use, and/or share ('process') your personal information when you use our services ('Services'), including when you:",
-    "serviceDescription": "Visit our website at http://www.greenlink.pt or any website of ours that links to this Privacy Notice. Use Computing on-demand. Our platform acts as a facilitator for on-demand access to computing resources, providing specialized hardware — namely high-performance GPUs — exclusively intended for artificial intelligence (AI) development, model training and inference, as well as graphics rendering tasks. Through our web interface (dashboard), users can launch temporary computing instances, configure and execute their workloads autonomously and immediately. The platform does not provide persistent data storage services, database management, application hosting, or infrastructure-as-a-service (IaaS) in the conventional sense. We do not act as controller or processor of the data processed by users within the launched instances; the user remains fully responsible for the legality, content, and processing of any data introduced or generated during the use of the instances.",
+    "serviceDescription": "Visit our website at https://www.greenlink.pt or any website of ours that links to this Privacy Notice. Use Computing on-demand. Our platform acts as a facilitator for on-demand access to computing resources, providing specialized hardware — namely high-performance GPUs — exclusively intended for artificial intelligence (AI) development, model training and inference, as well as graphics rendering tasks. Through our web interface (dashboard), users can launch temporary computing instances, configure and execute their workloads autonomously and immediately. The platform does not provide persistent data storage services, database management, application hosting, or infrastructure-as-a-service (IaaS) in the conventional sense. We do not act as controller or processor of the data processed by users within the launched instances; the user remains fully responsible for the legality, content, and processing of any data introduced or generated during the use of the instances.",
     "engageWith": "Engage with us in other related ways, including any marketing or events.",
     "questionsIntro": "Questions or concerns? Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at",
     "summaryTitle": "Summary of Key Points",
@@ -831,7 +831,7 @@
     "contactBody": "If you have any questions about our use of cookies or other technologies, please contact us at geral@greenlink.pt."
   },
   "footer": {
-    "tagline": "Portugal's first AI Factory. Next-generation GPU computing, accessible to all.",
+    "tagline": "Portugal's first on-demand AI Factory. Next-generation GPU computing, accessible to all.",
     "sections": {
       "product": "Product",
       "resources": "Resources",
