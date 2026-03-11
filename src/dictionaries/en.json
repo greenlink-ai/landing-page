@@ -442,7 +442,7 @@
         "description": "With the EU AI Act in effect, data residency on national soil is a strategic imperative. The only high-density solution in Portugal ready for compliance."
       }
     },
-    "closingStatement": "We are the bridge: neither basic hosting from a national operator, nor the walled garden of a hyperscaler. Specialized infrastructure for those building the ",
+    "closingStatement": "We are the specialized infrastructure for those building the ",
     "closingStatementHighligh": "future!"
   },
   "contact": {
@@ -854,6 +854,6 @@
 "cookiePolicy": "Cookie Policy",
       "consentPreferences": "Consent Preferences"
     },
-    "copyright": "GreenLink. All rights reserved."
+    "copyright": "Greenlink. All rights reserved."
   }
 }
