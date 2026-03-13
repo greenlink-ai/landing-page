@@ -247,11 +247,8 @@
     },
     "customForm": {
       "title": "Pedido Personalizado",
-      "description": "Descreva as suas necessidades de infraestrutura e a nossa equipa entrará em contacto em menos de 24 horas.",
-      "label": "A sua mensagem",
-      "placeholder": "Ex: Preciso de um cluster com 256 GPUs para treinar um modelo LLM de 70B parâmetros...",
-      "submit": "Enviar Pedido",
-      "disclaimer": "* Resposta garantida em menos de 24 horas úteis."
+      "description": "Precisa de uma solução de infraestrutura à medida? Fale connosco sobre os seus requisitos e respondemos em menos de 24 horas.",
+      "cta": "Contacte-nos"
     },
     "instances": [
       {

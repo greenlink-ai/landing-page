@@ -6,7 +6,7 @@ import { Clock, Sparkles, Zap } from "lucide-react"
 import type { Dictionary } from "@/lib/get-dictionary"
 import { containerVariants, itemVariants, EXIT_ANIMATION } from "./constants"
 import { PricingCalculator } from "./pricing-calculator"
-import { CustomRequestForm } from "./custom-request-form"
+import { CustomRequestCta } from "./custom-request-cta"
 
 interface ClustersTabProps {
   dict: Dictionary["pricing"]
@@ -235,9 +235,9 @@ export function ClustersTab({ dict }: ClustersTabProps) {
       </motion.div>
 
       {/* Right: Calculator or Custom Form */}
-      <motion.div variants={itemVariants}>
+      <motion.div variants={itemVariants} className={isCustom ? "flex items-center" : ""}>
         {isCustom ? (
-          <CustomRequestForm dict={dict} />
+          <CustomRequestCta dict={dict} />
         ) : (
           currentCluster && (
             <PricingCalculator

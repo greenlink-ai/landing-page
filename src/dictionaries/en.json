@@ -279,11 +279,8 @@
     },
     "customForm": {
       "title": "Custom Request",
-      "description": "Describe your infrastructure needs and our team will get back to you within 24 hours.",
-      "label": "Your message",
-      "placeholder": "E.g.: I need a cluster with 256 GPUs to train a 70B parameter LLM model...",
-      "submit": "Send Request",
-      "disclaimer": "* Response guaranteed within 24 business hours."
+      "description": "Need a tailored infrastructure solution? Tell us about your requirements and we'll get back to you within 24 hours.",
+      "cta": "Contact Us"
     },
     "instances": [
       {
