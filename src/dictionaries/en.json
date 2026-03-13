@@ -328,7 +328,7 @@
       }
     ],
     "clusterSpecs": {
-      "network": "RoCE v2 100Gbps"
+      "network": "RoCE v2 200Gbps"
     },
     "billingModes": {
       "onDemand": {
